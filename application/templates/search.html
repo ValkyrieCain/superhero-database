@@ -1,0 +1,10 @@
+{% extends "index.html" %}
+{% block extra %}
+ <form method='POST' action=''>
+  {{look.hidden_tag()}}
+  <div>
+   {{look.search}}
+   {{look.submitsearch}}
+ </div></form>
+{% endblock %}
+

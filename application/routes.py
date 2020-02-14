@@ -2,7 +2,7 @@ from flask import render_template
 from application import app
 from application import db
 from application.models import School
-from application.forms import FF
+from application.forms import FF, search
 @app.route('/')
 @app.route('/home')
 def home():
@@ -10,26 +10,30 @@ def home():
 @app.route('/abc')
 def abc():
  return render_template("abc.html", body="hello my friends")
-@app.route('/blog')
+@app.route('/blog', methods=['GET','POST'])
 def blog():
- school=School.query.all()
- return render_template("blog.html", schooldata=school)
+ look=search()
+ if look.validate_on_submit():
+   school=School.query.filter(School.name==look.search.data).all()
+   return render_template("blog.html", schooldata=school)
+ return render_template("search.html", look=look)
 @app.route('/secret')
 def secret():
  return render_template("inc.html")
 @app.route('/insert', methods=['GET','POST'])
 def insert():
  return render_template()
-@app.route('/forms')
+@app.route('/forms', methods=['GET','POST'])
 def forms():
- forms=FF()
- return render_template("forms.html", form=forms, methods=['GET','POST'])
- if form.validate_on_submit():
-  formm=form(
-   id=form.id.data,
-   name=form.name.data)
-  db.session.add(formm)
+ GG=FF()
+ if GG.validate_on_submit():
+  HI=School(
+   id=GG.id.data,
+   name=GG.name.data)
+  db.session.add(HI)
   db.session.commit()
-  return redirect(url_for('home'))
+  print("dancing_man.gif")
  else:
   print("uhoh")
+  print(GG.errors)
+ return render_template("forms.html", form=GG)
