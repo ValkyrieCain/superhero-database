@@ -1,0 +1,10 @@
+{% extends "index.html" %}
+{% block extra %}
+ {%for x in schooldata%}
+    <div>
+     <p>id = {{x.id}}<br>
+	name = {{x.name}}	</p> 
+  </div>
+{%endfor%}
+<input>
+{% endblock %}

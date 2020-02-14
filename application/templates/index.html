@@ -1,0 +1,13 @@
+<html>
+<head>
+<title>Hello World</title>
+</head>
+<body>
+<h2>header</h2>
+<p><a href="{{url_for ('home')}}"><button>Home</button></a></p>
+<p><a href="{{url_for ('abc')}}"><button>ABC</button></a></p>
+<p><a href="{{url_for ('blog')}}"><button>Blog</button></a></p>
+</body>
+{% block extra %}{% endblock%}
+</body>
+</html>
