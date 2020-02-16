@@ -1,10 +1,14 @@
-{% extends "index.html" %}
+{% extends "template.html" %}
 {% block extra %}
- <form method='POST' action=''>
-  {{look.hidden_tag()}}
-  <div>
-   {{look.search}}
-   {{look.submitsearch}}
- </div></form>
+ <p>
+  <a href="{{url_for ('show')}}"><button>Show all heroes</button></a>
+  <a href="{{url_for ('searchpublisher')}}"><button>Search by publisher</button></a>
+  <a href="{{url_for ('searchname')}}"><button>Search by publisher</button></a>
+ </p>
+ OR
+ <p>
+  <a href="{{url_for ('show')}}"><button>Show all heroes</button></a>
+  {{publisher.publisher}}
+  {{name.name}}
+ </p>
 {% endblock %}
-

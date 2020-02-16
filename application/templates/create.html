@@ -1,0 +1,17 @@
+{% extends "template.html" %}
+{% block extra %}
+ <div class='forms'>
+  <form method='POST' action=''>
+   <p>Publisher = {{hero.publisher}}<br>
+ 	Name = {{hero.name}}<br>
+	Alter Ego = {{hero.alterego}}<br>
+ 	First Power = {{hero.p1}}<br>
+ 	Second Power = {{hero.p2}}<br>
+ 	Third Power = {{hero.p3}}<br>
+ 	Team = {{hero.team}}<br>
+ 	Sidekick = {{hero.sidekick}}<br>
+ 	Nemesis = {{hero.nemesis}}<br>
+   </p> 
+  </form>
+ </div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "template.html" %}
+{% block extra %}
+ {%for x in superherodata%}
+  <div class='forms'>
+   <form method='POST' action=''>
+    <p>Publisher = {{x.publisher}}<br>
+	 Name = {{x.name}}<br>
+	 Alter Ego = {{x.alterego}}<br>
+	 First Power = {{x.p1}}<br>
+	 Second Power = {{x.p2}}<br>
+	 Third Power = {{x.p3}}<br>
+	 Team = {{x.team}}<br>
+	 Sidekick = {{x.sidekick}}<br>
+	 Nemesis = {{x.nemesis}}<br>
+	</p> 
+   </form>
+  </div>
+ {%endfor%}
+{% endblock %}

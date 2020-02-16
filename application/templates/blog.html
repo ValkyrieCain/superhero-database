@@ -1,9 +1,11 @@
-{% extends "index.html" %}
+{% extends "template.html" %}
 {% block extra %}
  {%for x in schooldata%}
   <div> 
-     <p>id = {{x.id}}<br>
-	name = {{x.name}}	</p> 
+   <p>
+    id = {{x.id}}<br>
+    name = {{x.name}}
+   </p> 
   </div>
-{%endfor%}
+ {%endfor%}
 {% endblock %}
