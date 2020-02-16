@@ -67,44 +67,44 @@ def search():
  nemesis=nemesis()
 
  if publisher.validate_on_submit():
-  if search.validate_on_submit():
+  if hero.validate_on_submit():
     hero=superhero.query.filter(superhero.publisher==search.publisher.data).all()
     return render_template("show.html", superherodata=hero)
   return render_template("searchpublisher.html", form=search)
 
 
  if name.validate_on_submit():
-  if search.validate_on_submit():
+  if hero.validate_on_submit():
     hero=superhero.query.filter(superhero.name==search.name.data).all()
     return render_template("show.html", superherodata=hero)
   return render_template("searchname.html", form=search)
 
  if alterego.validate_on_submit():
-  if search.validate_on_submit():
+  if hero.validate_on_submit():
     hero=superhero.query.filter(superhero.alterego==search.alterego.data).all()
     return render_template("show.html", superherodata=hero)
   return render_template("searchalterego.html", form=search)
 
  if power.validate_on_submit():
-  if search.validate_on_submit():
+  if hero.validate_on_submit():
     hero=superhero.query.filter(superhero.power==search.power.data).all()
     return render_template("show.html", superherodata=hero)
   return render_template("searchpower.html", form=search)
 
  if team.validate_on_submit():
-  if search.validate_on_submit():
+  if hero.validate_on_submit():
     hero=superhero.query.filter(superhero.team==search.team.data).all()
     return render_template("show.html", superherodata=hero)
   return render_template("searchteam.html", form=search)
 
  if sidekick.validate_on_submit():
-  if search.validate_on_submit():
+  if hero.validate_on_submit():
     hero=superhero.query.filter(superhero.sidekick==search.sidekick.data).all()
     return render_template("show.html", superherodata=hero)
   return render_template("searchsidekick.html", form=search)
 
  if nemesis.validate_on_submit():
-  if search.validate_on_submit():
+  if hero.validate_on_submit():
     hero=superhero.query.filter(superhero.nemesis==search.nemesis.data).all()
     return render_template("show.html", superherodata=hero)
   return render_template("searchnemesis.html", form=search)
