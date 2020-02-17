@@ -14,8 +14,11 @@
           <span>{{error}}</span>
          {%endfor%}
         </div>
-       {%endif%}
-      {{form.password}}
+       {%endif%}<br>
+      {{form.password.label}}
+      {{form.password}}<br>
+      {{form.passwordagain.label}}
+      {{form.passwordagain}}
       </div>
       <br>
      <div class='form_group'>
