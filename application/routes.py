@@ -33,7 +33,7 @@ def forms():
   return render_template("forms.html", form=GG)
 @app.route('/create', methods=['GET','POST'])
 def create():
-  hero=Hero()
+  create=Hero()
   if hero.validate_on_submit():
     data=hero(
       publisher=hero.publisher.data,
@@ -50,7 +50,7 @@ def create():
     print("dancing_man.gif")
   else:
     print("uhoh")
-  return render_template("create.html", form=hero)
+  return render_template("create.html", form=create)
 @app.route('/search', methods=['GET','POST'])
 def search():
  hero=Hero()
