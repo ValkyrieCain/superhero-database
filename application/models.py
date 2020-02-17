@@ -25,7 +25,7 @@ class Users(db.Model,UserMixin):
 	username = db.Column(db.String(30), primary_key=True)
 	password = db.Column(db.String(100), nullable=False)
 	def __repr__(self):
-		return ''.join(['id: ', str(self.id), '\r\n',
+		return ''.join(['UserId: ', str(self.id), '\r\n',
 			'Username: ', str(self.username), '\r\n',
 			'Password: ', self.password])
 	@login_manager.user_loader
