@@ -8,6 +8,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = str(os.getenv('DB_URI'))
 app.config['SECRET_KEY'] = str(os.getenv('SK_NUM'))
 db = SQLAlchemy(app)
 login_manager = LoginManager(app)
-login_manager.view = 'login'
+login_manager.login_view = 'login'
 bcrypt = Bcrypt(app)
 from application import routes

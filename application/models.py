@@ -30,4 +30,4 @@ class Users(db.Model,UserMixin):
 			'Password: ', self.password])
 	@login_manager.user_loader
 	def load_user(id):
-		return 1#Users.query.get(int(id))
+		return Users.query.get(int(id))
