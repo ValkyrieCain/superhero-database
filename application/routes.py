@@ -1,8 +1,8 @@
 from flask import render_template, redirect
 from application import app
 from application import db 
-from application.models import School
-from application.forms import FF, search, hero
+from application.models import School, Superheroes
+from application.forms import FF, search, hero,publisher,name,alterego,power,team,sidekick,nemesis
 @app.route('/')
 @app.route('/home')
 def home():
