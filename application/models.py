@@ -28,5 +28,5 @@ class Users(db.Model,UserMixin):
 		return ''.join(['Username: ', str(self.username), '\r\n',
 			'Password: ', self.password])
 	@login_manager.user_loader
-	def load_user(username):
-		return Users.query.get(str(username))
+	def load_user(id):
+		return Users.query.get(int(id))
