@@ -9,7 +9,7 @@ class FF(FlaskForm):
 class sch(FlaskForm):
  search=StringField()
  submitsearch=SubmitField()
-class hero(FlaskForm):
+class Hero(FlaskForm):
  publisher=StringField(validators=[DataRequired()])
  name=StringField(validators=[DataRequired()])
  alterego=StringField(validators=[DataRequired()])

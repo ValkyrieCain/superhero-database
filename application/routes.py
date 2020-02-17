@@ -2,7 +2,7 @@ from flask import render_template, redirect
 from application import app
 from application import db 
 from application.models import School, Superheroes
-from application.forms import FF, sch, hero, publisher, name, alterego, power,team, sidekick, nemesis
+from application.forms import FF, sch, Hero, publisher, name, alterego, power,team, sidekick, nemesis
 @app.route('/')
 @app.route('/home')
 def home():
@@ -53,7 +53,7 @@ def create():
   return render_template("create.html", form=hero)
 @app.route('/search', methods=['GET','POST'])
 def search():
- hero=hero()
+ hero=Hero()
  publisher=publisher()
  name=name()
  alterego=alterego()
