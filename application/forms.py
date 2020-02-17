@@ -20,6 +20,8 @@ class Hero(FlaskForm):
  sidekick=StringField(validators=[DataRequired()])
  nemesis=StringField(validators=[DataRequired()])
  submit=SubmitField('Submit')
+class All(FlaskForm):
+ alll=SubmitField('Show all heroes')
 class Publisher(FlaskForm):
  publisher=SubmitField('Search by publisher')
 class Name(FlaskForm):
