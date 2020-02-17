@@ -2,7 +2,7 @@ from flask import render_template, redirect
 from application import app
 from application import db 
 from application.models import School, Superheroes
-from application.forms import FF, search, hero,publisher,name,alterego,power,team,sidekick,nemesis
+from application.forms import FF, sch, hero, publisher, name, alterego, power,team, sidekick, nemesis
 @app.route('/')
 @app.route('/home')
 def home():
@@ -12,9 +12,9 @@ def abc():
   return render_template("abc.html", body="hello my friends")
 @app.route('/blog', methods=['GET','POST'])
 def blog():
-  look=search()
+  look=sch()
   if look.validate_on_submit():
-    school=School.query.filter(School.name==look.search.data).all()
+    school=School.query.filter(School.name==look.sch.data).all()
     return render_template("blog.html", schooldata=school)
   return render_template("search.html", look=look)
 @app.route('/secret')
