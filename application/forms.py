@@ -1,35 +1,35 @@
 from flask_wtf import FlaskForm
-from wtforms import (IntegerField,StringField,SubmitField,PasswordField,BooleanField)
-from wtforms.validators import DataRequired, Length
+from wtforms import IntegerField,StringField,SubmitField,PasswordField,BooleanField
+from wtforms.validators import DataRequired,Length,EqualTo
 
 class Hero(FlaskForm):
-	publisher=StringField(validators=[DataRequired()])
-	name=StringField(validators=[DataRequired()])
-	alterego=StringField(validators=[DataRequired()])
-	p1=StringField(validators=[DataRequired()])
-	p2=StringField(validators=[DataRequired()])
-	p3=StringField(validators=[DataRequired()])
-	team=StringField(validators=[DataRequired()])
-	sidekick=StringField()
-	nemesis=StringField(validators=[DataRequired()])
+	publisher=StringField(validators=[DataRequired(),Length(max=30)])
+	name=StringField(validators=[DataRequired(),Length(max=30)])
+	alterego=StringField(validators=[DataRequired(),Length(max=30)])
+	p1=StringField(validators=[DataRequired(),Length(max=30)])
+	p2=StringField(validators=[DataRequired(),Length(max=30)])
+	p3=StringField(validators=[DataRequired(),Length(max=30)])
+	team=StringField(validators=[DataRequired(),Length(max=30)])
+	sidekick=StringField(validators=[Length(max=30)])
+	nemesis=StringField(validators=[DataRequired(),Length(max=30)])
 	submit=SubmitField('Submit new hero')
 class Search(FlaskForm):
-	publisher=StringField()
-	name=StringField()
-	alterego=StringField()
-	power=StringField()
-	team=StringField()
-	sidekick=StringField()
-	nemesis=StringField()
+	publisher=StringField(validators=[DataRequired(),Length(max=30)])
+	name=StringField(validators=[DataRequired(),Length(max=30)])
+	alterego=StringField(validators=[DataRequired(),Length(max=30)])
+	power=StringField(validators=[DataRequired(),Length(max=30)])
+	team=StringField(validators=[DataRequired(),Length(max=30)])
+	sidekick=StringField(validators=[DataRequired(),Length(max=30)])
+	nemesis=StringField(validators=[DataRequired(),Length(max=30)])
 	submit=SubmitField('Submit search')
 class Register(FlaskForm):
-	username = StringField('Username', validators=[DataRequired()])
-	password = PasswordField('Password', validators=[DataRequired()])
-	passwordagain = PasswordField('Password', validators=[DataRequired(), EqualTo('password')])
+	username = StringField('Username', validators=[DataRequired(),Length(max=30)])
+	password = PasswordField('Password', validators=[DataRequired(),Length(max=100)])
+	passwordagain = PasswordField('Password', validators=[DataRequired(),Length(max=100),EqualTo('password')])
 	submit = SubmitField('Sign Up')
 class Login(FlaskForm):
-	username = StringField('Username', validators=[DataRequired()])
-	password = PasswordField('Password', validators=[DataRequired()])
+	username = StringField('Username', validators=[DataRequired()],Length(max=30))
+	password = PasswordField('Password', validators=[DataRequired()],Length(max=100))
 	remember = BooleanField('Remember Me')
 	submit = SubmitField('Login')
 	def uniqueusername(self, username):
