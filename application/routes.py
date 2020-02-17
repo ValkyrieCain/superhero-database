@@ -1,25 +1,34 @@
 from flask import render_template, redirect
-from application import app
-from application import db 
-from application.models import School, Superheroes
-from application.forms import Hero, Search
+from application import app, db, bcrypt, login
+from application.models import School, Superheroes, Users
+from application.forms import Hero, Search, Register, Login
 @app.route('/')
 @app.route('/home')
 def home():
   return render_template("home.html")
-def forms():
-  GG=FF()
-  if GG.validate_on_submit():
-    HI=School(
-      id=GG.id.data,
-      name=GG.name.data)
-    db.session.add(HI)
-    db.session.commit()
-    print("dancing_man.gif")
-  else:
-    print("uhoh")
-    print(GG.errors)
-  return render_template("forms.html", form=GG)
+#def forms():
+#  GG=FF()
+#  if GG.validate_on_submit():
+#    HI=School(
+#      id=GG.id.data,
+#      name=GG.name.data)
+#    db.session.add(HI)
+#    db.session.commit()
+#    print("dancing_man.gif")
+#  else:
+#    print("uhoh")
+#    print(GG.errors)
+#  return render_template("forms.html", form=GG)
+@app.route('/register', methods=['GET','POST'])
+def Register():
+  form = register()
+    if form.validate_on_submit():
+      hash_pw = bcrypt.generate_password_hash(form.password.data.decode('utf-8'))
+      user = Users(username=form.username.data, password=hash_pw)
+      db.session.add(user)
+      db.session.commit()
+      return redirect(url_for('home'))
+    return render_template('register.html', title='Register', form=form)
 @app.route('/create', methods=['GET','POST'])
 def create():
   hero=Hero()

@@ -22,3 +22,17 @@ class Search(FlaskForm):
 	sidekick=StringField()
 	nemesis=StringField()
 	submit=SubmitField('Submit search')
+class Register(FlaskForm):
+	username = StringField('Username', validators=[DataRequired()])
+	password = PasswordField('Password', validators=[DataRequired()])
+	passwordagain = PasswordField('Password', validators=[DataRequired(), EqualTo('password')])
+	submit = SubmitField('Sign Up')
+class Login(FlaskForm):
+	username = StringField('Username', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired()])
+    remember = BooleanField('Remember Me')
+    submit = SubmitField('Login')
+    def uniqueusername(self, username):
+    	user = Users.query.filter_by(username=username.data).first()
+    	if user:
+    		raise ValidationError('Username not available')
