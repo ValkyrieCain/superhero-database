@@ -1,7 +1,7 @@
 from flask import render_template, redirect, url_for, request
 from flask_login import login_user, current_user, logout_user, login_required
 from application import app, db, bcrypt, login_manager
-from application.models import School, Superheroes, Users
+from application.models import Superheroes, Users
 from application.forms import Hero, Search, Register, Login
 @app.route('/')
 @app.route('/home')
@@ -35,6 +35,15 @@ def login():
   form=Login()
   if current_user.is_authenticated:
     return redirect(url_for('home'))
+  if form.validate_on_submit():
+    user=Users.query.filter_by(username=form.username.data).first()
+    if user and bcrypt.check_password_hash(user.password, form.password.data):
+      login_user(user, remember=form.remember.data)
+      next_page = request.args.get('next')
+      if next_page:
+        return redirect(next_page)
+      else:
+        return redirect(url_for('home'))
   return render_template('login.html', title='Login', form=form)
 @app.route('/create', methods=['GET','POST'])
 def create():
