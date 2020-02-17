@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import (IntegerField,StringField,SubmitField)
+from wtforms import (IntegerField,StringField,SubmitField,PasswordField,BooleanField)
 from wtforms.validators import DataRequired, Length
 
 class Hero(FlaskForm):
