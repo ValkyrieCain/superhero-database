@@ -2,7 +2,7 @@ from flask import render_template, redirect
 from application import app
 from application import db 
 from application.models import School, Superheroes
-from application.forms import FF, Sch, Hero
+from application.forms import FF, Sch, Hero, Search
 @app.route('/')
 @app.route('/home')
 def home():
@@ -61,55 +61,55 @@ def all():
   return render_template("show.html", superherodata=results)
 @app.route('/search/publisher', methods=['GET','POST'])
 def publisher():
-  hero=Search()
-  if hero.validate_on_submit():
+  search=Search()
+  if search.validate_on_submit():
     results=Superheroes.query.filter(Superheroes.publisher==search.publisher.data).all()
     return render_template("show.html", superherodata=results)
   else:
     print("uhoh")
-    print(hero.errors)
-  return render_template("searchpublisher.html", search=hero)
+    print(search.errors)
+  return render_template("searchpublisher.html", search=search)
 @app.route('/search/name', methods=['GET','POST'])
 def name():
-  hero=Search()
-  if hero.validate_on_submit():
+  search=Search()
+  if search.validate_on_submit():
     results=Superheroes.query.filter(Superheroes.name==search.name.data).all()
     return render_template("show.html", superherodata=results)
-  return render_template("searchname.html", search=hero)
+  return render_template("searchname.html", search=search)
 @app.route('/search/alterego', methods=['GET','POST'])
 def alterego():
-  hero=Search()
-  if hero.validate_on_submit():
+  search=Search()
+  if search.validate_on_submit():
     results=Superheroes.query.filter(Superheroes.alterego==search.alterego.data).all()
     return render_template("show.html", superherodata=results)
-  return render_template("searchalterego.html", search=hero)
+  return render_template("searchalterego.html", search=search)
 @app.route('/search/power', methods=['GET','POST'])
 def power():
-  hero=Search()
-  if hero.validate_on_submit():
+  search=Search()
+  if search.validate_on_submit():
     results=Superheroes.query.filter(Superheroes.p1==search.power.data or superhero.p2==search.power.data or superhero.p3==search.power.data).all()
     return render_template("show.html", superherodata=results)
-  return render_template("searchpower.html", search=hero)
+  return render_template("searchpower.html", search=search)
 @app.route('/search/team', methods=['GET','POST'])
 def team():
-  hero=Search()
-  if hero.validate_on_submit():
+  search=Search()
+  if search.validate_on_submit():
     results=Superheroes.query.filter(Superheroes.team==search.team.data).all()
     return render_template("show.html", superherodata=results)
-  return render_template("searchteam.html", search=hero)
+  return render_template("searchteam.html", search=search)
 @app.route('/search/sidekick', methods=['GET','POST'])
 def sidekick():
-  hero=Search()
-  if hero.validate_on_submit():
+  search=Search()
+  if search.validate_on_submit():
     results=Superheroes.query.filter(Superheroes.sidekick==search.sidekick.data).all()
     return render_template("show.html", superherodata=results)
-  return render_template("searchsidekick.html", search=hero)
+  return render_template("searchsidekick.html", search=search)
 @app.route('/search/nemesis', methods=['GET','POST'])
 def nemesis():
-  hero=Search()
-  if hero.validate_on_submit():
+  search=Search()
+  if search.validate_on_submit():
     results=Superheroes.query.filter(Superheroes.nemesis==search.nemesis.data).all()
     return render_template("show.html", superherodata=results)
-  return render_template("searchnemesis.html", search=hero)
+  return render_template("searchnemesis.html", search=search)
 
 #publisher, name, alterego, power, team, sidekick, nemesis
