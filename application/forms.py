@@ -25,7 +25,7 @@ class Search(FlaskForm):
 class Register(FlaskForm):
 	username = StringField('Username', validators=[DataRequired(),Length(max=30)])
 	password = PasswordField('Password', validators=[DataRequired(),Length(max=100)])
-	passwordagain = PasswordField('Password', validators=[DataRequired(),Length(max=100),EqualTo('password')])
+	passwordagain = PasswordField('Confirm password', validators=[DataRequired(),Length(max=100),EqualTo('password')])
 	submit = SubmitField('Sign Up')
 class Login(FlaskForm):
 	username = StringField('Username', validators=[DataRequired(),Length(max=30)])
