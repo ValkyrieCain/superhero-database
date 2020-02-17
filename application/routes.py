@@ -35,7 +35,7 @@ def forms():
 def create():
   hero=Hero()
   if hero.validate_on_submit():
-    data=hero(
+    data=Superheroes(
       publisher=hero.publisher.data,
       name=hero.name.data,
       alterego=hero.alterego.data,
