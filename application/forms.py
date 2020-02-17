@@ -6,7 +6,7 @@ class FF(FlaskForm):
  id=IntegerField(validators=[DataRequired()])
  name=StringField()
  submit=SubmitField()
-class sch(FlaskForm):
+class Sch(FlaskForm):
  search=StringField()
  submitsearch=SubmitField()
 class Hero(FlaskForm):
