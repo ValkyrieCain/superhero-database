@@ -2,7 +2,8 @@
 {% block extra %}
  <div class='forms'>
   <form method='POST' action=''>
-   <p>Publisher = 	{{hero.publisher}}<br>
+   <p>{{hero.hidden_tag()}}<br>
+   	Publisher = 	{{hero.publisher}}<br>
  	Name = 			{{hero.name}}<br>
 	Alter Ego = 	{{hero.alterego}}<br>
  	First Power = 	{{hero.p1}}<br>
