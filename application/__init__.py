@@ -7,7 +7,7 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = str(os.getenv('DB_URI'))
 app.config['SECRET_KEY'] = str(os.getenv('SK_NUM'))
 db = SQLAlchemy(app)
-login = LoginManager(app)
-login.view = 'login'
+login_manager = LoginManager(app)
+login_manager.view = 'login'
 bcrypt = Bcrypt(app)
 from application import routes

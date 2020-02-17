@@ -16,21 +16,22 @@ class Superheroes(db.Model):
 	team = db.Column(db.String(30))
 	sidekick = db.Column(db.String(30))
 	nemesis = db.Column(db.String(30))
-	#def __repr__(self):
-       	#return ''.join([
-        #	'Publisher: ', self.publisher, '\n',
-		#	'Name: ', self.name, '\n',
-		#	'Alter Ego: ', self.alterego, '\n',
-		#	'First Power: ', self.p1, '\n',
-		#	'Second Power: ', self.p2, '\n',
-		#	'Third Power: ', self.p3, '\n',
-		#	'Team: ', self.team, '\n',
-		#	'Sidekick: ', self.sidekick, '\n',
-		#	'Nemesis: ', self.nemesis, '\n'])
+	def __repr__(self):
+		return ''.join(['Publisher: ', self.publisher, '\n',
+			'Name: ', self.name, '\n',
+			'Alter Ego: ', self.alterego, '\n',
+			'First Power: ', self.p1, '\n',
+			'Second Power: ', self.p2, '\n',
+			'Third Power: ', self.p3, '\n',
+			'Team: ', self.team, '\n',
+			'Sidekick: ', self.sidekick, '\n',
+			'Nemesis: ', self.nemesis, '\n'])
 class Users(db.Model):
 	username = db.Column(db.String(30), primary_key=True)
 	password = db.Column(db.String(100), nullable=False)
-	#def __repr__(self):
-    #    return ''.join([
-    #    	'UserID: ', str(self.id), '\r\n',
-    #    	'Email: ', self.email])
+	def __repr__(self):
+		return ''.join(['Username: ', str(self.username), '\r\n',
+			'Password: ', self.password])
+	@login_manager.user_loader
+	def load_user(username):
+		return Users.query.get(str(username))
