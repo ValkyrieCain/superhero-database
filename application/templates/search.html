@@ -1,13 +1,13 @@
 {% extends "template.html" %}
 {% block extra %}
  <p>
-  {{alll.alll}}<br>
-  {{publisher.publisher}}<br>
-  {{name.name}}<br>
-  {{alterego.alterego}}<br>
-  {{power.power}}<br>
-  {{team.team}}<br>
-  {{sidekick.sidekick}}<br>
-  {{nemesis.nemesis}}
+  <a href="{{url_for ('searchall')}}"><button>Show all heroes</button></a>
+  <a href="{{url_for ('searchpublisher')}}"><button>Search by publisher</button></a>
+  <a href="{{url_for ('searchname')}}"><button>Search by name</button></a>
+  <a href="{{url_for ('searchalterego')}}"><button>Search by alterego</button></a>
+  <a href="{{url_for ('searchpower')}}"><button>Search by power</button></a>
+  <a href="{{url_for ('searchteam')}}"><button>Search by team</button></a>
+  <a href="{{url_for ('searchsidekick')}}"><button>Search by sidekick</button></a>
+  <a href="{{url_for ('searchnemesis')}}"><button>Search by nemesis</button></a>
  </p>
 {% endblock %}
