@@ -37,7 +37,7 @@ class Login(FlaskForm):
 	password = PasswordField('Password', validators=[DataRequired(),Length(max=100)])
 	remember = BooleanField('Remember Me')
 	submit = SubmitField('Login')
-	#def validate_username(self, username):
-	#	user = Users.query.filter_by(username=username.data).first()
-	#	if not user:
-	#		raise ValidationError('Username does not exist')
+	def validate_username(self, username):
+		user = Users.query.filter_by(username=username.data).first()
+		if not user:
+			raise ValidationError('Username does not exist')
