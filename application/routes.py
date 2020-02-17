@@ -29,7 +29,7 @@ def register():
     db.session.add(user)
     db.session.commit()
     return redirect(url_for('home'))
-    return render_template('register.html', title='Register', form=form)
+  return render_template('register.html', title='Register', form=form)
 @app.route('/login', methods=['GET','POST'])
 def login():
   form=Login()
