@@ -33,24 +33,24 @@ def forms():
   return render_template("forms.html", form=GG)
 @app.route('/create', methods=['GET','POST'])
 def create():
-  create=Hero()
-  if create.validate_on_submit():
+  hero=Hero()
+  if hero.validate_on_submit():
     data=hero(
-      publisher=create.publisher.data,
-      name=create.name.data,
-      alterego=create.alterego.data,
-      p1=create.p.data,
-      p2=create.p2.data,
-      p3=create.p3.data,
-      team=create.team.data,
-      sidekick=create.sidekick.data,
-      nemesis=create.nemesis.data)
+      publisher=hero.publisher.data,
+      name=hero.name.data,
+      alterego=hero.alterego.data,
+      p1=hero.p.data,
+      p2=hero.p2.data,
+      p3=hero.p3.data,
+      team=hero.team.data,
+      sidekick=hero.sidekick.data,
+      nemesis=hero.nemesis.data)
     db.session.add(data)
     db.session.commit()
     print("dancing_man.gif")
   else:
     print("uhoh")
-  return render_template("create.html", form=create)
+  return render_template("create.html", form=hero)
 @app.route('/search', methods=['GET','POST'])
 def search():
  hero=Hero()
