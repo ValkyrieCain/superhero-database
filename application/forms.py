@@ -20,17 +20,17 @@ class Hero(FlaskForm):
  sidekick=StringField(validators=[DataRequired()])
  nemesis=StringField(validators=[DataRequired()])
  submit=SubmitField()
-class publisher(FlaskForm):
+class Publisher(FlaskForm):
  publisher=SubmitField('Search by publisher')
-class name(FlaskForm):
+class Name(FlaskForm):
  name=SubmitField('Search by name')
-class alterego(FlaskForm):
+class Alterego(FlaskForm):
  alterego=SubmitField('Search by alter ego')
-class power(FlaskForm):
+class Power(FlaskForm):
  power=SubmitField('Search by power')
-class team(FlaskForm):
+class Team(FlaskForm):
  team=SubmitField('Search by team')
-class sidekick(FlaskForm):
+class Sidekick(FlaskForm):
  sidekick=SubmitField('Search by sidekick')
-class nemesis(FlaskForm):
+class Nemesis(FlaskForm):
  nemesis=SubmitField('Search by nemesis')
