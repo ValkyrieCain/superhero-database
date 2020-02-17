@@ -50,7 +50,6 @@ def create():
     print("dancing_man.gif")
   else:
     print("uhoh")
-    print(GG.errors)
   return render_template("create.html", form=hero)
 @app.route('/search', methods=['GET','POST'])
 def search():
