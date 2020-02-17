@@ -1,4 +1,5 @@
 from application import db, login_manager
+from flask_login import UserMixin
 class Superheroes(db.Model):
 	publisher = db.Column(db.String(30))
 	name = db.Column(db.String(30))
