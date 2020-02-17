@@ -36,15 +36,15 @@ def create():
   hero=Hero()
   if hero.validate_on_submit():
     data=Superheroes(
-      publisher=hero.publisher.data,
-      name=hero.name.data,
-      alterego=hero.alterego.data,
-      p1=hero.p1.data,
-      p2=hero.p2.data,
-      p3=hero.p3.data,
-      team=hero.team.data,
-      sidekick=hero.sidekick.data,
-      nemesis=hero.nemesis.data)
+      publisher=hero.publisher.data.upper(),
+      name=hero.name.data.upper(),
+      alterego=hero.alterego.data.upper(),
+      p1=hero.p1.data.upper(),
+      p2=hero.p2.data.upper(),
+      p3=hero.p3.data.upper(),
+      team=hero.team.data.upper(),
+      sidekick=hero.sidekick.data.upper(),
+      nemesis=hero.nemesis.data.upper())
     db.session.add(data)
     db.session.commit()
     print("dancing_man.gif")
@@ -63,52 +63,49 @@ def all():
 def publisher():
   search=Search()
   if search.validate_on_submit():
-    results=Superheroes.query.filter(Superheroes.publisher==search.publisher.data).all()
+    results=Superheroes.query.filter(Superheroes.publisher==search.publisher.data.upper()).all()
     return render_template("show.html", superherodata=results)
-  else:
-    print("uhoh")
-    print(search.errors)
   return render_template("searchpublisher.html", search=search)
 @app.route('/search/name', methods=['GET','POST'])
 def name():
   search=Search()
   if search.validate_on_submit():
-    results=Superheroes.query.filter(Superheroes.name==search.name.data).all()
+    results=Superheroes.query.filter(Superheroes.name==search.name.data.upper()).all()
     return render_template("show.html", superherodata=results)
   return render_template("searchname.html", search=search)
 @app.route('/search/alterego', methods=['GET','POST'])
 def alterego():
   search=Search()
   if search.validate_on_submit():
-    results=Superheroes.query.filter(Superheroes.alterego==search.alterego.data).all()
+    results=Superheroes.query.filter(Superheroes.alterego==search.alterego.data.upper()).all()
     return render_template("show.html", superherodata=results)
   return render_template("searchalterego.html", search=search)
 @app.route('/search/power', methods=['GET','POST'])
 def power():
   search=Search()
   if search.validate_on_submit():
-    results=Superheroes.query.filter(Superheroes.p1==search.power.data or superhero.p2==search.power.data or superhero.p3==search.power.data).all()
+    results=Superheroes.query.filter(Superheroes.p1==search.power.data.upper() or Superheroes.p2==search.power.data.upper() or Superheroes.p3==search.power.data.upper()).all()
     return render_template("show.html", superherodata=results)
   return render_template("searchpower.html", search=search)
 @app.route('/search/team', methods=['GET','POST'])
 def team():
   search=Search()
   if search.validate_on_submit():
-    results=Superheroes.query.filter(Superheroes.team==search.team.data).all()
+    results=Superheroes.query.filter(Superheroes.team==search.team.data.upper()).all()
     return render_template("show.html", superherodata=results)
   return render_template("searchteam.html", search=search)
 @app.route('/search/sidekick', methods=['GET','POST'])
 def sidekick():
   search=Search()
   if search.validate_on_submit():
-    results=Superheroes.query.filter(Superheroes.sidekick==search.sidekick.data).all()
+    results=Superheroes.query.filter(Superheroes.sidekick==search.sidekick.data.upper()).all()
     return render_template("show.html", superherodata=results)
   return render_template("searchsidekick.html", search=search)
 @app.route('/search/nemesis', methods=['GET','POST'])
 def nemesis():
   search=Search()
   if search.validate_on_submit():
-    results=Superheroes.query.filter(Superheroes.nemesis==search.nemesis.data).all()
+    results=Superheroes.query.filter(Superheroes.nemesis==search.nemesis.data.upper()).all()
     return render_template("show.html", superherodata=results)
   return render_template("searchnemesis.html", search=search)
 
