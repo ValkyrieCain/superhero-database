@@ -32,7 +32,7 @@ class Login(FlaskForm):
 	password = PasswordField('Password', validators=[DataRequired(),Length(max=100)])
 	remember = BooleanField('Remember Me')
 	submit = SubmitField('Login')
-	def uniqueusername(self, username):
+	def validate_username(self, username):
 		user = Users.query.filter_by(username=username.data).first()
 		if user:
 			raise ValidationError('Username not available')
