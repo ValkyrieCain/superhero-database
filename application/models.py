@@ -21,8 +21,8 @@ class Superheroes(db.Model):
 			'Sidekick: ', self.sidekick, '\n',
 			'Nemesis: ', self.nemesis, '\n'])
 class Users(db.Model,UserMixin):
-	id = db.Column(db.Integer)
-	username = db.Column(db.String(30), primary_key=True)
+	id = db.Column(db.Integer, primary_key=True)
+	username = db.Column(db.String(30), unique=True)
 	password = db.Column(db.String(100), nullable=False)
 	def __repr__(self):
 		return ''.join(['id: ', str(self.id), '\r\n',

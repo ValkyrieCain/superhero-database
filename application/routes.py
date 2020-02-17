@@ -46,6 +46,7 @@ def login():
         return redirect(url_for('home'))
   return render_template('login.html', title='Login', form=form)
 @app.route('/create', methods=['GET','POST'])
+@login_required
 def create():
   hero=Hero()
   if hero.validate_on_submit():
