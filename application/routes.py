@@ -1,6 +1,6 @@
 from flask import render_template, redirect, url_for, request
 from flask_login import login_user, current_user, logout_user, login_required
-from application import app, db, bcrypt, login
+from application import app, db, bcrypt, login_manager
 from application.models import School, Superheroes, Users
 from application.forms import Hero, Search, Register, Login
 @app.route('/')
