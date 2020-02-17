@@ -39,7 +39,7 @@ def create():
       publisher=hero.publisher.data,
       name=hero.name.data,
       alterego=hero.alterego.data,
-      p1=hero.p.data,
+      p1=hero.p1.data,
       p2=hero.p2.data,
       p3=hero.p3.data,
       team=hero.team.data,
