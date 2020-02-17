@@ -30,3 +30,7 @@ class Superheroes(db.Model):
 class Users(db.Model):
 	username = db.Column(db.String(30), primary_key=True)
 	password = db.Column(db.String(100), nullable=False)
+	def __repr__(self):
+        return ''.join([
+        	'UserID: ', str(self.id), '\r\n',
+        	'Email: ', self.email])
