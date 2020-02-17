@@ -35,8 +35,6 @@ def login():
   form=Login()
   if current_user.is_authenticated:
     return redirect(url_for('home'))
-  else:
-    print("uhoh",current_user.errors)
   if form.validate_on_submit():
     user=Users.query.filter(Users.username==form.username.data).first()
     if user and bcrypt.check_password_hash(user.password, form.password.data):
