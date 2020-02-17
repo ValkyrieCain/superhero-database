@@ -1,0 +1,9 @@
+{% extends "template.html" %}
+{% block extra %}
+ <form method='POST' action=''>
+  {{search.hidden_tag()}}
+  <div>
+   {{search.sidekick}}
+   {{search.submitsearch}}
+ </div></form>
+{% endblock %}
