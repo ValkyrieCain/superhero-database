@@ -34,17 +34,17 @@ def forms():
 @app.route('/create', methods=['GET','POST'])
 def create():
   create=Hero()
-  if hero.validate_on_submit():
+  if create.validate_on_submit():
     data=hero(
-      publisher=hero.publisher.data,
-      name=hero.name.data,
-      alterego=hero.alterego.data,
-      p1=hero.p.data,
-      p2=hero.p2.data,
-      p3=hero.p3.data,
-      team=hero.team.data,
-      sidekick=hero.sidekick.data,
-      nemesis=hero.nemesis.data)
+      publisher=create.publisher.data,
+      name=create.name.data,
+      alterego=create.alterego.data,
+      p1=create.p.data,
+      p2=create.p2.data,
+      p3=create.p3.data,
+      team=create.team.data,
+      sidekick=create.sidekick.data,
+      nemesis=create.nemesis.data)
     db.session.add(data)
     db.session.commit()
     print("dancing_man.gif")
