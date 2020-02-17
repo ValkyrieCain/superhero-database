@@ -28,8 +28,8 @@ class Register(FlaskForm):
 	passwordagain = PasswordField('Password', validators=[DataRequired(),Length(max=100),EqualTo('password')])
 	submit = SubmitField('Sign Up')
 class Login(FlaskForm):
-	username = StringField('Username', validators=[DataRequired()],Length(max=30))
-	password = PasswordField('Password', validators=[DataRequired()],Length(max=100))
+	username = StringField('Username', validators=[DataRequired(),Length(max=30)])
+	password = PasswordField('Password', validators=[DataRequired(),Length(max=100)])
 	remember = BooleanField('Remember Me')
 	submit = SubmitField('Login')
 	def uniqueusername(self, username):
