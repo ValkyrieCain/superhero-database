@@ -30,5 +30,5 @@ class Users(db.Model,UserMixin):
 			'Password: ', self.password])
 	@login_manager.user_loader
 	def load_user(id):
-		print("uhoh")
+		print(id)
 		return Users.query.get(int(id))
