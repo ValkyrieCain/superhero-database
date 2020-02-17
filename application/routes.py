@@ -2,22 +2,11 @@ from flask import render_template, redirect
 from application import app
 from application import db 
 from application.models import School, Superheroes
-from application.forms import FF, Sch, Hero, Search
+from application.forms import Hero, Search
 @app.route('/')
 @app.route('/home')
 def home():
   return render_template("home.html")
-@app.route('/abc')
-def abc():
-  return render_template("abc.html", body="hello my friends")
-@app.route('/blog', methods=['GET','POST'])
-def blog():
-  school=School.query.all()
-  return render_template("blog.html", schooldata=school)
-@app.route('/secret')
-def secret():
-  return render_template("inc.html")
-@app.route('/forms', methods=['GET','POST'])
 def forms():
   GG=FF()
   if GG.validate_on_submit():
