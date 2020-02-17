@@ -82,7 +82,7 @@ def search():
 
  if power.validate_on_submit():
   if hero.validate_on_submit():
-    hero=superhero.query.filter(superhero.power==search.power.data).all()
+    hero=superhero.query.filter(superhero.p1==search.power.data or superhero.p2==search.power.data or superhero.p3==search.power.data).all()
     return render_template("show.html", superherodata=hero)
   return render_template("searchpower.html", form=search)
 

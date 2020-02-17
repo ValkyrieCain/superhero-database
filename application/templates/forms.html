@@ -1,8 +1,11 @@
-<div class='forms'>
- <form method='POST' action=''>
-  {{form.hidden_tag()}}<br>
-  {{form.id}}<br>
-  {{form.name}}<br>
-  {{form.submit}}<br>
- </form>
-</div>
+{% extends "template.html" %}
+{% block extra %}
+ <div class='forms'>
+  <form method='POST' action=''>
+   {{form.hidden_tag()}}<br>
+   {{form.id}}<br>
+   {{form.name}}<br>
+   {{form.submit}}<br>
+  </form>
+ </div>
+{% endblock %}
