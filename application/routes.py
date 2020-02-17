@@ -22,12 +22,12 @@ def home():
 @app.route('/register', methods=['GET','POST'])
 def Register():
   form = register()
-    if form.validate_on_submit():
-      hash_pw = bcrypt.generate_password_hash(form.password.data.decode('utf-8'))
-      user = Users(username=form.username.data, password=hash_pw)
-      db.session.add(user)
-      db.session.commit()
-      return redirect(url_for('home'))
+  if form.validate_on_submit():
+    hash_pw = bcrypt.generate_password_hash(form.password.data.decode('utf-8'))
+    user = Users(username=form.username.data, password=hash_pw)
+    db.session.add(user)
+    db.session.commit()
+    return redirect(url_for('home'))
     return render_template('register.html', title='Register', form=form)
 @app.route('/create', methods=['GET','POST'])
 def create():
