@@ -82,20 +82,20 @@ def power():
     results=superhero.query.filter(superhero.p1==search.power.data or superhero.p2==search.power.data or superhero.p3==search.power.data).all()
     return render_template("show.html", superherodata=results) 
   return render_template("searchpower.html", search=hero)
-@app.route('/search/', methods=['GET','POST'])
-def ():
+@app.route('/search/team', methods=['GET','POST'])
+def team():
   if hero.validate_on_submit():
     results=superhero.query.filter(superhero.team==search.team.data).all()
     return render_template("show.html", superherodata=results) 
   return render_template("searchteam.html", search=hero)
-@app.route('/search/', methods=['GET','POST'])
-def ():
+@app.route('/search/sidekick', methods=['GET','POST'])
+def sidekick():
   if hero.validate_on_submit():
     results=superhero.query.filter(superhero.sidekick==search.sidekick.data).all()
     return render_template("show.html", superherodata=results) 
   return render_template("searchsidekick.html", search=hero)
-@app.route('/search/', methods=['GET','POST'])
-def ():
+@app.route('/search/nemesis', methods=['GET','POST'])
+def nemesis():
   if hero.validate_on_submit():
     results=superhero.query.filter(superhero.nemesis==search.nemesis.data).all()
     return render_template("show.html", superherodata=results) 
