@@ -12,11 +12,7 @@ def abc():
   return render_template("abc.html", body="hello my friends")
 @app.route('/blog', methods=['GET','POST'])
 def blog():
-  look=sch()
-  if look.validate_on_submit():
-    school=School.query.filter(School.name==look.sch.data).all()
-    return render_template("blog.html", schooldata=school)
-  return render_template("search.html", look=look)
+  return render_template("blog.html", schooldata=school)
 @app.route('/secret')
 def secret():
   return render_template("inc.html")
@@ -57,7 +53,7 @@ def create():
   return render_template("create.html", form=hero)
 @app.route('/search', methods=['GET','POST'])
 def search():
- search=hero()
+ searchfor=hero()
  publisher=publisher()
  name=name()
  alterego=alterego()
@@ -71,7 +67,6 @@ def search():
     hero=superhero.query.filter(superhero.publisher==search.publisher.data).all()
     return render_template("show.html", superherodata=hero)
   return render_template("searchpublisher.html", form=search)
-
 
  if name.validate_on_submit():
   if hero.validate_on_submit():
@@ -110,4 +105,4 @@ def search():
   return render_template("searchnemesis.html", form=search)
 
  return render_template("search.html", publisher=publisher,name=name,alterego=alterego,power=power,team=team,sidekick=sidekick,nemesis=nemesis)
- #publisher,name,alterego,power,team,sidekick,nemesis
+ #publisher, name, alterego, power, team, sidekick, nemesis
