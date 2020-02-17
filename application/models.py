@@ -16,7 +16,7 @@ class Superheroes(db.Model):
 	team = db.Column(db.String(30))
 	sidekick = db.Column(db.String(30))
 	nemesis = db.Column(db.String(30))
-	def __repr__(self):
+	#def __repr__(self):
        	#return ''.join([
         #	'Publisher: ', self.publisher, '\n',
 		#	'Name: ', self.name, '\n',
