@@ -28,6 +28,6 @@ class Users(db.Model,UserMixin):
 		return ''.join(['id: ', str(self.id), '\r\n',
 			'Username: ', str(self.username), '\r\n',
 			'Password: ', self.password])
-	@login_manager.user_loader
-	def load_user(id):
-		return Users.query.get(int(id))
+	#@login_manager.user_loader
+	#def load_user(id):
+	#	return Users.query.get(int(id))
