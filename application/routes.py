@@ -53,7 +53,7 @@ def create():
   return render_template("create.html", form=hero)
 @app.route('/search', methods=['GET','POST'])
 def search():
- search=hero()
+ hero=hero()
  publisher=publisher()
  name=name()
  alterego=alterego()
