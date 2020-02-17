@@ -65,6 +65,9 @@ def publisher():
   if hero.validate_on_submit():
     results=Superheroes.query.filter(Superheroes.publisher==search.publisher.data).all()
     return render_template("show.html", superherodata=results)
+  else:
+    print("uhoh")
+    print(hero.errors)
   return render_template("searchpublisher.html", search=hero)
 @app.route('/search/name', methods=['GET','POST'])
 def name():
