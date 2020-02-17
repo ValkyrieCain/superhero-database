@@ -45,6 +45,10 @@ def login():
       else:
         return redirect(url_for('home'))
   return render_template('login.html', title='Login', form=form)
+@app.route('/logout')
+def logout():
+  logout_user(user)
+  return redirect(url_for('home'))
 @app.route('/create', methods=['GET','POST'])
 @login_required
 def create():
@@ -67,6 +71,26 @@ def create():
     print("uhoh")
     print(hero.errors)
   return render_template("create.html", hero=hero)
+@app.route('/update', methods=['GET','POST'])
+@login_required
+def update():
+  form=Update()
+  if search.validate_on_submit():
+    results=Superheroes.query.filter(Superheroes.alterego==search.alterego.data.upper()).all()
+    return render_template('update.html', superherodata=results, form=form)
+    if form.validate_on_submit():
+      Superheroes.publisher=form.publisher.data
+      Superheroes.name=form.name.data
+      Superheroes.alterego=form.alterego.data
+      Superheroes.p1=form.p1.data
+      Superheroes.p2=form.p2.data
+      Superheroes.p3=form.p3.data
+      Superheroes.team=form.team.data
+      Superheroes.sidekick=form.sidekick.data
+      Superheroes.nemesis=form.nemesis.data
+      db.session.commit()
+      return redirect(url_for('update'))
+  return render_template("searchalterego.html", search=search)
 @app.route('/search', methods=['GET','POST'])
 def search():
   return render_template("search.html")
