@@ -12,7 +12,7 @@ def abc():
   return render_template("abc.html", body="hello my friends")
 @app.route('/blog', methods=['GET','POST'])
 def blog():
-  school=school.query.all()
+  school=School.query.all()
   return render_template("blog.html", schooldata=school)
 @app.route('/secret')
 def secret():
