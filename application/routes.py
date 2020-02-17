@@ -51,6 +51,9 @@ def create():
   else:
     print("uhoh")
   return render_template("create.html", hero=hero)
+@app.route('/show')
+def show():
+  return render_template("show.html")
 @app.route('/search', methods=['GET','POST'])
 def search():
  hero=Hero()
@@ -64,45 +67,45 @@ def search():
 
  if publisher.validate_on_submit():
   if hero.validate_on_submit():
-    hero=superhero.query.filter(superhero.publisher==search.publisher.data).all()
-    return render_template("show.html", superherodata=hero)
-  return render_template("searchpublisher.html", form=search)
+    results=superhero.query.filter(superhero.publisher==search.publisher.data).all()
+    return render_template("show.html", superherodata=results)
+  return render_template("searchpublisher.html", search=hero)
 
  if name.validate_on_submit():
   if hero.validate_on_submit():
-    hero=superhero.query.filter(superhero.name==search.name.data).all()
-    return render_template("show.html", superherodata=hero)
-  return render_template("searchname.html", form=search)
+    results=superhero.query.filter(superhero.name==search.name.data).all()
+    return render_template("show.html", superherodata=results)
+  return render_template("searchname.html", search=hero)
 
  if alterego.validate_on_submit():
   if hero.validate_on_submit():
-    hero=superhero.query.filter(superhero.alterego==search.alterego.data).all()
-    return render_template("show.html", superherodata=hero)
-  return render_template("searchalterego.html", form=search)
+    results=superhero.query.filter(superhero.alterego==search.alterego.data).all()
+    return render_template("show.html", superherodata=results)
+  return render_template("searchalterego.html", search=hero)
 
  if power.validate_on_submit():
   if hero.validate_on_submit():
-    hero=superhero.query.filter(superhero.p1==search.power.data or superhero.p2==search.power.data or superhero.p3==search.power.data).all()
-    return render_template("show.html", superherodata=hero)
-  return render_template("searchpower.html", form=search)
+    results=superhero.query.filter(superhero.p1==search.power.data or superhero.p2==search.power.data or superhero.p3==search.power.data).all()
+    return render_template("show.html", superherodata=results)
+  return render_template("searchpower.html", search=hero)
 
  if team.validate_on_submit():
   if hero.validate_on_submit():
-    hero=superhero.query.filter(superhero.team==search.team.data).all()
-    return render_template("show.html", superherodata=hero)
-  return render_template("searchteam.html", form=search)
+    results=superhero.query.filter(superhero.team==search.team.data).all()
+    return render_template("show.html", superherodata=results)
+  return render_template("searchteam.html", search=hero)
 
  if sidekick.validate_on_submit():
   if hero.validate_on_submit():
-    hero=superhero.query.filter(superhero.sidekick==search.sidekick.data).all()
-    return render_template("show.html", superherodata=hero)
-  return render_template("searchsidekick.html", form=search)
+    results=superhero.query.filter(superhero.sidekick==search.sidekick.data).all()
+    return render_template("show.html", superherodata=results)
+  return render_template("searchsidekick.html", search=hero)
 
  if nemesis.validate_on_submit():
   if hero.validate_on_submit():
-    hero=superhero.query.filter(superhero.nemesis==search.nemesis.data).all()
-    return render_template("show.html", superherodata=hero)
-  return render_template("searchnemesis.html", form=search)
+    results=superhero.query.filter(superhero.nemesis==search.nemesis.data).all()
+    return render_template("show.html", superherodata=results)
+  return render_template("searchnemesis.html", search=hero)
 
  return render_template("search.html", publisher=publisher,name=name,alterego=alterego,power=power,team=team,sidekick=sidekick,nemesis=nemesis)
  #publisher, name, alterego, power, team, sidekick, nemesis
