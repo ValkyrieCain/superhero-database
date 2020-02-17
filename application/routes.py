@@ -20,7 +20,7 @@ def home():
 #    print("uhoh")
 #    print(GG.errors)
 #  return render_template("forms.html", form=GG)
-@app.route('/register', methods=['GET','POST'])+
+@app.route('/register', methods=['GET','POST'])
 def register():
   form=Register()
   if form.validate_on_submit():
@@ -30,7 +30,7 @@ def register():
     db.session.commit()
     return redirect(url_for('home'))
     return render_template('register.html', title='Register', form=form)
-@app.route('/login', methods=['GET','POST'])+
+@app.route('/login', methods=['GET','POST'])
 def login():
   form=Login()
   if current_user.is_authenticated:
