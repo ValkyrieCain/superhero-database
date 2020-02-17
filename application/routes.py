@@ -109,5 +109,5 @@ def search():
       return render_template("show.html", superherodata=results) 
     return render_template("searchnemesis.html", search=hero)
 
-  return render_template("search.html", publisher=publisher,name=name,alterego=alterego,power=power,team=team,sidekick=sidekick,nemesis=nemesis)
+  return render_template("search.html", alll=alll,publisher=publisher,name=name,alterego=alterego,power=power,team=team,sidekick=sidekick,nemesis=nemesis)
  #publisher, name, alterego, power, team, sidekick, nemesis
