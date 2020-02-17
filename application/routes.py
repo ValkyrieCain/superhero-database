@@ -24,11 +24,13 @@ def home():
 def register():
   form=Register()
   if form.validate_on_submit():
-    hash_pw=bcrypt.generate_password_hash(form.password.data.decode('utf-8'))
-    user=Users(username=form.username.data, password=hash_pw)
-    db.session.add(user)
+    hash_pw=bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+    data=Users(username=form.username.data, password=hash_pw)
+    db.session.add(data)
     db.session.commit()
     return redirect(url_for('home'))
+  else:
+    print("uhoh")
   return render_template('register.html', title='Register', form=form)
 @app.route('/login', methods=['GET','POST'])
 def login():
