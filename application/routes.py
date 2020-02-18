@@ -100,11 +100,11 @@ def update():
 @app.route('/delete', methods=['GET','POST'])
 def delete():
   search=Search()
-  print(x)
-  print(y)
   if search.validate_on_submit():
     x=Superheroes.query.filter(Superheroes.alterego==search.alterego.data.upper()).first()
     y=search.alterego.data
+    print(x)
+    print(y)
     redirect("/delete/"+y)
   return render_template("searchalterego.html", search=search)
 @app.route('/delete/<alterego>', methods=['GET','POST'])
