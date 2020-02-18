@@ -4,8 +4,6 @@ from application import app, db, bcrypt, login_manager
 from application.models import Superheroes, Users
 from application.forms import Hero, Search, Register, Login, Delete
 import time
-global deletethis
-deletethis="uhoh"
 @app.route('/')
 @app.route('/home')
 def home():
@@ -107,14 +105,12 @@ def delete():
   search=Search()
   if search.validate_on_submit():
     print("search1")
-    global deletethis
     deletethis=Superheroes.query.filter(Superheroes.alterego==search.alterego.data.upper()).first()
     return render_template('delete.html', data=deletethis, delete=delete)
     print(deletethis)
     print(search.alterego.data)
     if delete.validate_on_submit():
       print("delete1")
-      global deletethis
       print(deletethis)
       print(search.alterego.data)
       db.session.delete(deletethis)
