@@ -5,7 +5,7 @@ from application.models import Superheroes, Users
 from application.forms import Hero, Search, Register, Login, Delete
 import time
 global deletethis
-deletethis=""
+deletethis="uhoh"
 @app.route('/')
 @app.route('/home')
 def home():
@@ -105,6 +105,7 @@ def delete():
     deletethis=Superheroes.query.filter(Superheroes.alterego==search.alterego.data.upper()).first()
     print(deletethis)
     if delete.validate_on_submit():
+      global deletethis
       print(deletethis)
       db.session.delete(deletethis)
       db.session.commit()
