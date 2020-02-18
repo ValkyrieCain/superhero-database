@@ -4,7 +4,7 @@ def delete():
   delete=Delete()
   search=Search()
   if search.validate_on_submit():
-     deletethis=Superheroes.query.filter(Superheroes.alterego==search.alterego.data.upper()).first()
+    deletethis=Superheroes.query.filter(Superheroes.alterego==search.alterego.data.upper()).first()
     print(deletethis)
     print(search.alterego.data)
     print("search1")
