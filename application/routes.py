@@ -67,6 +67,8 @@ def create():
     db.session.add(data)
     db.session.commit()
     print("dancing_man.gif")
+    results=Superheroes.query.all()
+    return redirect(url_for('home'))
   else:
     print("uhoh")
     print(hero.errors)
