@@ -109,9 +109,9 @@ def delete():
     print(result)
     print(search.alterego.data)
     print("search function")
-    if update.validate_on_submit():
+    if delete.validate_on_submit():
       print("delete function")
-    return render_template('update.html', data=result, hero=update)
+    return render_template('update.html', data=result, hero=result)
   return render_template("searchalterego.html", search=search)
 @app.route('/saved')
 def saved():
