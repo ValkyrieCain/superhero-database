@@ -81,7 +81,6 @@ def update():
   search=Search()
   if search.validate_on_submit():
     result=Superheroes.query.filter(Superheroes.alterego==search.alterego.data.upper()).first()
-    return render_template('update.html', data=result, hero=update)
     if form.validate_on_submit():
       result.publisher=form.publisher.data.upper()
       result.name=form.name.data.upper()
@@ -94,14 +93,15 @@ def update():
       result.nemesis=form.nemesis.data.upper()
       db.session.commit()
       return redirect(url_for('update'))
+    return render_template('update.html', data=result, hero=update)
   return render_template("searchalterego.html", search=search)
 @app.route('/delete', methods=['GET','POST'])
 def delete():
   delete=Delete()
   search=Search()
   if search.validate_on_submit():
+    result=Superheroes.query.filter(Superheroes.alterego==search.alterego.data.upper()).first()
     if delete.validate_on_submit():
-      result=Superheroes.query.filter(Superheroes.alterego==search.alterego.data.upper()).first()
       db.session.delete(result)
       db.session.commit()
     return render_template('delete.html', data=result, delete=delete)
