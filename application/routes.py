@@ -2,7 +2,7 @@ from flask import render_template, redirect, url_for, request, flash
 from flask_login import login_user, current_user, logout_user, login_required
 from application import app, db, bcrypt, login_manager
 from application.models import Superheroes, Users
-from application.forms import Hero, Search, Register, Login, Deeleet
+from application.forms import Hero, Search, Register, Login, Delete
 import time
 @app.route('/')
 @app.route('/home')
@@ -99,19 +99,19 @@ def update():
       print("uhoh")
     return render_template('update.html', data=result, hero=update)
   return render_template("searchalterego.html", search=search)
-@app.route('/deeleet', methods=['GET','POST'])
+@app.route('/delete', methods=['GET','POST'])
 @login_required
-def deeleet():
-  deeleet=Deeleet()
+def delete():
+  delete=Delete()
   search=Search()
   if search.validate_on_submit():
     result=Superheroes.query.filter(Superheroes.alterego==search.alterego.data.upper()).first()
     print(result)
     print(search.alterego.data)
     print("search function")
-    if deeleet.validate_on_submit():
-      print("deeleet function")
-    return render_template('deletetest.html', deeleet=deeleet)
+    if delete.validate_on_submit():
+      print("delete function")
+    return render_template('deletetest.html', delete=delete)
   return render_template("searchalterego.html", search=search)
 @app.route('/saved')
 def saved():
