@@ -104,7 +104,7 @@ def delete():
       result=Superheroes.query.filter(Superheroes.alterego==search.alterego.data.upper()).first()
       db.session.delete(result)
       db.session.commit()
-    return render_template('delete.html', data=result, hero=delete)
+    return render_template('delete.html', data=result, delete=delete)
   return render_template("searchalterego.html", search=search)
 @app.route('/search', methods=['GET','POST'])
 def search():
