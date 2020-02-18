@@ -111,12 +111,14 @@ def delete():
 @app.route('/delete/<alterego>', methods=['GET','POST'])
 def deleteyes(alterego):
   delete=Delete()
+  x=Superheroes.query.filter(Superheroes.alterego==alterego.upper()).first()
   print(alterego)
   if delete.validate_on_submit():
+    print(x)
     print("delete function")
   else:
     print("fail")
-  return render_template('deletetest.html', delete=delete)
+  return render_template('delete.html', data=x, delete=delete)
 @app.route('/saved')
 def saved():
   return render_template("saved.html")
