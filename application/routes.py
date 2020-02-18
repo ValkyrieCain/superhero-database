@@ -100,26 +100,19 @@ def update():
     return render_template('update.html', data=result, hero=update)
   return render_template("searchalterego.html", search=search)
 @app.route('/delete', methods=['GET','POST'])
+@login_required
 def delete():
   delete=Delete()
   search=Search()
   if search.validate_on_submit():
+    result=Superheroes.query.filter(Superheroes.alterego==search.alterego.data.upper()).first()
+    print(result)
+    print(search.alterego.data)
     print("search function")
-    x=Superheroes.query.filter(Superheroes.alterego==search.alterego.data.upper()).first()
-    deletethis=x
-    zz="zz"
-    alt=search.alterego.data
-    print(x)
-    print(deletethis)
-    print(zz)
-    print(alt)
-    if delete.validate_on_submit():
+    if update.validate_on_submit():
       print("delete function")
     else:
-      print("second page loaded")
-    return render_template('delete.html', data=deletethis, delete=delete)
-  else:
-    print("first page loaded")
+    return render_template('update.html', data=result, hero=update)
   return render_template("searchalterego.html", search=search)
 @app.route('/saved')
 def saved():
