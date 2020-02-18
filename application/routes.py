@@ -101,19 +101,17 @@ def update():
   return render_template("searchalterego.html", search=search)
 @app.route('/delete', methods=['GET','POST'])
 @login_required
-def delete():
-  delete=Delete()
+def deeleet():
+  deeleet=Deeleet()
   search=Search()
   if search.validate_on_submit():
     result=Superheroes.query.filter(Superheroes.alterego==search.alterego.data.upper()).first()
     print(result)
     print(search.alterego.data)
     print("search function")
-    if delete.validate_on_submit():
-      print("delete function")
-    else:
-      print("bad")
-    return render_template('deletetest.html', delete=delete)
+    if deeleet.validate_on_submit():
+      print("deeleet function")
+    return render_template('deletetest.html', deeleet=deeleet)
   return render_template("searchalterego.html", search=search)
 @app.route('/saved')
 def saved():
