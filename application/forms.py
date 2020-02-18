@@ -29,7 +29,7 @@ class Search(FlaskForm):
 			raise ValidationError('Hero does not exist')
 class Delete(FlaskForm):
 	confirmdelete=SubmitField('Yes')
-	checkdelete=BooleanField()
+	checkdelete=BooleanField(validators=[DataRequired()])
 class Register(FlaskForm):
 	username = StringField('Username', validators=[DataRequired(),Length(max=30)])
 	password = PasswordField('Password', validators=[DataRequired(),Length(max=100)])

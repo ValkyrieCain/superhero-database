@@ -1,4 +1,4 @@
-from flask import render_template, redirect, url_for, request
+from flask import render_template, redirect, url_for, request, flash
 from flask_login import login_user, current_user, logout_user, login_required
 from application import app, db, bcrypt, login_manager
 from application.models import Superheroes, Users
@@ -107,6 +107,7 @@ def delete():
     print("search function")
     deletethis="do not delete"
     print(deletethis)
+    flash("??")
     if delete.validate_on_submit():
       print("delete function")
       print(deletethis)
