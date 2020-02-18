@@ -116,7 +116,7 @@ def delete():
       db.session.commit()
       return redirect(url_for('saved'))
     else:
-      print("bad",delete.errors)
+      print("bad",delete.errors, deletethis, search.alterego.data)
     return render_template('delete.html', data=deletethis, delete=delete)
   else:print("even worse",search.errors)
   return render_template("searchalterego.html", search=search)
