@@ -101,7 +101,9 @@ def delete():
   if search.validate_on_submit():
     result=Superheroes.query.filter(Superheroes.alterego==search.alterego.data.upper()).first()
     print(result)
+    print(search.alterego.data)
     if delete.validate_on_submit():
+      print(search.alterego.data)
       print(result)
       db.session.delete(result)
       db.session.commit()
