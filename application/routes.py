@@ -3,6 +3,7 @@ from flask_login import login_user, current_user, logout_user, login_required
 from application import app, db, bcrypt, login_manager
 from application.models import Superheroes, Users
 from application.forms import Hero, Search, Register, Login, Delete
+import time
 @app.route('/')
 @app.route('/home')
 def home():
@@ -67,12 +68,8 @@ def create():
       nemesis=hero.nemesis.data.upper())
     db.session.add(data)
     db.session.commit()
-    print("dancing_man.gif")
     results=Superheroes.query.all()
-    return redirect(url_for('home'))
-  else:
-    print("uhoh")
-    print(hero.errors)
+    return redirect(url_for('saved'))
   return render_template("create.html", hero=hero)
 @app.route('/update', methods=['GET','POST'])
 @login_required
@@ -92,7 +89,10 @@ def update():
       result.sidekick=update.sidekick.data.upper()
       result.nemesis=update.nemesis.data.upper()
       db.session.commit()
-      return redirect(url_for('update'))
+      return redirect(url_for('saved'))
+    else:
+      print("uhoh")
+      print(update.errors)
     return render_template('update.html', data=result, hero=update)
   return render_template("searchalterego.html", search=search)
 @app.route('/delete', methods=['GET','POST'])
@@ -104,8 +104,17 @@ def delete():
     if delete.validate_on_submit():
       db.session.delete(result)
       db.session.commit()
+      return redirect(url_for('saved'))
+    else:
+      print("uhoh")
+      print(delete.errors)
     return render_template('delete.html', data=result, delete=delete)
   return render_template("searchalterego.html", search=search)
+@app.route('/saved')
+def saved():
+  return render_template("saved.html")
+  time.wait(2)
+  return redirect(url_for('home'))
 @app.route('/search', methods=['GET','POST'])
 def search():
   return render_template("search.html")
