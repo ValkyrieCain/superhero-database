@@ -99,7 +99,7 @@ def update():
       print("uhoh")
     return render_template('update.html', data=result, hero=update)
   return render_template("searchalterego.html", search=search)
-@app.route('/delete', methods=['GET','POST'])
+@app.route('/deeleet', methods=['GET','POST'])
 @login_required
 def deeleet():
   deeleet=Deeleet()
