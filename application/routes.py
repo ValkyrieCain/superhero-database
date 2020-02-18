@@ -112,7 +112,7 @@ def delete():
     else:
       print("uhoh")
       print(delete.errors)
-    return render_template('delete.html', data=result, delete=delete)
+    return render_template('delete.html', data=deletethis, delete=delete)
   return render_template("searchalterego.html", search=search)
 @app.route('/saved')
 def saved():
