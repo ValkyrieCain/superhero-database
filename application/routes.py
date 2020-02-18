@@ -108,15 +108,13 @@ def delete():
     x=Superheroes.query.filter(Superheroes.alterego==search.alterego.data.upper()).first()
     deletethis=x
     zz="zz"
+    alt=search.alterego.data
     print(x)
     print(deletethis)
     print(zz)
+    print(alt)
     if delete.validate_on_submit():
       print("delete function")
-      if deletethis==x:
-        print("data deleted")
-      else:
-        print("data not deleted")
     else:
       print("second page loaded")
     return render_template('delete.html', data=deletethis, delete=delete)
