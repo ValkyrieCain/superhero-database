@@ -82,6 +82,7 @@ def update():
     result=Superheroes.query.filter(Superheroes.alterego==search.alterego.data.upper()).first()
     print(result)
     print(search.alterego.data)
+    print("search1")
     if update.validate_on_submit():
       print(result)
       print(search.alterego.data)
@@ -109,8 +110,11 @@ def delete():
     deletethis=Superheroes.query.filter(Superheroes.alterego==search.alterego.data.upper()).first()
     print(deletethis)
     print(search.alterego.data)
+    print("search1")
     if delete.validate_on_submit():
       global deletethis
+      print(deletethis)
+      print(search.alterego.data)
       db.session.delete(deletethis)
       db.session.commit()
       return redirect(url_for('saved'))
