@@ -4,6 +4,7 @@ from application import app, db, bcrypt, login_manager
 from application.models import Superheroes, Users
 from application.forms import Hero, Search, Register, Login, Delete
 import time
+global deletethis
 deletethis=""
 @app.route('/')
 @app.route('/home')
