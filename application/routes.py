@@ -106,7 +106,6 @@ def delete():
   if search.validate_on_submit():
     print("search1")
     deletethis=Superheroes.query.filter(Superheroes.alterego==search.alterego.data.upper()).first()
-    return render_template('delete.html', data=deletethis, delete=delete)
     print(deletethis)
     print(search.alterego.data)
     if delete.validate_on_submit():
@@ -118,6 +117,7 @@ def delete():
       return redirect(url_for('saved'))
     else:
       print("bad",delete.errors)
+    return render_template('delete.html', data=deletethis, delete=delete)
   else:print("even worse",search.errors)
   return render_template("searchalterego.html", search=search)
 @app.route('/saved')
