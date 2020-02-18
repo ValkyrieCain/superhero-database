@@ -27,8 +27,8 @@ class Search(FlaskForm):
 		result = Superheroes.query.filter(Superheroes.alterego==alterego.data.upper()).first()
 		if not result:
 			raise ValidationError('Hero does not exist')
-class Deeleet(FlaskForm):
-	confirmdelete=SubmitField('Yes',validators=[DataRequired()])
+class Delete(FlaskForm):
+	confirm=SubmitField('Yes',validators=[DataRequired()])
 class Register(FlaskForm):
 	username = StringField('Username', validators=[DataRequired(),Length(max=30)])
 	password = PasswordField('Password', validators=[DataRequired(),Length(max=100)])
