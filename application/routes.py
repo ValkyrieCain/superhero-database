@@ -2,7 +2,7 @@ from flask import render_template, redirect, url_for, request
 from flask_login import login_user, current_user, logout_user, login_required
 from application import app, db, bcrypt, login_manager
 from application.models import Superheroes, Users
-from application.forms import Hero, Search, Register, Login
+from application.forms import Hero, Search, Register, Login, Update
 @app.route('/')
 @app.route('/home')
 def home():
@@ -47,7 +47,7 @@ def login():
   return render_template('login.html', title='Login', form=form)
 @app.route('/logout')
 def logout():
-  logout_user(user)
+  logout_user(current_user)
   return redirect(url_for('home'))
 @app.route('/create', methods=['GET','POST'])
 @login_required
