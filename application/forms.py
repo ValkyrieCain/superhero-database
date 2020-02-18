@@ -13,7 +13,7 @@ class Hero(FlaskForm):
 	team=StringField(validators=[DataRequired(),Length(max=30)])
 	sidekick=StringField(validators=[Length(max=30)])
 	nemesis=StringField(validators=[DataRequired(),Length(max=30)])
-	submit=SubmitField('Submit new hero')
+	submit=SubmitField('Submit hero')
 class Search(FlaskForm):
 	publisher=StringField(validators=[Length(max=30)])
 	name=StringField(validators=[Length(max=30)])
@@ -23,6 +23,8 @@ class Search(FlaskForm):
 	sidekick=StringField(validators=[Length(max=30)])
 	nemesis=StringField(validators=[Length(max=30)])
 	submit=SubmitField('Submit search')
+class Delete(FlaskForm):
+	confirmdelete=SubmitField('Yes')
 class Register(FlaskForm):
 	username = StringField('Username', validators=[DataRequired(),Length(max=30)])
 	password = PasswordField('Password', validators=[DataRequired(),Length(max=100)])

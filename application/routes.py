@@ -2,7 +2,7 @@ from flask import render_template, redirect, url_for, request
 from flask_login import login_user, current_user, logout_user, login_required
 from application import app, db, bcrypt, login_manager
 from application.models import Superheroes, Users
-from application.forms import Hero, Search, Register, Login
+from application.forms import Hero, Search, Register, Login, Delete
 @app.route('/')
 @app.route('/home')
 def home():
@@ -77,23 +77,34 @@ def create():
 @app.route('/update', methods=['GET','POST'])
 @login_required
 def update():
-  update=Search()
+  update=Hero()
   search=Search()
   if search.validate_on_submit():
     result=Superheroes.query.filter(Superheroes.alterego==search.alterego.data.upper()).first()
     return render_template('update.html', data=result, hero=update)
     if form.validate_on_submit():
-      result.publisher=form.publisher.data
-      result.name=form.name.data
-      result.alterego=form.alterego.data
-      result.p1=form.p1.data
-      result.p2=form.p2.data
-      result.p3=form.p3.data
-      result.team=form.team.data
-      result.sidekick=form.sidekick.data
-      result.nemesis=form.nemesis.data
+      result.publisher=form.publisher.data.upper()
+      result.name=form.name.data.upper()
+      result.alterego=form.alterego.data.upper()
+      result.p1=form.p1.data.upper()
+      result.p2=form.p2.data.upper()
+      result.p3=form.p3.data.upper()
+      result.team=form.team.data.upper()
+      result.sidekick=form.sidekick.data.upper()
+      result.nemesis=form.nemesis.data.upper()
       db.session.commit()
       return redirect(url_for('update'))
+  return render_template("searchalterego.html", search=search)
+@app.route('/delete', methods=['GET','POST'])
+def delete():
+  delete=Delete()
+  search=Search()
+  if search.validate_on_submit():
+    if delete.validate_on_submit():
+      result=Superheroes.query.filter(Superheroes.alterego==search.alterego.data.upper()).first()
+      db.session.delete(result)
+      db.session.commit()
+    return render_template('delete.html', data=result, hero=delete)
   return render_template("searchalterego.html", search=search)
 @app.route('/search', methods=['GET','POST'])
 def search():
