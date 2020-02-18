@@ -92,9 +92,6 @@ def update():
       result.nemesis=update.nemesis.data.upper()
       db.session.commit()
       return redirect(url_for('saved'))
-    else:
-      print("uhoh")
-      print(update.errors)
     return render_template('update.html', data=result, hero=update)
   return render_template("searchalterego.html", search=search)
 @app.route('/delete', methods=['GET','POST'])
