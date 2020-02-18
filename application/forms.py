@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import IntegerField,StringField,SubmitField,PasswordField,BooleanField
 from wtforms.validators import DataRequired,Length,EqualTo,ValidationError
-from application.models import Users
+from application.models import Users, Superheroes
 
 class Hero(FlaskForm):
 	publisher=StringField(validators=[DataRequired(),Length(max=30)])
