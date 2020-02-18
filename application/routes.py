@@ -98,6 +98,7 @@ def delete():
   delete=Delete()
   search=Search()
   if search.validate_on_submit():
+    result=Superheroes.query.filter(Superheroes.alterego==search.alterego.data.upper()).first()
     if delete.validate_on_submit():
       result=Superheroes.query.filter(Superheroes.alterego==search.alterego.data.upper()).first()
       print(result)
