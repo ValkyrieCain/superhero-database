@@ -46,8 +46,9 @@ def login():
         return redirect(url_for('home'))
   return render_template('login.html', title='Login', form=form)
 @app.route('/logout')
+@login_required
 def logout():
-  logout_user(current_user)
+  logout_user()
   return redirect(url_for('home'))
 @app.route('/create', methods=['GET','POST'])
 @login_required

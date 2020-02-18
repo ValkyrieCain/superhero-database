@@ -2,7 +2,17 @@
 {%block extra%}
  <div class='forms'>
   <form method='POST' action=''>
-   <p>{{hero.hidden_tag()}}<br>
+   <p>
+   	Publisher = {{data.publisher}}<br>
+ 	Name = {{data.name}}<br>
+	Alter Ego = {{data.alterego}}<br>
+ 	First Power = {{data.p1}}<br>
+ 	Second Power = {{data.p2}}<br>
+ 	Third Power = {{data.p3}}<br>
+ 	Team = {{data.team}}<br>
+ 	Sidekick = {{data.sidekick}}<br>
+ 	Nemesis = {{data.nemesis}}<br>
+    {{hero.hidden_tag()}}<br>
    	Publisher = {{hero.publisher}}<br>
  	Name = {{hero.name}}<br>
 	Alter Ego = {{hero.alterego}}<br>
@@ -14,17 +24,7 @@
  	Nemesis = {{hero.nemesis}}<br>
  	{{hero.submit}}
    </p>
-   <p>
-   	Publisher = {{data.publisher}}<br>
- 	Name = {{data.name}}<br>
-	Alter Ego = {{data.alterego}}<br>
- 	First Power = {{data.p1}}<br>
- 	Second Power = {{data.p2}}<br>
- 	Third Power = {{data.p3}}<br>
- 	Team = {{data.team}}<br>
- 	Sidekick = {{data.sidekick}}<br>
- 	Nemesis = {{data.nemesis}}<br>
- 	{{data.submit}}
+   </p>
   </form>
  </div>
 {%endblock%}
