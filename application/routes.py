@@ -78,7 +78,7 @@ def update():
   search=Search()
   if search.validate_on_submit():
     result=Superheroes.query.filter(Superheroes.alterego==search.alterego.data.upper()).first()
-    return render_template('update.html', data=results, hero=update)
+    return render_template('update.html', data=result, hero=update)
     if form.validate_on_submit():
       result.publisher=form.publisher.data
       result.name=form.name.data
