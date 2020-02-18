@@ -106,12 +106,10 @@ def delete():
   if search.validate_on_submit():
     print("search1")
     deletethis=Superheroes.query.filter(Superheroes.alterego==search.alterego.data.upper()).first()
-    print(deletethis)
     print(search.alterego.data)
     if delete.validate_on_submit():
       print("delete1")
       print(deletethis)
-      print(search.alterego.data)
       db.session.delete(deletethis)
       db.session.commit()
       return redirect(url_for('saved'))
