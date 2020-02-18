@@ -106,7 +106,7 @@ def delete():
     print(x)
     print(y)
     print("/delete/"+y)
-    redirect("/delete/"+y)
+    return redirect("/delete/"+y)
   return render_template("searchalterego.html", search=search)
 @app.route('/delete/<alterego>', methods=['GET','POST'])
 def deleteyes(alterego):
@@ -116,7 +116,7 @@ def deleteyes(alterego):
     print("delete function")
   else:
     print("fail")
-    return render_template('deletetest.html', delete=delete)
+  return render_template('deletetest.html', delete=delete)
 @app.route('/saved')
 def saved():
   return render_template("saved.html")
