@@ -80,7 +80,7 @@ def update():
     result=Superheroes.query.filter(Superheroes.alterego==search.alterego.data.upper()).first()
     if update.validate_on_submit():
       result=Superheroes.query.filter(Superheroes.alterego==search.alterego.data.upper()).first()
-
+      print(result)
       result.publisher=update.publisher.data.upper()
       result.name=update.name.data.upper()
       result.alterego=update.alterego.data.upper()
