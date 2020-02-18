@@ -80,6 +80,7 @@ def update():
     result=Superheroes.query.filter(Superheroes.alterego==search.alterego.data.upper()).first()
     if update.validate_on_submit():
       result=Superheroes.query.filter(Superheroes.alterego==search.alterego.data.upper()).first()
+      print(result)
       result.publisher=update.publisher.data.upper()
       result.name=update.name.data.upper()
       result.alterego=update.alterego.data.upper()
@@ -91,6 +92,9 @@ def update():
       result.nemesis=update.nemesis.data.upper()
       db.session.commit()
       return redirect(url_for('saved'))
+    else:
+      print("uhoh")
+      print(update.errors)
     return render_template('update.html', data=result, hero=update)
   return render_template("searchalterego.html", search=search)
 @app.route('/delete', methods=['GET','POST'])
