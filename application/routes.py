@@ -111,8 +111,6 @@ def delete():
     print(search.alterego.data)
     if delete.validate_on_submit():
       global deletethis
-      print(deletethis)
-      print(search.alterego.data)
       db.session.delete(deletethis)
       db.session.commit()
       return redirect(url_for('saved'))
