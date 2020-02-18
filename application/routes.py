@@ -116,9 +116,10 @@ def delete():
       else:
         print("data not deleted")
     else:
-      print("page is loaded")
+      print("second page loaded")
     return render_template('delete.html', data=deletethis, delete=delete)
-  else:print("even worse",search.errors)
+  else:
+    print("first page loaded")
   return render_template("searchalterego.html", search=search)
 @app.route('/saved')
 def saved():
