@@ -80,7 +80,11 @@ def update():
   search=Search()
   if search.validate_on_submit():
     result=Superheroes.query.filter(Superheroes.alterego==search.alterego.data.upper()).first()
+    print(result)
+    print(search.alterego.data)
     if update.validate_on_submit():
+      print(result)
+      print(search.alterego.data)
       result.publisher=update.publisher.data.upper()
       result.name=update.name.data.upper()
       result.alterego=update.alterego.data.upper()
@@ -95,7 +99,6 @@ def update():
     return render_template('update.html', data=result, hero=update)
   return render_template("searchalterego.html", search=search)
 @app.route('/delete', methods=['GET','POST'])
-@login_required
 def delete():
   delete=Delete()
   search=Search()
@@ -113,7 +116,6 @@ def delete():
       return redirect(url_for('saved'))
     else:
       print("uhoh")
-      print(deletethis)
     return render_template('delete.html', data=deletethis, delete=delete)
   return render_template("searchalterego.html", search=search)
 @app.route('/saved')
