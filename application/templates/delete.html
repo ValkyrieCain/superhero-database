@@ -2,7 +2,7 @@
 {%block extra%}
  <div class='forms'>
   <form method='POST' action=''>
-   <p>
+   <p>{{delete.hidden_tag()}}<br>
   	Publisher = {{data.publisher}}<br>
  	Name = {{data.name}}<br>
 	Alter Ego = {{data.alterego}}<br>
@@ -12,7 +12,6 @@
  	Team = {{data.team}}<br>
  	Sidekick = {{data.sidekick}}<br>
  	Nemesis = {{data.nemesis}}<br>
- 	{{delete.hidden_tag()}}<br>
    	Are you sure you want to delete this hero? {{delete.checkdelete}}<br>
    	{{delete.confirmdelete}} <a href="{{url_for ('home')}}"><button>No</button></a>
    </p>
