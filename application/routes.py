@@ -106,13 +106,14 @@ def delete():
   delete=Delete()
   search=Search()
   if search.validate_on_submit():
+    print("search1")
     global deletethis
     deletethis=Superheroes.query.filter(Superheroes.alterego==search.alterego.data.upper()).first()
     return render_template('delete.html', data=deletethis, delete=delete)
     print(deletethis)
     print(search.alterego.data)
-    print("search1")
     if delete.validate_on_submit():
+      print("delete1")
       global deletethis
       print(deletethis)
       print(search.alterego.data)
