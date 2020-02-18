@@ -96,6 +96,8 @@ def update():
       result.nemesis=update.nemesis.data.upper()
       db.session.commit()
       return redirect(url_for('saved'))
+    else:
+      print("uhoh")
     return render_template('update.html', data=result, hero=update)
   return render_template("searchalterego.html", search=search)
 @app.route('/delete', methods=['GET','POST'])
@@ -114,8 +116,6 @@ def delete():
       db.session.delete(deletethis)
       db.session.commit()
       return redirect(url_for('saved'))
-    else:
-      print("uhoh")
     return render_template('delete.html', data=deletethis, delete=delete)
   return render_template("searchalterego.html", search=search)
 @app.route('/saved')
