@@ -111,7 +111,7 @@ def delete():
     if delete.validate_on_submit():
       print("delete function")
       print(deletethis)
-      if deletethis=="do not delete":
+      if search.alterego.data=="q":
         print("data deleted")
       else:
         print("data not deleted")
