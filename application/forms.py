@@ -23,6 +23,10 @@ class Search(FlaskForm):
 	sidekick=StringField(validators=[Length(max=30)])
 	nemesis=StringField(validators=[Length(max=30)])
 	submit=SubmitField('Submit search')
+	def validate_search(self, alterego):
+		result = Superheroes.query.filter_by(alterego=alterego.data).first()
+		if not result:
+			raise ValidationError('Hero does not exist')
 class Delete(FlaskForm):
 	confirmdelete=SubmitField('Yes')
 class Register(FlaskForm):
