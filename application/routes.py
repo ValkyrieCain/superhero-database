@@ -112,7 +112,7 @@ def delete():
 @app.route('/saved')
 def saved():
   return render_template("saved.html")
-  time.wait(2)
+  time.sleep(2)
   return redirect(url_for('home'))
 @app.route('/search', methods=['GET','POST'])
 def search():
