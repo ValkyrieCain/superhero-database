@@ -74,10 +74,11 @@ def create():
 @app.route('/update', methods=['GET','POST'])
 @login_required
 def update():
-  form=Update()
+  update=Search()
+  search=Search()
   if search.validate_on_submit():
     result=Superheroes.query.filter(Superheroes.alterego==search.alterego.data.upper()).first()
-    return render_template('update.html', data=results, hero=form)
+    return render_template('update.html', data=results, hero=update)
     if form.validate_on_submit():
       result.publisher=form.publisher.data
       result.name=form.name.data
