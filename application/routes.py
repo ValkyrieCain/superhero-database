@@ -80,7 +80,7 @@ def update():
     result=Superheroes.query.filter(Superheroes.alterego==search.alterego.data.upper()).first()
     print(result)
     print(search.alterego.data)
-    print("search1")
+    print("search2")
     if update.validate_on_submit():
       print(result)
       print(search.alterego.data)
@@ -116,6 +116,9 @@ def delete():
       db.session.delete(deletethis)
       db.session.commit()
       return redirect(url_for('saved'))
+    else:
+      print("bad",delete.errors)
+  else:print("even worse",search.errors)
   return render_template("searchalterego.html", search=search)
 @app.route('/saved')
 def saved():
