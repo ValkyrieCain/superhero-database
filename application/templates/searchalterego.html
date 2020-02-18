@@ -6,5 +6,12 @@
    <p>Search by alter ego</p>
    {{search.alterego}}
    {{search.submit}}
+    {%if search.alterego.errors%}
+     <div class='error'>
+      {%for error in search.alterego.errors%}
+       <span>{{error}}</span>
+      {%endfor%}
+     </div>
+    {%endif%}
  </div></form>
 {% endblock %}
