@@ -101,24 +101,18 @@ def update():
 def delete():
   search=Search()
   if search.validate_on_submit():
-    x=Superheroes.query.filter(Superheroes.alterego==search.alterego.data.upper()).first()
-    y=search.alterego.data
-    print(x)
-    print(y)
-    print("/delete/"+y)
-    return redirect("/delete/"+y)
+    ae=search.alterego.data
+    return redirect("/delete/"+ae)
   return render_template("searchalterego.html", search=search)
-@app.route('/delete/<alterego>', methods=['GET','POST'])
-def deleteyes(alterego):
+@app.route('/delete/<ae>', methods=['GET','POST'])
+def deleteconfirm(ae):
   delete=Delete()
-  x=Superheroes.query.filter(Superheroes.alterego==alterego.upper()).first()
-  print(alterego)
+  deletethis=Superheroes.query.filter(Superheroes.alterego==ae.upper()).first()
   if delete.validate_on_submit():
-    print(x)
-    print("delete function")
-  else:
-    print("fail")
-  return render_template('delete.html', data=x, delete=delete)
+    db.session.delete(deletethis)
+    db.session.commit()
+    return redirect(url_for('saved'))
+  return render_template('delete.html', data=deletethis, delete=delete)
 @app.route('/saved')
 def saved():
   return render_template("saved.html")
