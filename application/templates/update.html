@@ -1,0 +1,30 @@
+{%extends "template.html"%}
+{%block extra%}
+ <div class='forms'>
+  <form method='POST' action=''>
+   <p>{{hero.hidden_tag()}}<br>
+   	Publisher = {{hero.publisher}}<br>
+ 	Name = {{hero.name}}<br>
+	Alter Ego = {{hero.alterego}}<br>
+ 	First Power = {{hero.p1}}<br>
+ 	Second Power = {{hero.p2}}<br>
+ 	Third Power = {{hero.p3}}<br>
+ 	Team = {{hero.team}}<br>
+ 	Sidekick = {{hero.sidekick}}<br>
+ 	Nemesis = {{hero.nemesis}}<br>
+ 	{{hero.submit}}
+   </p>
+   <p>{{data.hidden_tag()}}<br>
+   	Publisher = {{data.publisher}}<br>
+ 	Name = {{data.name}}<br>
+	Alter Ego = {{data.alterego}}<br>
+ 	First Power = {{data.p1}}<br>
+ 	Second Power = {{data.p2}}<br>
+ 	Third Power = {{data.p3}}<br>
+ 	Team = {{data.team}}<br>
+ 	Sidekick = {{data.sidekick}}<br>
+ 	Nemesis = {{data.nemesis}}<br>
+ 	{{data.submit}}
+  </form>
+ </div>
+{%endblock%}

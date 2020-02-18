@@ -76,18 +76,18 @@ def create():
 def update():
   form=Update()
   if search.validate_on_submit():
-    results=Superheroes.query.filter(Superheroes.alterego==search.alterego.data.upper()).all()
-    return render_template('update.html', superherodata=results, form=form)
+    result=Superheroes.query.filter(Superheroes.alterego==search.alterego.data.upper()).first()
+    return render_template('update.html', data=results, hero=form)
     if form.validate_on_submit():
-      Superheroes.publisher=form.publisher.data
-      Superheroes.name=form.name.data
-      Superheroes.alterego=form.alterego.data
-      Superheroes.p1=form.p1.data
-      Superheroes.p2=form.p2.data
-      Superheroes.p3=form.p3.data
-      Superheroes.team=form.team.data
-      Superheroes.sidekick=form.sidekick.data
-      Superheroes.nemesis=form.nemesis.data
+      result.publisher=form.publisher.data
+      result.name=form.name.data
+      result.alterego=form.alterego.data
+      result.p1=form.p1.data
+      result.p2=form.p2.data
+      result.p3=form.p3.data
+      result.team=form.team.data
+      result.sidekick=form.sidekick.data
+      result.nemesis=form.nemesis.data
       db.session.commit()
       return redirect(url_for('update'))
   return render_template("searchalterego.html", search=search)
