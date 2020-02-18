@@ -112,8 +112,6 @@ def delete():
       print("delete1")
       print(deletethis)
       print(search.alterego.data)
-      db.session.delete(deletethis)
-      db.session.commit()
       return redirect(url_for('saved'))
     else:
       print("bad",delete.errors, deletethis, search.alterego.data)

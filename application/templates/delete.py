@@ -21,3 +21,5 @@ def delete():
   else:print("even worse",search.errors)
   return render_template("searchalterego.html", search=search)
 (validators=[DataRequired()])
+db.session.delete(deletethis)
+      db.session.commit()
