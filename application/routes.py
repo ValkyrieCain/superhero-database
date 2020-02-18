@@ -105,6 +105,7 @@ def delete():
     y=search.alterego.data
     print(x)
     print(y)
+    print("/delete/"+y)
     redirect("/delete/"+y)
   return render_template("searchalterego.html", search=search)
 @app.route('/delete/<alterego>', methods=['GET','POST'])
