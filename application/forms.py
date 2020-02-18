@@ -49,5 +49,3 @@ class Login(FlaskForm):
 		user = Users.query.filter_by(username=username.data).first()
 		if not user:
 			raise ValidationError('Username does not exist')
-		if username==username.data:
-			raise ValidationError('Her')
