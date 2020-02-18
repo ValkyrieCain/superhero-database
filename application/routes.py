@@ -105,7 +105,7 @@ def delete():
   search=Search()
   if search.validate_on_submit():
     print("search function")
-    deletethis="do not delete"
+    deletethis=Superheroes.query.filter(Superheroes.alterego==search.alterego.data.upper()).first()
     print(deletethis)
     flash("??")
     if delete.validate_on_submit():
