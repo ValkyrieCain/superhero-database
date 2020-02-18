@@ -16,21 +16,41 @@ class Hero(FlaskForm):
 	submit=SubmitField('Submit hero')
 class Search(FlaskForm):
 	publisher=StringField(validators=[Length(max=30)])
+	def validate_publisher(self, publisher):
+		result = Superheroes.query.filter_by(publisher=publisher.data.upper()).first()
+		if not result:
+			raise ValidationError('Hero does not exist')
 	name=StringField(validators=[Length(max=30)])
+	def validate_name(self, name):
+		result = Superheroes.query.filter_by(name=name.data.upper()).first()
+		if not result:
+			raise ValidationError('Hero does not exist')
 	alterego=StringField(validators=[Length(max=30)])
-	power=StringField(validators=[Length(max=30)])
-	team=StringField(validators=[Length(max=30)])
-	sidekick=StringField(validators=[Length(max=30)])
-	nemesis=StringField(validators=[Length(max=30)])
-	submit=SubmitField('Submit search')
 	def validate_alterego(self, alterego):
 		result = Superheroes.query.filter_by(alterego=alterego.data.upper()).first()
 		if not result:
-			print("not result")
 			raise ValidationError('Hero does not exist')
-		else:
-			print("result")
-			raise ValidationError('?????')
+	power=StringField(validators=[Length(max=30)])
+	def validate_power(self, power):
+		result = Superheroes.query.filter_by(power=power.data.upper()).first()
+		if not result:
+			raise ValidationError('Hero does not exist')
+	team=StringField(validators=[Length(max=30)])
+	def validate_team(self, team):
+		result = Superheroes.query.filter_by(team=team.data.upper()).first()
+		if not result:
+			raise ValidationError('Hero does not exist')
+	sidekick=StringField(validators=[Length(max=30)])
+	def validate_sidekick(self, sidekick):
+		result = Superheroes.query.filter_by(sidekick=sidekick.data.upper()).first()
+		if not result:
+			raise ValidationError('Hero does not exist')
+	nemesis=StringField(validators=[Length(max=30)])
+	def validate_nemesis(self, nemesis):
+		result = Superheroes.query.filter_by(nemesis=nemesis.data.upper()).first()
+		if not result:
+			raise ValidationError('Hero does not exist')
+	submit=SubmitField('Submit search')
 class Delete(FlaskForm):
 	confirm=SubmitField('Yes',validators=[DataRequired()])
 class Register(FlaskForm):
