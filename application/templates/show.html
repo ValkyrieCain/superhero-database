@@ -30,11 +30,11 @@
 	   <td>{{x.nemesis}}</td>
 	  </tr>
 	 {%endfor%}
+	 {%for x in powerdata%}
 	  <tr>
-	   {%for x in powerdata%}
-	    <td>{{x.power}}</td>
-	   {%endfor%}
+	   <td>{{x.power}}</td>
 	  </tr>
+	 {%endfor%}
 	</tbody>
    </table>
   </form>
