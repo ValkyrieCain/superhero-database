@@ -54,9 +54,7 @@ def create():
       sidekick=hero.sidekick.data.upper(),
       nemesis=hero.nemesis.data.upper())
     powers=Powers(
-      power=hero.p1.data.upper(),
-      power=hero.p2.data.upper(),
-      power=hero.p3.data.upper())
+      power=hero.p1.data.upper(),hero.p2.data.upper(),hero.p3.data.upper())
     db.session.add(data,powers)
     db.session.commit()
     return redirect(url_for('saved'))
