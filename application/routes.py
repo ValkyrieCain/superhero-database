@@ -144,11 +144,12 @@ def publisher():
   search=Search()
   if search.validate_on_submit():
     results=Superheroes.query.filter(Superheroes.publisher==search.publisher.data.upper()).all()
-    powers=[{"p1":"","p2":"","p3":""}]
-    for x in results:
-      powers.p1=Powers.query.filter(Powers.id==x.p1)
-      powers.p2=Powers.query.filter(Powers.id==x.p2)
-      powers.p3=Powers.query.filter(Powers.id==x.p3)
+    print(results.publisher)
+    #powers=[{"p1":"","p2":"","p3":""}]
+    #for x in results:
+    #  powers.p1=Powers.query.filter(Powers.id==x.p1)
+    #  powers.p2=Powers.query.filter(Powers.id==x.p2)
+    #  powers.p3=Powers.query.filter(Powers.id==x.p3)
     return render_template("show.html", superherodata=results, powerdata=powers)
   return render_template("searchpublisher.html", search=search)
 @app.route('/search/name', methods=['GET','POST'])
