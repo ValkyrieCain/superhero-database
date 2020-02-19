@@ -117,6 +117,7 @@ def show():
   form=Search()
   print(form)
   print(form.data)
+  print("step 1")
   #print(str(res))
   #for x in res:
   #  print(str(x))
@@ -134,6 +135,7 @@ def show():
   #  lists.append(x.nemesis)
   #print (lists)
   result=Superheroes.query.filter(Superheroes.publisher==form.data).first()
+  print("2")
     #if update.validate_on_submit():
     #  result.publisher=update.publisher.data.upper()
     #  result.name=update.name.data.upper()
@@ -146,6 +148,7 @@ def show():
      # result.nemesis=update.nemesis.data.upper()
      # db.session.commit()
   print(result)
+  print("3")
   return render_template("saved.html", superherodata=form)
 @app.route('/search/all', methods=['GET','POST'])
 def all():
