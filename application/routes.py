@@ -6,7 +6,9 @@ import pandas as pd
 from application.forms import Hero, Search, Register, Login, Delete, Alterego
 import time
 def show(x):
-  print(x)
+  final=[]
+  final.name=x.name
+  return final
 @app.route('/')
 @app.route('/home')
 def home():
@@ -131,8 +133,9 @@ def publisher():
     result=Superheroes.query.filter(Superheroes.publisher==search.publisher.data.upper()).all()
     print(1111111)
     print(2222222)
+    x=show(result)
+    print(x)
     return redirect(url_for('saved'))
-    #x=show(result)
     #return render_template("show.html", superherodata=x)
   return render_template("searchpublisher.html", search=search)
 @app.route('/search/name', methods=['GET','POST'])
