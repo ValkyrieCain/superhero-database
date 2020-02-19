@@ -4,6 +4,8 @@ from application import app, db, bcrypt, login_manager
 from application.models import Superheroes, Users, Powers
 from application.forms import Hero, Search, Register, Login, Delete, Alterego
 import time
+global resultss
+resultss=""
 @app.route('/')
 @app.route('/home')
 def home():
@@ -48,7 +50,6 @@ def create():
     p3=Powers(power=hero.p3.data.upper())
     db.session.bulk_save_objects([p1,p2,p3])
     db.session.commit()
-    print("stage 1 complete")
     p1id=Powers.query.filter(Powers.power==hero.p1.data.upper()).first()
     p2id=Powers.query.filter(Powers.power==hero.p2.data.upper()).first()
     p3id=Powers.query.filter(Powers.power==hero.p3.data.upper()).first()
@@ -62,12 +63,8 @@ def create():
       team=hero.team.data.upper(),
       sidekick=hero.sidekick.data.upper(),
       nemesis=hero.nemesis.data.upper())
-    print("1.5")
-    print(p1,p2,p3)
     db.session.add(data)
-    print("1.75")
     db.session.commit()
-    print("2")
     return redirect(url_for('saved'))
   return render_template("create.html", hero=hero)
 @app.route('/update', methods=['GET','POST'])
@@ -116,6 +113,27 @@ def saved():
 @app.route('/search', methods=['GET','POST'])
 def search():
   return render_template("search.html")
+@app.route('/search/results' methods=['GET','POST'])
+def show():
+  global resultss
+  #resultss=Superheroes.query.filter(Superheroes.publisher==search.publisher.data.upper()).all()
+  resultss=request.form()
+  print (resultss)
+  lists=[]
+  for x in resultss:
+    lists.append(x.publisher)
+    lists.append(x.name)
+    lists.append(x.alterego)
+    p1p=Powers.query.filter(Powers.power==hero.p1.data.upper()).first()
+    p2p=Powers.query.filter(Powers.power==hero.p2.data.upper()).first()
+    p3p=Powers.query.filter(Powers.power==hero.p3.data.upper()).first()
+    lists.append(x.p1.power)
+    lists.append(x.p2.power)
+    lists.append(x.p3.power)
+    lists.append(x.team)
+    lists.append(x.sidekick)
+    lists.append(x.nemesis)
+  return render_template("show.html", superherodata=lists)
 @app.route('/search/all', methods=['GET','POST'])
 def all():
   results=Superheroes.query.all()
@@ -124,8 +142,8 @@ def all():
 def publisher():
   search=Search()
   if search.validate_on_submit():
-    results=Superheroes.query.filter(Superheroes.publisher==search.publisher.data.upper()).all()
-    return render_template("show.html", superherodata=results)
+    resultss=Superheroes.query.filter(Superheroes.publisher==search.publisher.data.upper()).all()
+    return redirect("/search/results",results)
   return render_template("searchpublisher.html", search=search)
 @app.route('/search/name', methods=['GET','POST'])
 def name():
