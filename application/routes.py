@@ -43,19 +43,22 @@ def logout():
 def create():
   hero=Hero()
   if hero.validate_on_submit():
+    p1=Powers(power=hero.p1.data.upper())
+    p2=Powers(power=hero.p2.data.upper())
+    p3=Powers(power=hero.p3.data.upper())
+    db.session.bulk_save_objects([p1,p2,p3])
+    db.session.commit()
     data=Superheroes(
       publisher=hero.publisher.data.upper(),
       name=hero.name.data.upper(),
       alterego=hero.alterego.data.upper(),
-      p1=hero.p1.data.upper(),
-      p2=hero.p2.data.upper(),
-      p3=hero.p3.data.upper(),
+      p1=Powers.query.filter(Powers.power==hero.p1.data.upper()).first(),
+      p2=Powers.query.filter(Powers.power==hero.p2.data.upper()).first(),
+      p3=Powers.query.filter(Powers.power==hero.p3.data.upper()).first(),
       team=hero.team.data.upper(),
       sidekick=hero.sidekick.data.upper(),
       nemesis=hero.nemesis.data.upper())
-    powers=Powers(
-      power=hero.p1.data.upper() and hero.p2.data.upper() and hero.p3.data.upper())
-    db.session.add(data,powers)
+    db.session.add(data)
     db.session.commit()
     return redirect(url_for('saved'))
   return render_template("create.html", hero=hero)
