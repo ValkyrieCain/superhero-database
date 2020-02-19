@@ -2,7 +2,7 @@ from flask import render_template, redirect, url_for, request, flash
 from flask_login import login_user, current_user, logout_user, login_required
 from application import app, db, bcrypt, login_manager
 from application.models import Superheroes, Users
-from application.forms import Hero, Search, Register, Login, Delete
+from application.forms import Hero, Search, Register, Login, Delete, Alterego
 import time
 @app.route('/')
 @app.route('/home')
