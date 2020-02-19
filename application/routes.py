@@ -116,7 +116,7 @@ def search():
 def show():
   form=Search()
   print(form)
-  print(form.data)
+  print(form.publisher)
   print("step 1")
   #print(str(res))
   #for x in res:
