@@ -114,7 +114,9 @@ def search():
   return render_template("search.html")
 @app.route('/search/results', methods=['GET','POST'])
 def show(results):
-  print(results)
+  print(1)
+  a=results
+  print(2)
   #data=Search()
   #for x in pub:
   #  search.x=pub.x
