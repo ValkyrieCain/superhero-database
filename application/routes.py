@@ -6,8 +6,8 @@ import pandas as pd
 from application.forms import Hero, Search, Register, Login, Delete, Alterego
 import time
 def show(x):
-  final={na:""}
-  final[na]=x[0]
+  final={}
+  final["na"]=x[0]
   return final
 @app.route('/')
 @app.route('/home')
