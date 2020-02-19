@@ -113,11 +113,12 @@ def saved():
 def search():
   return render_template("search.html")
 @app.route('/search/results', methods=['GET','POST'])
-def show(pub):
-  data=Search()
-  for x in pub:
-    search.x=pub.x
-  return render_template("show.html", superherodata=data)
+def show(results):
+  print(results)
+  #data=Search()
+  #for x in pub:
+  #  search.x=pub.x
+  return render_template("saved.html")#, superherodata=data)
 @app.route('/search/all', methods=['GET','POST'])
 def all():
   results=Superheroes.query.all()
@@ -127,7 +128,7 @@ def publisher():
   search=Search()
   if search.validate_on_submit():
     pub=Superheroes.query.filter(Superheroes.publisher==search.publisher.data.upper()).all()
-    return redirect("/search/results",pub=pub)
+    return redirect("/search/results",results=pub)
   return render_template("searchpublisher.html", search=search)
 @app.route('/search/name', methods=['GET','POST'])
 def name():
