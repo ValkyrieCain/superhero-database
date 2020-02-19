@@ -116,28 +116,31 @@ def search():
 def show():
   form=Search()
   #publisher = Superheroes.query.filter_by(publisher=form.publisher.data.upper()).first()
-  if form.publisher.data:
-    print(11)
+  #if form.publisher.data:
+  print(11)
+  print(form)
   #name = Superheroes.query.filter_by(name=form.name.data.upper()).first()
-  if form.name.data:
-    print(22)
-  print(form.name.data)
+  #if form.name.data:
+  print(22)
+  print(form.publisher.data)
   print(23)
+  print(form.data)
+  print(33)
   #alterego = Superheroes.query.filter_by(alterego=form.alterego.data.upper()).first()
-  if form.alterego.data:
-    print(33)
+  #if form.alterego.data:
+   # print(33)
   #power = Superheroes.query.filter_by(power=form.power.data.upper()).first()
-  if form.power.data:
-    print(44)
+  #if form.power.data:
+  #  print(44)
   #team = Superheroes.query.filter_by(team=form.team.data.upper()).first()
-  if form.team.data:
-    print(55)
+  #if form.team.data:
+  #  print(55)
   #sidekick = Superheroes.query.filter_by(sidekick=form.sidekick.data.upper()).first()
-  if form.sidekick.data:
-    print(66)
+  #if form.sidekick.data:
+  #  print(66)
   #nemesis = Superheroes.query.filter_by(nemesis=form.nemesis.data.upper()).first()
-  if form.nemesis.data:
-    print(77)
+  #if form.nemesis.data:
+  #  print(77)
   #print(str(res))
   #for x in res:
   #  print(str(x))
@@ -176,6 +179,7 @@ def all():
 def publisher():
   search=Search()
   if search.validate_on_submit():
+    results=Superheroes.query.filter(Superheroes.publisher==search.publisher.data.upper()).all()
     return redirect("/search/results")
   return render_template("searchpublisher.html", search=search)
 @app.route('/search/name', methods=['GET','POST'])
