@@ -59,21 +59,24 @@ def logout():
 def create():
   hero=Hero()
   if hero.validate_on_submit():
-    p1=Powers(power=hero.p1.data.upper())
-    p2=Powers(power=hero.p2.data.upper())
-    p3=Powers(power=hero.p3.data.upper())
-    db.session.bulk_save_objects([p1,p2,p3])
-    db.session.commit()
-    p1id=Powers.query.filter(Powers.power==hero.p1.data.upper()).first()
-    p2id=Powers.query.filter(Powers.power==hero.p2.data.upper()).first()
-    p3id=Powers.query.filter(Powers.power==hero.p3.data.upper()).first()
+    #p1=Powers(power=hero.p1.data.upper())
+    #p2=Powers(power=hero.p2.data.upper())
+    #p3=Powers(power=hero.p3.data.upper())
+    #db.session.bulk_save_objects([p1,p2,p3])
+    #db.session.commit()
+    #p1id=Powers.query.filter(Powers.power==hero.p1.data.upper()).first()
+    #p2id=Powers.query.filter(Powers.power==hero.p2.data.upper()).first()
+    #p3id=Powers.query.filter(Powers.power==hero.p3.data.upper()).first()
     data=Superheroes(
       publisher=hero.publisher.data.upper(),
       name=hero.name.data.upper(),
       alterego=hero.alterego.data.upper(),
-      p1=p1id.id,
-      p2=p2id.id,
-      p3=p3id.id,
+      p1=hero.p1.data.upper(),
+      p2=hero.p2.data.upper(),
+      p3=hero.p3.data.upper(),
+      #p1=p1id.id,
+      #p2=p2id.id,
+      #p3=p3id.id,
       team=hero.team.data.upper(),
       sidekick=hero.sidekick.data.upper(),
       nemesis=hero.nemesis.data.upper())
