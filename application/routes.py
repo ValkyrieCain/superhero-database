@@ -143,7 +143,7 @@ def publisher():
   search=Search()
   if search.validate_on_submit():
     resultss=Superheroes.query.filter(Superheroes.publisher==search.publisher.data.upper()).all()
-    return redirect("/search/results",results)
+    return redirect("/search/results",resultss)
   return render_template("searchpublisher.html", search=search)
 @app.route('/search/name', methods=['GET','POST'])
 def name():
