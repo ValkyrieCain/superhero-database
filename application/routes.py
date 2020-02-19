@@ -133,7 +133,7 @@ def show():
   #  lists.append(x.team)
   #  lists.append(x.sidekick)
   #  lists.append(x.nemesis)
-  #return render_template("show.html", superherodata=lists)
+  return render_template("saved.html", superherodata=lists)
 @app.route('/search/all', methods=['GET','POST'])
 def all():
   results=Superheroes.query.all()
