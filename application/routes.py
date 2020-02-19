@@ -116,9 +116,8 @@ def search():
 @app.route('/search/results', methods=['GET','POST'])
 def show():
   global resultss
-  resultss=Superheroes.query.filter(Superheroes.publisher==search.publisher.data.upper()).all()
-  print(request.form["publisher"])
-  
+  #resultss=Superheroes.query.filter(Superheroes.publisher==search.publisher.data.upper()).all()
+  print(request.form.get("publisher"))
   lists=[]
   for x in resultss:
     lists.append(x.publisher)
