@@ -126,6 +126,8 @@ def search():
 def all():
   results=Superheroes.query.all()
   return render_template("show.html", superherodata=results)
+
+
 @app.route('/search/publisher', methods=['GET','POST'])
 def publisher():
   search=Search()
@@ -138,6 +140,8 @@ def publisher():
     return redirect(url_for('saved'))
     #return render_template("show.html", superherodata=x)
   return render_template("searchpublisher.html", search=search)
+
+
 @app.route('/search/name', methods=['GET','POST'])
 def name():
   search=Search()
