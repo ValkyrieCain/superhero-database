@@ -98,6 +98,7 @@ def update():
     return render_template('update.html', data=result, hero=update)
   return render_template("searchalterego.html", search=search)
 @app.route('/delete', methods=['GET','POST'])
+@login_required
 def delete():
   search=Search()
   if search.validate_on_submit():
