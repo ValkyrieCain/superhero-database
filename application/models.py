@@ -8,9 +8,9 @@ class Superheroes(db.Model):
 	publisher = db.Column(db.String(30))
 	name = db.Column(db.String(30))
 	alterego = db.Column(db.String(30), primary_key=True)
-	p1 = db.Column(db.String(30))#, db.ForeignKey("powers.id"))
-	p2 = db.Column(db.String(30))#, db.ForeignKey("powers.id"))
-	p3 = db.Column(db.String(30))#, db.ForeignKey("powers.id"))
+	p1 = db.Column(db.Integer)#, db.ForeignKey("powers.id"))
+	p2 = db.Column(db.Integer)#, db.ForeignKey("powers.id"))
+	p3 = db.Column(db.Integer)#, db.ForeignKey("powers.id"))
 	team = db.Column(db.String(30))
 	sidekick = db.Column(db.String(30))
 	nemesis = db.Column(db.String(30))
@@ -25,14 +25,14 @@ class Superheroes(db.Model):
 		#	"Team":self.team,
 		#	"Sidekick":self.sidekick,
 		#	"Nemesis":self.nemesis}
-		x=','.join(map(str, self))
-		return x
-		#return ''.join(['Publisher: ', self.publisher, '\n',
-		#	'Name: ', self.name, '\n',
-		#	'Alter Ego: ', self.alterego, '\n',
-		#	'First Power: ', self.p1, '\n',
-		#	'Second Power: ', self.p2, '\n',
-		#	'Third Power: ', self.p3, '\n',
+		#x=','.join(map(str, self))
+		#return x
+		return ''.join(['Publisher: ', self.publisher, '\n',
+			'Name: ', self.name, '\n',
+			'Alter Ego: ', self.alterego, '\n',
+			'First Power: ', self.p1, '\n',
+			'Second Power: ', self.p2, '\n',
+			'Third Power: ', self.p3, '\n'])
 		#	'Team: ', self.team, '\n',
 		#	'Sidekick: ', self.sidekick, '\n',
 		#	'Nemesis: ', str(self.nemesis), '\n'])
