@@ -113,7 +113,7 @@ def saved():
 @app.route('/search', methods=['GET','POST'])
 def search():
   return render_template("search.html")
-@app.route('/search/results' methods=['GET','POST'])
+@app.route('/search/results', methods=['GET','POST'])
 def show():
   global resultss
   #resultss=Superheroes.query.filter(Superheroes.publisher==search.publisher.data.upper()).all()
