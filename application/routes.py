@@ -128,9 +128,10 @@ def show():
   print(23)
   print(form.data)
   print(24)
+  global pub
+  print(pub)
+  print(30)
   #alterego = Superheroes.query.filter_by(alterego=form.alterego.data.upper()).first()
-  if form.name.data != '':
-   print(33)
   #power = Superheroes.query.filter_by(power=form.power.data.upper()).first()
   #if form.power.data:
   #  print(44)
