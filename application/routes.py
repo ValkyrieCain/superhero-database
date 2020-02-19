@@ -147,6 +147,7 @@ def publisher():
     powers={}
     for x in results:
       print(100000000)
+      print(x.p1,x.p2,x.p3)
       powers[x]=Powers.query.filter(Powers.id==x.p1 or Powers.id==x.p2 or Powers.id==x.p3)
     return render_template("show.html", superherodata=results, powerdata=powers)
   return render_template("searchpublisher.html", search=search)
