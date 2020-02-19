@@ -178,18 +178,18 @@ def show():
 def all():
   results=Superheroes.query.all()
   return render_template("show.html", superherodata=results)
-@app.route('/search/publisher', methods=['GET','POST'])
-def publisher():
-  search=Search()
-  print(55)
-  if search.validate_on_submit():
-    print(55)
-    global pub
-    pub=Superheroes.query.filter(Superheroes.publisher==search.publisher.data.upper()).all()
-    print(pub)
-    print("xxxxx")
-    return redirect("/saved")
-  return render_template("searchpublisher.html", search=search)
+#@app.route('/search/publisher', methods=['GET','POST'])
+#def publisher():
+#  search=Search()
+#  print(55)
+#  if search.validate_on_submit():
+#    print(55)
+#    global pub
+#    pub=Superheroes.query.filter(Superheroes.publisher==search.publisher.data.upper()).all()
+#    print(pub)
+#    print("xxxxx")
+#    return redirect("/saved")
+#  return render_template("searchpublisher.html", search=search)
 @app.route('/search/name', methods=['GET','POST'])
 def name():
   search=Search()
