@@ -7,8 +7,8 @@ from application.forms import Hero, Search, Register, Login, Delete, Alterego
 import time
 def show(x):
   final={}
-  final["Publisher"]=x["Publisher"]
-  final["Name"]=x["Name"]
+  final[Publisher]=x["Publisher"]
+  final["Name"]=x[Name]
   final["Alterego"]=x["Alterego"]
   p1id=Powers.query.filter(Powers.power==x["p1"].upper()).first()
   p2id=Powers.query.filter(Powers.power==x["p2"].upper()).first()
