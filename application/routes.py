@@ -117,23 +117,22 @@ def search():
 @app.route('/search/results', methods=['GET','POST'])
 def show():
   global resultss
-  formm=request.form.getlist('name[]')
-  print(formm)
   lists=[]
-  #resultss=Superheroes.query.filter(Superheroes.publisher==search.publisher.data.upper()).all()
-  #for x in request.form():
-  #  lists.append(x.publisher)
-  #  lists.append(x.name)
-  #  lists.append(x.alterego)
-  #  p1p=Powers.query.filter(Powers.power==hero.p1.data.upper()).first()
-  #  p2p=Powers.query.filter(Powers.power==hero.p2.data.upper()).first()
-  #  p3p=Powers.query.filter(Powers.power==hero.p3.data.upper()).first()
-  #  lists.append(x.p1.power)
-  #  lists.append(x.p2.power)
-  #  lists.append(x.p3.power)
-  #  lists.append(x.team)
-  #  lists.append(x.sidekick)
-  #  lists.append(x.nemesis)
+  res=Superheroes.query.filter(Superheroes.publisher==resultss.upper()).all()
+  for x in res:
+    lists.append(x.publisher)
+    lists.append(x.name)
+    lists.append(x.alterego)
+    p1p=Powers.query.filter(Powers.power==hero.p1.data.upper()).first()
+    p2p=Powers.query.filter(Powers.power==hero.p2.data.upper()).first()
+    p3p=Powers.query.filter(Powers.power==hero.p3.data.upper()).first()
+    lists.append(x.p1.power)
+    lists.append(x.p2.power)
+    lists.append(x.p3.power)
+    lists.append(x.team)
+    lists.append(x.sidekick)
+    lists.append(x.nemesis)
+  print (lists)
   return render_template("saved.html", superherodata=lists)
 @app.route('/search/all', methods=['GET','POST'])
 def all():
@@ -144,7 +143,7 @@ def publisher():
   search=Search()
   if search.validate_on_submit():
     global resultss
-    resultss=Superheroes.query.filter(Superheroes.publisher==search.publisher.data.upper()).all()
+    resultss=search.publisher.data.upper()
     return redirect("/search/results")
   return render_template("searchpublisher.html", search=search)
 @app.route('/search/name', methods=['GET','POST'])
