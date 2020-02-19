@@ -2,6 +2,7 @@ from flask import render_template, redirect, url_for, request, flash
 from flask_login import login_user, current_user, logout_user, login_required
 from application import app, db, bcrypt, login_manager
 from application.models import Superheroes, Users, Powers
+import pandas as pd
 from application.forms import Hero, Search, Register, Login, Delete, Alterego
 import time
 global resultss
@@ -116,22 +117,23 @@ def search():
 @app.route('/search/results', methods=['GET','POST'])
 def show():
   global resultss
+  formm=request.form.getlist('name[]')
+  print(formm)
   #resultss=Superheroes.query.filter(Superheroes.publisher==search.publisher.data.upper()).all()
-  lists=[]
-  for x in request.form():
-    lists.append(x.publisher)
-    lists.append(x.name)
-    lists.append(x.alterego)
-    p1p=Powers.query.filter(Powers.power==hero.p1.data.upper()).first()
-    p2p=Powers.query.filter(Powers.power==hero.p2.data.upper()).first()
-    p3p=Powers.query.filter(Powers.power==hero.p3.data.upper()).first()
-    lists.append(x.p1.power)
-    lists.append(x.p2.power)
-    lists.append(x.p3.power)
-    lists.append(x.team)
-    lists.append(x.sidekick)
-    lists.append(x.nemesis)
-  return render_template("show.html", superherodata=lists)
+  #for x in request.form():
+  #  lists.append(x.publisher)
+  #  lists.append(x.name)
+  #  lists.append(x.alterego)
+  #  p1p=Powers.query.filter(Powers.power==hero.p1.data.upper()).first()
+  #  p2p=Powers.query.filter(Powers.power==hero.p2.data.upper()).first()
+  #  p3p=Powers.query.filter(Powers.power==hero.p3.data.upper()).first()
+  #  lists.append(x.p1.power)
+  #  lists.append(x.p2.power)
+  #  lists.append(x.p3.power)
+  #  lists.append(x.team)
+  #  lists.append(x.sidekick)
+  #  lists.append(x.nemesis)
+  #return render_template("show.html", superherodata=lists)
 @app.route('/search/all', methods=['GET','POST'])
 def all():
   results=Superheroes.query.all()
