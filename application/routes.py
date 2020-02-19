@@ -155,7 +155,6 @@ def all():
 def publisher():
   search=Search()
   if search.validate_on_submit():
-    print(search.publisher)
     return redirect("/search/results")
   return render_template("searchpublisher.html", search=search)
 @app.route('/search/name', methods=['GET','POST'])
