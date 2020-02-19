@@ -116,6 +116,7 @@ def search():
 def show():
   form=Search()
   print(form.publisher.data)
+  print("1")
   #print(str(res))
   #for x in res:
   #  print(str(x))
@@ -132,7 +133,7 @@ def show():
   #  lists.append(x.sidekick)
   #  lists.append(x.nemesis)
   #print (lists)
-  result=Superheroes.query.filter(Superheroes.publisher==form.publisher).first()
+  result=Superheroes.query.filter(Superheroes.publisher==form.publisher.data.upper()).first()
   print("2")
     #if update.validate_on_submit():
     #  result.publisher=update.publisher.data.upper()
