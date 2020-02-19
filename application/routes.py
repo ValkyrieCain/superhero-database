@@ -146,7 +146,6 @@ def show():
      # result.sidekick=update.sidekick.data.upper()
      # result.nemesis=update.nemesis.data.upper()
      # db.session.commit()
-  print(result)
   print("3")
   return render_template("saved.html", superherodata=form)
 @app.route('/search/all', methods=['GET','POST'])
