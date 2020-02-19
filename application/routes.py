@@ -2,12 +2,23 @@ from flask import render_template, redirect, url_for, request, flash
 from flask_login import login_user, current_user, logout_user, login_required
 from application import app, db, bcrypt, login_manager
 from application.models import Superheroes, Users, Powers
-import pandas as pd
+import pandas
 from application.forms import Hero, Search, Register, Login, Delete, Alterego
 import time
 def show(x):
   final={}
-  final["na"]=x[0]
+  final["Publisher"]=x["Publisher"]
+  final["Name"]=x["Name"]
+  final["Alterego"]=x["Alterego"]
+  p1id=Powers.query.filter(Powers.power==x["p1"].upper()).first()
+  p2id=Powers.query.filter(Powers.power==x["p2"].upper()).first()
+  p3id=Powers.query.filter(Powers.power==x["p3"].upper()).first()
+  final["First Power"]=p1.id
+  final["Second Power"]=p2.id
+  final["Third Power"]=p3.id
+  final["Team"]=x["Team"]
+  final["Sidekick"]=x["Sidekick"]
+  final["Nemesis"]=x["Nemesis"]
   return final
 @app.route('/')
 @app.route('/home')
