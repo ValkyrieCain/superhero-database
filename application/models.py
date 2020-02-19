@@ -27,8 +27,8 @@ class Superheroes(db.Model):
 		#	"Nemesis":self.nemesis}
 		#x=','.join(map(str, self))
 		#return x
-		return ''.join(['Publisher: ', self.publisher])
-		#	'Name: ', self.name, '\n',
+		return ''.join(['Publisher: ', self.publisher,
+			'Name: ', self.name])
 		#	'Alter Ego: ', self.alterego, '\n',
 		#	'First Power: ', self.p1, '\n',
 		#	'Second Power: ', self.p2, '\n',
