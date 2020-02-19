@@ -144,6 +144,7 @@ def publisher():
   search=Search()
   if search.validate_on_submit():
     results=Superheroes.query.filter(Superheroes.publisher==search.publisher.data.upper()).all()
+    print(results.publisher.data)
     print(results.publisher[0])
     #powers=[{"p1":"","p2":"","p3":""}]
     #for x in results:
