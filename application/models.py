@@ -23,7 +23,9 @@ class Superheroes(db.Model):
 class Powers(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	power = db.Column(db.String(30))
-	hero = db.relationship('Superheroes', backref='author', lazy=True)
+	p1 = db.relationship('Superheroes', backref='author', lazy=True)
+	p2 = db.relationship('Superheroes', backref='author', lazy=True)
+	p3 = db.relationship('Superheroes', backref='author', lazy=True)
 class Users(db.Model,UserMixin):
 	id = db.Column(db.Integer, primary_key=True)
 	username = db.Column(db.String(30), unique=True)
