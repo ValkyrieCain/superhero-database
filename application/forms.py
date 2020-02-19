@@ -31,7 +31,7 @@ class Search(FlaskForm):
 		if not result:
 			raise ValidationError('Hero does not exist')
 	power=StringField(validators=[Length(max=30)])
-	def validate_power(self, power):
+	#def validate_power(self, power):
 		#result = Superheroes.query.filter_by(power=power.data.upper()).first()
 		#if not result:
 		#	raise ValidationError('Hero does not exist')
