@@ -59,24 +59,24 @@ def logout():
 def create():
   hero=Hero()
   if hero.validate_on_submit():
-    #p1=Powers(power=hero.p1.data.upper())
-    #p2=Powers(power=hero.p2.data.upper())
-    #p3=Powers(power=hero.p3.data.upper())
-    #db.session.bulk_save_objects([p1,p2,p3])
-    #db.session.commit()
-    #p1id=Powers.query.filter(Powers.power==hero.p1.data.upper()).first()
-    #p2id=Powers.query.filter(Powers.power==hero.p2.data.upper()).first()
-    #p3id=Powers.query.filter(Powers.power==hero.p3.data.upper()).first()
+    p1=Powers(power=hero.p1.data.upper())
+    p2=Powers(power=hero.p2.data.upper())
+    p3=Powers(power=hero.p3.data.upper())
+    db.session.bulk_save_objects([p1,p2,p3])
+    db.session.commit()
+    p1id=Powers.query.filter(Powers.power==hero.p1.data.upper()).first()
+    p2id=Powers.query.filter(Powers.power==hero.p2.data.upper()).first()
+    p3id=Powers.query.filter(Powers.power==hero.p3.data.upper()).first()
     data=Superheroes(
       publisher=hero.publisher.data.upper(),
       name=hero.name.data.upper(),
       alterego=hero.alterego.data.upper(),
-      p1=hero.p1.data.upper(),
-      p2=hero.p2.data.upper(),
-      p3=hero.p3.data.upper(),
-      #p1=p1id.id,
-      #p2=p2id.id,
-      #p3=p3id.id,
+      #p1=hero.p1.data.upper(),
+      #p2=hero.p2.data.upper(),
+      #p3=hero.p3.data.upper(),
+      p1=p1id.id,
+      p2=p2id.id,
+      p3=p3id.id,
       team=hero.team.data.upper(),
       sidekick=hero.sidekick.data.upper(),
       nemesis=hero.nemesis.data.upper())
@@ -144,7 +144,8 @@ def publisher():
   search=Search()
   if search.validate_on_submit():
     results=Superheroes.query.filter(Superheroes.publisher==search.publisher.data.upper()).all()
-    return render_template("show.html", superherodata=results)
+    powers=Powers.query.filter(Powers.id==results.p1.data or Powers.id==results.p2.data or Powers.id==results.p3.data)
+    return render_template("show.html", superherodata=results, powerdata=powers)
   return render_template("searchpublisher.html", search=search)
 @app.route('/search/name', methods=['GET','POST'])
 def name():
