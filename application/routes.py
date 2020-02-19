@@ -57,8 +57,8 @@ def create():
       name=hero.name.data.upper(),
       alterego=hero.alterego.data.upper(),
       p1=p1id.id,
-      p2=p2.id.id,
-      p3=p3.id.id,
+      p2=p2id.id,
+      p3=p3id.id,
       team=hero.team.data.upper(),
       sidekick=hero.sidekick.data.upper(),
       nemesis=hero.nemesis.data.upper())
