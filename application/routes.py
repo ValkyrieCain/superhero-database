@@ -134,8 +134,8 @@ def publisher():
   if search.validate_on_submit():
     result=Superheroes.query.filter(Superheroes.publisher==search.publisher.data.upper()).all()
     print(1111111)
-    #x=show(result)
-    print(str(result))
+    x=show(result)
+    print(x)
     print(2222222)
     return redirect(url_for('saved'))
     #return render_template("show.html", superherodata=x)
