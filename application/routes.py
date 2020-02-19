@@ -119,7 +119,7 @@ def show():
   #resultss=Superheroes.query.filter(Superheroes.publisher==search.publisher.data.upper()).all()
   print(request.form.get("publisher"))
   lists=[]
-  for x in resultss:
+  for x in request.form:
     lists.append(x.publisher)
     lists.append(x.name)
     lists.append(x.alterego)
