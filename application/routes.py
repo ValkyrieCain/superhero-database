@@ -117,10 +117,8 @@ def search():
 def show():
   global resultss
   #resultss=Superheroes.query.filter(Superheroes.publisher==search.publisher.data.upper()).all()
-  form=request.form()
-  print(form)
   lists=[]
-  for x in request.form:
+  for x in request.form():
     lists.append(x.publisher)
     lists.append(x.name)
     lists.append(x.alterego)
