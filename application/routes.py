@@ -6,7 +6,7 @@ import pandas as pd
 from application.forms import Hero, Search, Register, Login, Delete, Alterego
 import time
 global pub
-pub=()
+pub=""
 @app.route('/')
 @app.route('/home')
 def home():
