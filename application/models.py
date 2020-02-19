@@ -27,15 +27,15 @@ class Superheroes(db.Model):
 		#	"Nemesis":self.nemesis}
 		#x=','.join(map(str, self))
 		#return x
-		return ''.join(['Publisher: ', self.publisher,
-			'Name: ', self.name])
-		#	'Alter Ego: ', self.alterego, '\n',
-		#	'First Power: ', self.p1, '\n',
-		#	'Second Power: ', self.p2, '\n',
-		#	'Third Power: ', self.p3, '\n'])
-		#	'Team: ', self.team, '\n',
-		#	'Sidekick: ', self.sidekick, '\n',
-		#	'Nemesis: ', str(self.nemesis), '\n'])
+		return ''.join(['Publisher: ', self.publisher, '\r\n',
+			'Name: ', self.name, '\r\n',
+			'Alter Ego: ', self.alterego, '\r\n',
+			'First Power: ', self.p1, '\r\n',
+			'Second Power: ', self.p2, '\r\n',
+			'Third Power: ', self.p3, '\r\n'
+			'Team: ', self.team, '\r\n',
+			'Sidekick: ', self.sidekick, '\r\n',
+			'Nemesis: ', str(self.nemesis), '\r\n'])
 
 class Users(db.Model,UserMixin):
 	id = db.Column(db.Integer, primary_key=True)
