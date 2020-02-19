@@ -25,8 +25,8 @@ class Superheroes(db.Model):
 			'Second Power: ', self.p2, '\n',
 			'Third Power: ', self.p3, '\n',
 			'Team: ', self.team, '\n',
-			'Sidekick: ', self.sidekick, '\n'
-			#'Nemesis: ', self.nemesis, '\n'
+			'Sidekick: ', self.sidekick, '\n',
+			'Nemesis: ', self.nemesis, '\n'
 			])
 class Users(db.Model,UserMixin):
 	id = db.Column(db.Integer, primary_key=True)

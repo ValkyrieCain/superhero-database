@@ -133,7 +133,7 @@ def publisher():
     result=Superheroes.query.filter(Superheroes.publisher==search.publisher.data.upper()).all()
     print(1111111)
     #x=show(result)
-    print(result)
+    print(str(result))
     print(2222222)
     return redirect(url_for('saved'))
     #return render_template("show.html", superherodata=x)
