@@ -28,6 +28,7 @@ class Alterego(FlaskForm):
 		result = Superheroes.query.filter_by(alterego=alterego.data.upper()).first()
 		if not result:
 			raise ValidationError('Hero does not exist')
+	submit=SubmitField('Submit search')
 class Delete(FlaskForm):
 	confirm=SubmitField('Yes',validators=[DataRequired()])
 class Register(FlaskForm):
