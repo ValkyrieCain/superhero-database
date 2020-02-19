@@ -10,7 +10,7 @@ class Superheroes(db.Model):
 	publisher = db.Column(db.String(30))
 	name = db.Column(db.String(30))
 	alterego = db.Column(db.String(30), primary_key=True)
-	p1 = db.Column(db.String(30), db.ForeignKey("powers.id"))
+	p1 = db.Column(db.Integer, db.ForeignKey("powers.id"))
 	p2 = db.Column(db.String(30))#, db.ForeignKey("powers.id"))
 	p3 = db.Column(db.String(30))#, db.ForeignKey("powers.id"))
 	team = db.Column(db.String(30))
