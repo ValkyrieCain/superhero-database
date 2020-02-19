@@ -5,8 +5,6 @@ from application.models import Superheroes, Users, Powers
 import pandas as pd
 from application.forms import Hero, Search, Register, Login, Delete, Alterego
 import time
-global pub
-pub=""
 @app.route('/')
 @app.route('/home')
 def home():
@@ -115,8 +113,11 @@ def saved():
 def search():
   return render_template("search.html")
 @app.route('/search/results', methods=['GET','POST'])
-def show():
-  return render_template("saved.html", superherodata=form)
+def show(pub):
+  data=Search()
+  for x in pub:
+    search.x=pub.x
+  return render_template("show.html", superherodata=data)
 @app.route('/search/all', methods=['GET','POST'])
 def all():
   results=Superheroes.query.all()
@@ -126,7 +127,7 @@ def publisher():
   search=Search()
   if search.validate_on_submit():
     pub=Superheroes.query.filter(Superheroes.publisher==search.publisher.data.upper()).all()
-    return redirect("/saved")
+    return redirect("/search/results",pub=pub)
   return render_template("searchpublisher.html", search=search)
 @app.route('/search/name', methods=['GET','POST'])
 def name():
