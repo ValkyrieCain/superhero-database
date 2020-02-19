@@ -48,6 +48,7 @@ def create():
     p3=Powers(power=hero.p3.data.upper())
     db.session.bulk_save_objects([p1,p2,p3])
     db.session.commit()
+    print("stage 1 complete")
     data=Superheroes(
       publisher=hero.publisher.data.upper(),
       name=hero.name.data.upper(),
@@ -58,8 +59,11 @@ def create():
       team=hero.team.data.upper(),
       sidekick=hero.sidekick.data.upper(),
       nemesis=hero.nemesis.data.upper())
+    print("1.5")
     db.session.add(data)
+    print("1.75")
     db.session.commit()
+    print("2")
     return redirect(url_for('saved'))
   return render_template("create.html", hero=hero)
 @app.route('/update', methods=['GET','POST'])
