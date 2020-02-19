@@ -14,8 +14,18 @@ class Superheroes(db.Model):
 	team = db.Column(db.String(30))
 	sidekick = db.Column(db.String(30))
 	nemesis = db.Column(db.String(30))
+	def __str__(self):
+		return ''.join(['Publisher: ', self.publisher, '\r\n',
+			'Name: ', self.name, '\r\n',
+			'Alter Ego: ', self.alterego, '\r\n',
+			'First Power: ', self.p1, '\r\n',
+			'Second Power: ', self.p2, '\r\n',
+			'Third Power: ', self.p3, '\r\n'
+			'Team: ', self.team, '\r\n',
+			'Sidekick: ', self.sidekick, '\r\n',
+			'Nemesis: ', str(self.nemesis)])
 	#powers = db.relationship('Powers', backref="Hero", lazy=True)
-	def __repr__(self):
+	#def __repr__(self):
 		#x={"Publisher":self.publisher,
 		#	"Name":self.name,
 		#	"Alter Ego":self.alterego,
@@ -26,8 +36,8 @@ class Superheroes(db.Model):
 		#	"Sidekick":self.sidekick,
 		#	"Nemesis":self.nemesis}
 		#x=','.join(map(str, self))
-		x= '\n'.join(''.join(elems) for elems in self)
-		return x
+		#x= '\n'.join(''.join(elems) for elems in self)
+		#return x
 		#return ''.join(['Publisher: ', self.publisher, '\r\n',
 		#	'Name: ', self.name, '\r\n',
 		#	'Alter Ego: ', self.alterego, '\r\n',
