@@ -5,8 +5,6 @@ from application.models import Superheroes, Users, Powers
 import pandas as pd
 from application.forms import Hero, Search, Register, Login, Delete, Alterego
 import time
-global resultss
-resultss=""
 @app.route('/')
 @app.route('/home')
 def home():
@@ -116,7 +114,6 @@ def search():
   return render_template("search.html")
 @app.route('/search/results', methods=['GET','POST'])
 def show():
-  global resultss
   form=Search()
   print(form)
   #print(str(res))
@@ -135,6 +132,19 @@ def show():
   #  lists.append(x.sidekick)
   #  lists.append(x.nemesis)
   #print (lists)
+  result=Superheroes.query.filter(Superheroes.publisher==form).first()
+    #if update.validate_on_submit():
+    #  result.publisher=update.publisher.data.upper()
+    #  result.name=update.name.data.upper()
+   #   result.alterego=search.alterego.data.upper()
+    #  result.p1=update.p1.data.upper()
+    #  result.p2=update.p2.data.upper()
+     # result.p3=update.p3.data.upper()
+     # result.team=update.team.data.upper()
+     # result.sidekick=update.sidekick.data.upper()
+     # result.nemesis=update.nemesis.data.upper()
+     # db.session.commit()
+  print(result)
   return render_template("saved.html", superherodata=form)
 @app.route('/search/all', methods=['GET','POST'])
 def all():
@@ -144,8 +154,6 @@ def all():
 def publisher():
   search=Search()
   if search.validate_on_submit():
-    global resultss
-    resultss=search.publisher.data.upper()
     return redirect("/search/results")
   return render_template("searchpublisher.html", search=search)
 @app.route('/search/name', methods=['GET','POST'])
