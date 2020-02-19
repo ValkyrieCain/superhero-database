@@ -116,14 +116,14 @@ def search():
   return render_template("search.html")
 @app.route('/search/results', methods=['GET','POST'])
 def show():
-  form=Search()
+
   #publisher = Superheroes.query.filter_by(publisher=form.publisher.data.upper()).first()
   #if form.publisher.data:
-  print(11)
+
   #print(form)
   #name = Superheroes.query.filter_by(name=form.name.data.upper()).first()
   #if form.name.data:
-  print(22)
+
   #print(form.publisher.data)
   print(23)
   #print(form.data)
