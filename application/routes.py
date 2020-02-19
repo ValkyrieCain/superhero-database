@@ -119,9 +119,9 @@ def show():
   global resultss
   lists=[]
   res=Superheroes.query.filter(Superheroes.publisher==resultss.upper()).all()
-  print(res)
+  print(str(res))
   for x in res:
-    print(x)
+    print(str(x))
     lists.append(x.publisher)
     lists.append(x.name)
     lists.append(x.alterego)
