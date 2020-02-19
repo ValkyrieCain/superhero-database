@@ -115,8 +115,27 @@ def search():
 @app.route('/search/results', methods=['GET','POST'])
 def show():
   form=Search()
-  print(form.publisher.data)
-  print("1")
+  publisher = Superheroes.query.filter_by(publisher=form.publisher.data.upper()).first()
+  if publisher:
+    print(1)
+  name = Superheroes.query.filter_by(name=form.name.data.upper()).first()
+  if name:
+    print(2)
+  alterego = Superheroes.query.filter_by(alterego=form.alterego.data.upper()).first()
+  if alterego:
+    print(3)
+  power = Superheroes.query.filter_by(power=form.power.data.upper()).first()
+  if power:
+    print(4)
+  team = Superheroes.query.filter_by(team=form.team.data.upper()).first()
+  if team:
+    print(5)
+  sidekick = Superheroes.query.filter_by(sidekick=form.sidekick.data.upper()).first()
+  if sidekick:
+    print(6)
+  nemesis = Superheroes.query.filter_by(nemesis=form.nemesis.data.upper()).first()
+  if nemesis:
+    print(7)
   #print(str(res))
   #for x in res:
   #  print(str(x))
@@ -146,7 +165,6 @@ def show():
      # result.sidekick=update.sidekick.data.upper()
      # result.nemesis=update.nemesis.data.upper()
      # db.session.commit()
-  print("3")
   return render_template("saved.html", superherodata=form)
 @app.route('/search/all', methods=['GET','POST'])
 def all():
