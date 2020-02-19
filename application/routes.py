@@ -118,6 +118,12 @@ def show():
   print(form)
   print(form.publisher)
   print("step 1")
+  print(form.publisher.data)
+  print("step 2")
+  print(form.publisher.value)
+  print("step 3")
+  print(form.publisher.data.value)
+
   #print(str(res))
   #for x in res:
   #  print(str(x))
