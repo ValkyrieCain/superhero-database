@@ -115,7 +115,7 @@ def search():
 @app.route('/search/results', methods=['GET','POST'])
 def show(x):
   print(x)
-  a=results
+
   print(2)
   #data=Search()
   #for x in pub:
