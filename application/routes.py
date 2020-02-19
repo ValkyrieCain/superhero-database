@@ -135,7 +135,7 @@ def show():
   #  lists.append(x.sidekick)
   #  lists.append(x.nemesis)
   #print (lists)
-  return render_template("saved.html", superherodata=lists)
+  return render_template("saved.html", superherodata=form)
 @app.route('/search/all', methods=['GET','POST'])
 def all():
   results=Superheroes.query.all()
