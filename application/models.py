@@ -16,7 +16,7 @@ class Superheroes(db.Model):
 	nemesis = db.Column(db.String(30))
 	#powers = db.relationship('Powers', backref="Hero", lazy=True)
 	def __repr__(self):
-		return ','.join(str(v) for v in __repr__)
+		return ','.join(str(v) for v in self)
 		
 	#	return ''.join(['Publisher: ', self.publisher, '\n',
 	#		'Name: ', self.name, '\n',
