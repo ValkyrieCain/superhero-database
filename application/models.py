@@ -18,15 +18,16 @@ class Superheroes(db.Model):
 	def __repr__(self):
 		return ','.join(str(v) for v in self)
 		
-	#	return ''.join(['Publisher: ', self.publisher, '\n',
-	#		'Name: ', self.name, '\n',
-	#		'Alter Ego: ', self.alterego, '\n',
-	#		'First Power: ', self.p1, '\n',
-	#		'Second Power: ', self.p2, '\n',
-	#		'Third Power: ', self.p3, '\n',
-	#		'Team: ', self.team, '\n',
-	#		'Sidekick: ', self.sidekick, '\n',
-	#		'Nemesis: ', self.nemesis, '\n'])
+		return ''.join(['Publisher: ', self.publisher, '\n',
+			'Name: ', self.name, '\n',
+			'Alter Ego: ', self.alterego, '\n',
+			'First Power: ', self.p1, '\n',
+			'Second Power: ', self.p2, '\n',
+			'Third Power: ', self.p3, '\n',
+			'Team: ', self.team, '\n',
+			'Sidekick: ', self.sidekick, '\n'
+			#'Nemesis: ', self.nemesis, '\n'
+			])
 class Users(db.Model,UserMixin):
 	id = db.Column(db.Integer, primary_key=True)
 	username = db.Column(db.String(30), unique=True)
