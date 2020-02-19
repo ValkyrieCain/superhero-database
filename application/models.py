@@ -1,5 +1,11 @@
 from application import db, login_manager
 from flask_login import UserMixin
+class Powers(db.Model):
+	id = db.Column(db.Integer, primary_key=True)
+	power = db.Column(db.String(30))
+	p1 = db.relationship('Superheroes', backref='p1', lazy=True)
+	p2 = db.relationship('Superheroes', backref='p2', lazy=True)
+	p3 = db.relationship('Superheroes', backref='p3', lazy=True)
 class Superheroes(db.Model):
 	publisher = db.Column(db.String(30))
 	name = db.Column(db.String(30))
@@ -20,12 +26,6 @@ class Superheroes(db.Model):
 			'Team: ', self.team, '\n',
 			'Sidekick: ', self.sidekick, '\n',
 			'Nemesis: ', self.nemesis, '\n'])
-class Powers(db.Model):
-	id = db.Column(db.Integer, primary_key=True)
-	power = db.Column(db.String(30))
-	p1 = db.relationship('Superheroes', backref='p1', lazy=True)
-	p2 = db.relationship('Superheroes', backref='p2', lazy=True)
-	p3 = db.relationship('Superheroes', backref='p3', lazy=True)
 class Users(db.Model,UserMixin):
 	id = db.Column(db.Integer, primary_key=True)
 	username = db.Column(db.String(30), unique=True)
