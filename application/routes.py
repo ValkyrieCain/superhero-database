@@ -185,6 +185,7 @@ def publisher():
     global pub
     pub=Superheroes.query.filter(Superheroes.publisher==search.publisher.data.upper()).all()
     print(pub)
+    print("xxxxx")
     return redirect("/search/results")
   return render_template("searchpublisher.html", search=search)
 @app.route('/search/name', methods=['GET','POST'])
