@@ -142,6 +142,7 @@ def all():
 def publisher():
   search=Search()
   if search.validate_on_submit():
+    global resultss
     resultss=Superheroes.query.filter(Superheroes.publisher==search.publisher.data.upper()).all()
     return redirect("/search/results")
   return render_template("searchpublisher.html", search=search)
