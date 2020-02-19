@@ -132,7 +132,7 @@ def show():
   #  lists.append(x.sidekick)
   #  lists.append(x.nemesis)
   #print (lists)
-  result=Superheroes.query.filter(Superheroes.publisher==form.publisher.data).first()
+  result=Superheroes.query.filter(Superheroes.publisher==form.publisher).first()
   print("2")
     #if update.validate_on_submit():
     #  result.publisher=update.publisher.data.upper()
