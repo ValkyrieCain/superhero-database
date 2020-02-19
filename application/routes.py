@@ -5,6 +5,8 @@ from application.models import Superheroes, Users, Powers
 import pandas as pd
 from application.forms import Hero, Search, Register, Login, Delete, Alterego
 import time
+def show(x):
+  print(x)
 @app.route('/')
 @app.route('/home')
 def home():
@@ -112,15 +114,12 @@ def saved():
 @app.route('/search', methods=['GET','POST'])
 def search():
   return render_template("search.html")
-@app.route('/search/results/', x=x, methods=['GET','POST'])
-def show(x):
-  print(x)
+#@app.route('/search/results/', methods=['GET','POST'])
 
-  print(2)
   #data=Search()
   #for x in pub:
   #  search.x=pub.x
-  return render_template("saved.html")#, superherodata=data)
+  #return render_template("saved.html")#, superherodata=data)
 @app.route('/search/all', methods=['GET','POST'])
 def all():
   results=Superheroes.query.all()
@@ -129,9 +128,11 @@ def all():
 def publisher():
   search=Search()
   if search.validate_on_submit():
-    pub=Superheroes.query.filter(Superheroes.publisher==search.publisher.data.upper()).all()
-    x=1
-    return redirect(url_for('show',x=pub))
+    result=Superheroes.query.filter(Superheroes.publisher==search.publisher.data.upper()).all()
+    print(result)
+    return redirect(url_for('saved'))
+    #x=show(result)
+    #return render_template("show.html", superherodata=x)
   return render_template("searchpublisher.html", search=search)
 @app.route('/search/name', methods=['GET','POST'])
 def name():
