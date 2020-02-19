@@ -7,7 +7,7 @@ from application.forms import Hero, Search, Register, Login, Delete, Alterego
 import time
 def show(x):
   final={}
-  final.naaa=x[0]
+  final[naaa]=x[0]
   return final
 @app.route('/')
 @app.route('/home')
