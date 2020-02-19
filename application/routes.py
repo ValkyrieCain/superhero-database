@@ -112,7 +112,7 @@ def saved():
 @app.route('/search', methods=['GET','POST'])
 def search():
   return render_template("search.html")
-@app.route('/search/results/<x>', methods=['GET','POST'])
+@app.route('/search/results/', x=x, methods=['GET','POST'])
 def show(x):
   print(x)
 
