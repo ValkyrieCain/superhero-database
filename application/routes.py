@@ -53,9 +53,9 @@ def create():
       publisher=hero.publisher.data.upper(),
       name=hero.name.data.upper(),
       alterego=hero.alterego.data.upper(),
-      p1=Powers.query.filter(Powers.power==hero.p1.data.upper()).first(),
-      p2=Powers.query.filter(Powers.power==hero.p2.data.upper()).first(),
-      p3=Powers.query.filter(Powers.power==hero.p3.data.upper()).first(),
+      p1=Powers.id.query.filter(Powers.power==hero.p1.data.upper()).first(),
+      p2=Powers.id.query.filter(Powers.power==hero.p2.data.upper()).first(),
+      p3=Powers.id.query.filter(Powers.power==hero.p3.data.upper()).first(),
       team=hero.team.data.upper(),
       sidekick=hero.sidekick.data.upper(),
       nemesis=hero.nemesis.data.upper())
