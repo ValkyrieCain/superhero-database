@@ -125,10 +125,10 @@ def show():
   print(form.publisher.data)
   print(23)
   print(form.data)
-  print(33)
+  print(24)
   #alterego = Superheroes.query.filter_by(alterego=form.alterego.data.upper()).first()
-  #if form.alterego.data:
-   # print(33)
+  if form.alterego.data != '':
+   print(33)
   #power = Superheroes.query.filter_by(power=form.power.data.upper()).first()
   #if form.power.data:
   #  print(44)
