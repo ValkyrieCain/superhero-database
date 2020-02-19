@@ -27,12 +27,12 @@ class Superheroes(db.Model):
 		#	"Nemesis":self.nemesis}
 		#x=','.join(map(str, self))
 		#return x
-		return ''.join(['Publisher: ', self.publisher, '\n',
-			'Name: ', self.name, '\n',
-			'Alter Ego: ', self.alterego, '\n',
-			'First Power: ', self.p1, '\n',
-			'Second Power: ', self.p2, '\n',
-			'Third Power: ', self.p3, '\n'])
+		return ''.join(['Publisher: ', self.publisher])
+		#	'Name: ', self.name, '\n',
+		#	'Alter Ego: ', self.alterego, '\n',
+		#	'First Power: ', self.p1, '\n',
+		#	'Second Power: ', self.p2, '\n',
+		#	'Third Power: ', self.p3, '\n'])
 		#	'Team: ', self.team, '\n',
 		#	'Sidekick: ', self.sidekick, '\n',
 		#	'Nemesis: ', str(self.nemesis), '\n'])
