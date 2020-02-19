@@ -8,19 +8,6 @@ import time
 @app.route('/home')
 def home():
   return render_template("home.html")
-#def forms():
-#  GG=FF()
-#  if GG.validate_on_submit():
-#    HI=School(
-#      id=GG.id.data,
-#      name=GG.name.data)
-#    db.session.add(HI)
-#    db.session.commit()
-#    print("dancing_man.gif")
-#  else:
-#    print("uhoh")
-#    print(GG.errors)
-#  return render_template("forms.html", form=GG)
 @app.route('/register', methods=['GET','POST'])
 def register():
   form=Register()
@@ -78,9 +65,6 @@ def update():
   search=Alterego()
   if search.validate_on_submit():
     result=Superheroes.query.filter(Superheroes.alterego==search.alterego.data.upper()).first()
-    print(result)
-    print(search.alterego.data)
-    print("search2")
     if update.validate_on_submit():
       result.publisher=update.publisher.data.upper()
       result.name=update.name.data.upper()
@@ -93,8 +77,6 @@ def update():
       result.nemesis=update.nemesis.data.upper()
       db.session.commit()
       return redirect(url_for('saved'))
-    else:
-      print("uhoh")
     return render_template('update.html', data=result, hero=update)
   return render_template("searchalterego.html", search=search)
 @app.route('/delete', methods=['GET','POST'])
@@ -117,7 +99,7 @@ def deleteconfirm(ae):
 @app.route('/saved')
 def saved():
   return render_template("saved.html")
-  time.sleep(2)
+  time.sleep(1)
   return redirect(url_for('home'))
 @app.route('/search', methods=['GET','POST'])
 def search():

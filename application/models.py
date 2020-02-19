@@ -4,9 +4,9 @@ class Superheroes(db.Model):
 	publisher = db.Column(db.String(30))
 	name = db.Column(db.String(30))
 	alterego = db.Column(db.String(30), primary_key=True)
-	p1 = db.Column(db.String(30))
-	p2 = db.Column(db.String(30))
-	p3 = db.Column(db.String(30))
+	p1 = db.Column(db.String(30), db.ForeignKey("powers.pid"))
+	p2 = db.Column(db.String(30), db.ForeignKey("powers.pid"))
+	p3 = db.Column(db.String(30), db.ForeignKey("powers.pid"))
 	team = db.Column(db.String(30))
 	sidekick = db.Column(db.String(30))
 	nemesis = db.Column(db.String(30))
@@ -20,6 +20,10 @@ class Superheroes(db.Model):
 			'Team: ', self.team, '\n',
 			'Sidekick: ', self.sidekick, '\n',
 			'Nemesis: ', self.nemesis, '\n'])
+class Powers(db.Model):
+	pid = db.Column(db.Integer, primary_key=True)
+	power = db.Column(db.String(30))
+	hero = db.relationship('Superheroes', backref='author', lazy=True)
 class Users(db.Model,UserMixin):
 	id = db.Column(db.Integer, primary_key=True)
 	username = db.Column(db.String(30), unique=True)
