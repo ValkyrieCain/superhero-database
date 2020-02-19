@@ -120,13 +120,13 @@ def show():
   #publisher = Superheroes.query.filter_by(publisher=form.publisher.data.upper()).first()
   #if form.publisher.data:
   print(11)
-  print(form)
+  #print(form)
   #name = Superheroes.query.filter_by(name=form.name.data.upper()).first()
   #if form.name.data:
   print(22)
-  print(form.publisher.data)
+  #print(form.publisher.data)
   print(23)
-  print(form.data)
+  #print(form.data)
   print(24)
   global pub
   print(pub)
