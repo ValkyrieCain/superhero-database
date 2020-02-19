@@ -163,6 +163,7 @@ def publisher():
 def name():
   search=Search()
   if search.validate_on_submit():
+    print(search.name.data)
     results=Superheroes.query.filter(Superheroes.name==search.name.data.upper()).all()
     return render_template("show.html", superherodata=results)
   return render_template("searchname.html", search=search)
