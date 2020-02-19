@@ -144,7 +144,12 @@ def publisher():
   search=Search()
   if search.validate_on_submit():
     results=Superheroes.query.filter(Superheroes.publisher==search.publisher.data.upper()).all()
-    powers=Powers.query.filter(Powers.id==results.p1.data or Powers.id==results.p2.data or Powers.id==results.p3.data)
+    powers={}
+    for x in results:
+      print(00000000)
+      print(x)
+      powers.x=Powers.query.filter(Powers.id==results.p1.data or Powers.id==results.p2.data or Powers.id==results.p3.data)
+    print(powers)
     return render_template("show.html", superherodata=results, powerdata=powers)
   return render_template("searchpublisher.html", search=search)
 @app.route('/search/name', methods=['GET','POST'])
