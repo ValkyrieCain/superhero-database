@@ -21,7 +21,7 @@ class Superheroes(db.Model):
 			'Sidekick: ', self.sidekick, '\n',
 			'Nemesis: ', self.nemesis, '\n'])
 class Powers(db.Model):
-	pid = db.Column(db.Integer, primary_key=True)
+	id = db.Column(db.Integer, primary_key=True)
 	power = db.Column(db.String(30))
 	hero = db.relationship('Superheroes', backref='author', lazy=True)
 class Users(db.Model,UserMixin):

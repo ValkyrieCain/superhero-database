@@ -53,9 +53,12 @@ def create():
       team=hero.team.data.upper(),
       sidekick=hero.sidekick.data.upper(),
       nemesis=hero.nemesis.data.upper())
-    db.session.add(data)
+    powers=Powers(
+      power=hero.p1.data.upper(),
+      power=hero.p2.data.upper(),
+      power=hero.p3.data.upper())
+    db.session.add(data,powers)
     db.session.commit()
-    results=Superheroes.query.all()
     return redirect(url_for('saved'))
   return render_template("create.html", hero=hero)
 @app.route('/update', methods=['GET','POST'])
