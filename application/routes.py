@@ -244,9 +244,11 @@ def power():
   if search.validate_on_submit():
     #pquery=Powers.query.filter(Powers.power.in_(search.power.data.upper())).first()
     pquery=Powers.query.filter(Powers.power==search.power.data.upper()).first()
-    xx=Superheroes.query.filter(Superheroes.p1==pquery.id).all()
+    p1q=Superheroes.query.filter(Superheroes.p1==pquery.id).all()
+    p2q=Superheroes.query.filter(Superheroes.p2==pquery.id).all()
+    p3q=Superheroes.query.filter(Superheroes.p3==pquery.id).all()
     #results=Superheroes.query.filter(Superheroes.p1==pquery.id, Superheroes.p2==pquery.id, Superheroes.p3==pquery.id).all()
-    results=Superheroes.query.filter_by(p1=pquery.id, or p2=pquery.id, or p3=pquery.id).all()
+    results=[p1q,p2q,p3q]
     p1=0
     p2=0
     p3=0
