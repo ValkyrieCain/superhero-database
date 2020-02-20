@@ -81,7 +81,7 @@ def create():
     db.session.add(data)
     db.session.commit()
     return redirect(url_for('saved'))
-  return render_template("create.html", hero=hero)
+  return render_template("create.html", hero=hero, alterego=alterego)
 @app.route('/update', methods=['GET','POST'])
 @login_required
 def update():
