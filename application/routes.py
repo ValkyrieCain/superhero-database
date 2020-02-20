@@ -248,11 +248,13 @@ def power():
     p1=0
     p2=0
     p3=0
-    print(p1)
+    print(1000000)
+    print(pquery.id)
+    print(1111111)
     print(pquery)
-    print(p2)
+    print(2222222)
     print(results)
-    print(p3)
+    print(3333333)
     p1id=""
     p2id=""
     p3id=""
@@ -267,9 +269,9 @@ def power():
       p3id=Powers.query.filter(Powers.id==p3).first()
       x.__dict__['p3']=p3id.power
     print(p1)
-    print(111111111)
+    print(4444444)
     print(p1id)
-    print(111111111)
+    print(5555555)
     return render_template("show.html", superherodata=results)
   return render_template("searchpower.html", search=search)
 @app.route('/search/team', methods=['GET','POST'])
