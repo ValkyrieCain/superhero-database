@@ -163,8 +163,11 @@ def publisher():
       p1id=Powers.query.filter(Powers.id==p1).first()
       x.__dict__['p1']=p1id.power
       p2=int(x.__dict__['p2'])
+      p2id=Powers.query.filter(Powers.id==p2).first()
+      x.__dict__['p2']=p2id.power
       p3=int(x.__dict__['p3'])
-    print(x.__dict__['p1'])
+      p3id=Powers.query.filter(Powers.id==p3).first()
+      x.__dict__['p3']=p1id.power
     #print(p2)
     #print(111111111111111)
     #p1id=Powers.query.filter(Powers.id==p1).first()
@@ -178,13 +181,13 @@ def publisher():
     #print(222)
     #print(powers)
     print(111111111111111)
-    return redirect(url_for('saved'))
+    #return redirect(url_for('saved'))
     #print(powers)#{"p1":"","p2":"","p3":""}]
     #for x in results:
     #  powers.p1=Powers.query.filter(Powers.id==x.p1)
     #  powers.p2=Powers.query.filter(Powers.id==x.p2)
     #  powers.p3=Powers.query.filter(Powers.id==x.p3)
-    #return render_template("show.html", superherodata=results, p1id=p1id, p2id=p2id, p3id=p3id)#, powerdata=powers)
+    return render_template("show.html", superherodata=results)#, p1id=p1id, p2id=p2id, p3id=p3id)#, powerdata=powers)
     #{%for x in powerdata%}
     #  <tr>
     #   <td>{{x.power}}</td>
