@@ -145,10 +145,14 @@ def publisher():
   if search.validate_on_submit():
     results=Superheroes.query.filter(Superheroes.publisher==search.publisher.data.upper()).all()
     #print(results.publisher.data)
+    p1={}
     print(111111111111111)
     for x in results:
-      print(x.__dict__['p1'])
+      p1[0]=print(x.__dict__['p1'])
+      p2[0]=print(x.__dict__['p2'])
+      p3[0]=print(x.__dict__['p3'])
     print(111111111111111)
+    print(p1)
     #return redirect(url_for('saved'))
     powers=[]#{"p1":"","p2":"","p3":""}]
     #for x in results:
