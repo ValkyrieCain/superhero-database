@@ -146,17 +146,18 @@ def publisher():
     results=Superheroes.query.filter(Superheroes.publisher==search.publisher.data.upper()).all()
     #print(results.publisher.data)
     print(111111111111111)
-    #for x in results:
-    #  p1=Powers.query.filter(Powers.id==(x.__dict__['p1'])).first()
+    for x in results:
+    #  p1=Powers.query.filter(Powers.id==(print(x.__dict__['p1'])).first()
     #  p2=Powers.query.filter(Powers.id==(x.__dict__['p2'])).first()
     #  p3=Powers.query.filter(Powers.id==(x.__dict__['p3'])).first()
+      print(x.__dict__['p1'])
     print(111111111111111)
     #print(p1)
     #print(p2)
     #print(p3)
-    powers=Powers.query.filter(Powers.id==8).first()
+    #powers=Powers.query.filter(Powers.id==8).first()
     print(222)
-    print(powers)
+    #print(powers)
     print(111111111111111)
     return redirect(url_for('saved'))
     #print(powers)#{"p1":"","p2":"","p3":""}]
