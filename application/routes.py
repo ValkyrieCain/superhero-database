@@ -259,7 +259,7 @@ def power():
     print(2222222)
     print(results)
     print(3333333)
-    print(xx)
+    #print(xx)
     print(4000400)
     p1id=""
     p2id=""
