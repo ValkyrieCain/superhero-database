@@ -248,19 +248,9 @@ def power():
     p2q=Superheroes.query.filter(Superheroes.p2==pquery.id).all()
     p3q=Superheroes.query.filter(Superheroes.p3==pquery.id).all()
     #results=Superheroes.query.filter(Superheroes.p1==pquery.id, Superheroes.p2==pquery.id, Superheroes.p3==pquery.id).all()
-    #results=[p1q,p2q,p3q]
     p1=0
     p2=0
     p3=0
-    print(1000000)
-    print(pquery.id)
-    print(1111111)
-    print(pquery)
-    print(2222222)
-    #print(results)
-    print(3333333)
-    #print(xx)
-    print(4000400)
     p1id=""
     p2id=""
     p3id=""
@@ -294,10 +284,6 @@ def power():
       p3=int(x.__dict__['p3'])
       p3id=Powers.query.filter(Powers.id==p3).first()
       x.__dict__['p3']=p3id.power
-    print(p1)
-    print(4444444)
-    print(p1id)
-    print(5555555)
     return render_template("showpowers.html", p1=p1q, p2=p2q, p3=p3q)
   return render_template("searchpower.html", search=search)
 @app.route('/search/team', methods=['GET','POST'])
