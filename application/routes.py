@@ -143,7 +143,7 @@ def all():
 def publisher():
   search=Search()
   if search.validate_on_submit():
-    results=Superheroes.query.filter(Superheroes.publisher==search.publisher.data.upper()).first()
+    results=Superheroes.query.filter(Superheroes.publisher==search.publisher.data.upper()).all()
     #print(results.publisher.data)
     print(111111111111111)
     for x in results:

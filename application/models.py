@@ -14,16 +14,16 @@ class Superheroes(db.Model):
 	team = db.Column(db.String(30))
 	sidekick = db.Column(db.String(30))
 	nemesis = db.Column(db.String(30))
-	def __str__(self):
-		return ''.join(['Publisher: ', self.publisher, '\r\n',
-			'Name: ', self.name, '\r\n',
-			'Alter Ego: ', self.alterego, '\r\n',
-			'First Power: ', self.p1, '\r\n',
-			'Second Power: ', self.p2, '\r\n',
-			'Third Power: ', self.p3, '\r\n'
-			'Team: ', self.team, '\r\n',
-			'Sidekick: ', self.sidekick, '\r\n',
-			'Nemesis: ', str(self.nemesis)])
+	#def __str__(self):
+	#	return ''.join(['Publisher: ', self.publisher, '\r\n',
+	#		'Name: ', self.name, '\r\n',
+	#		'Alter Ego: ', self.alterego, '\r\n',
+	#		'First Power: ', self.p1, '\r\n',
+	#		'Second Power: ', self.p2, '\r\n',
+	#		'Third Power: ', self.p3, '\r\n'
+	#		'Team: ', self.team, '\r\n',
+	#		'Sidekick: ', self.sidekick, '\r\n',
+	#		'Nemesis: ', str(self.nemesis)])
 	#powers = db.relationship('Powers', backref="Hero", lazy=True)
 	#def __repr__(self):
 		#x={"Publisher":self.publisher,
