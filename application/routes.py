@@ -46,6 +46,7 @@ def create():
 #  {{alterego.hidden_tag()}}
 #  {{alterego.submit}}<br>
 #</form>
+#if alterego.validate_on_submit():
   hero=Hero()
   if hero.validate_on_submit():
     plist=[]
@@ -79,7 +80,7 @@ def create():
     db.session.add(data)
     db.session.commit()
     return redirect(url_for('saved'))
-  return render_template("create.html", hero=hero, alterego=alterego)
+  return render_template("create.html", hero=hero)#, alterego=alterego)
 @app.route('/update', methods=['GET','POST'])
 @login_required
 def update():
