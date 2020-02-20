@@ -154,7 +154,7 @@ def publisher():
     #print(p1)
     #print(p2)
     #print(p3)
-    powers=Powers.query.filter(Powers.id==7).first()
+    powers=Powers.query.filter(Powers.id==8).first()
     print(222)
     print(powers)
     print(111111111111111)
