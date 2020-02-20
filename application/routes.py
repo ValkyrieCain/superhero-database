@@ -245,7 +245,8 @@ def power():
     #pquery=Powers.query.filter(Powers.power.in_(search.power.data.upper())).first()
     pquery=Powers.query.filter(Powers.power==search.power.data.upper()).first()
     xx=Superheroes.query.filter(Superheroes.p1==pquery.id).all()
-    results=Superheroes.query.filter_by(Superheroes.p1=pquery.id, Superheroes.p2=pquery.id, Superheroes.p3=pquery.id).all()
+    #results=Superheroes.query.filter(Superheroes.p1==pquery.id, Superheroes.p2==pquery.id, Superheroes.p3==pquery.id).all()
+    results=Superheroes.query.filter_by(p1==pquery.id, p2==pquery.id, p3==pquery.id).all()
     p1=0
     p2=0
     p3=0
