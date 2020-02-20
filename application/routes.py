@@ -46,10 +46,20 @@ def create():
   alterego=Alteregocreate()
   if alterego.validate_on_submit():
     if hero.validate_on_submit():
-      p1=Powers(power=hero.p1.data.upper())
-      p2=Powers(power=hero.p2.data.upper())
-      p3=Powers(power=hero.p3.data.upper())
-      db.session.bulk_save_objects([p1,p2,p3])
+      plist=[]
+      p1check=Powers.query.filter(Powers.power==hero.p1.data.upper()).first()
+      if not p1check:
+        p1=Powers(power=hero.p1.data.upper())
+        plist.append(p1)
+      p2check=Powers.query.filter(Powers.power==hero.p2.data.upper()).first()
+      if not p2check:
+        p2=Powers(power=hero.p2.data.upper())
+        plist.append(p2)
+      p3check=Powers.query.filter(Powers.power==hero.p3.data.upper()).first()
+      if not p3check:
+        p3=Powers(power=hero.p3.data.upper())
+        plist.append(p3)
+      db.session.bulk_save_objects(plist)
       db.session.commit()
       p1id=Powers.query.filter(Powers.power==hero.p1.data.upper()).first()
       p2id=Powers.query.filter(Powers.power==hero.p2.data.upper()).first()
