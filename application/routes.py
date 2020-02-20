@@ -58,6 +58,7 @@ def logout():
 @login_required
 def create():
   hero=Hero()
+  alterego=Alterego()
   if hero.validate_on_submit():
     p1=Powers(power=hero.p1.data.upper())
     p2=Powers(power=hero.p2.data.upper())
@@ -70,10 +71,7 @@ def create():
     data=Superheroes(
       publisher=hero.publisher.data.upper(),
       name=hero.name.data.upper(),
-      alterego=hero.alterego.data.upper(),
-      #p1=hero.p1.data.upper(),
-      #p2=hero.p2.data.upper(),
-      #p3=hero.p3.data.upper(),
+      alterego=alterego.alterego.data.upper(),
       p1=p1id.id,
       p2=p2id.id,
       p3=p3id.id,
