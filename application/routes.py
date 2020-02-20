@@ -200,7 +200,7 @@ def alterego():
     p1id=Powers.query.filter(Powers.id==p1).first()
     p2id=Powers.query.filter(Powers.id==p2).first()
     p3id=Powers.query.filter(Powers.id==p3).first()
-    return render_template("show.html", superherodata=results, p1id=p1id, p2id=p2id, p3id=p3id)
+    return render_template("showalterego.html", superherodata=results, p1id=p1id, p2id=p2id, p3id=p3id)
   return render_template("searchalterego.html", search=search)
 @app.route('/search/power', methods=['GET','POST'])
 def power():
