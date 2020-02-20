@@ -243,7 +243,7 @@ def power():
   search=Search()
   if search.validate_on_submit():
     #pquery=Powers.query.filter(Powers.power.in_(search.power.data.upper())).first()
-    pquery=Powers.query.filter(Powers.power==search.power.data.upper())
+    pquery=Powers.query.filter(Powers.power==search.power.data.upper()).first()
     results=Superheroes.query.filter(Superheroes.p1==pquery.id or Superheroes.p2==pquery.id or Superheroes.p3==pquery.id).all()
     p1=0
     p2=0
