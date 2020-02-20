@@ -58,7 +58,7 @@ def logout():
 @login_required
 def create():
   hero=Hero()
-  alterego=Alterego()
+  alterego=Alteregocreate()
   if hero.validate_on_submit():
     p1=Powers(power=hero.p1.data.upper())
     p2=Powers(power=hero.p2.data.upper())
