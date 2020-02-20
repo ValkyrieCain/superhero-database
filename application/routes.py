@@ -146,6 +146,8 @@ def publisher():
     results=Superheroes.query.filter(Superheroes.publisher==search.publisher.data.upper()).all()
     #print(results.publisher.data)
     p1={}
+    p2={}
+    p3={}
     print(111111111111111)
     for x in results:
       p1[0]=print(x.__dict__['p1'])
