@@ -155,13 +155,28 @@ def search():
 @app.route('/search/all', methods=['GET','POST'])
 def all():
   results=Superheroes.query.all()
+  p1=0
+  p2=0
+  p3=0
+  p1id=""
+  p2id=""
+  p3id=""
+  for x in results:
+    p1=int(x.__dict__['p1'])
+    p1id=Powers.query.filter(Powers.id==p1).first()
+    x.__dict__['p1']=p1id.power
+    p2=int(x.__dict__['p2'])
+    p2id=Powers.query.filter(Powers.id==p2).first()
+    x.__dict__['p2']=p2id.power
+    p3=int(x.__dict__['p3'])
+    p3id=Powers.query.filter(Powers.id==p3).first()
+    x.__dict__['p3']=p1id.power
   return render_template("show.html", superherodata=results)
 @app.route('/search/publisher', methods=['GET','POST'])
 def publisher():
   search=Search()
   if search.validate_on_submit():
     results=Superheroes.query.filter(Superheroes.publisher==search.publisher.data.upper()).all()
-    #print(results.publisher.data)
     p1=0
     p2=0
     p3=0
@@ -178,24 +193,6 @@ def publisher():
       p3=int(x.__dict__['p3'])
       p3id=Powers.query.filter(Powers.id==p3).first()
       x.__dict__['p3']=p1id.power
-    #print(p2)
-    #print(111111111111111)
-    #p1id=Powers.query.filter(Powers.id==p1).first()
-    #p2id=Powers.query.filter(Powers.id==p2).first()
-    #p3id=Powers.query.filter(Powers.id==p3).first()
-    #print(111111111111111)
-    #print(p1id)
-    #print(p2)
-    #print(p3id)
-    #powers=Powers.query.filter(Powers.id==8).first()
-    #print(222)
-    #print(powers)
-    #return redirect(url_for('saved'))
-    #print(powers)#{"p1":"","p2":"","p3":""}]
-    #for x in results:
-    #  powers.p1=Powers.query.filter(Powers.id==x.p1)
-    #  powers.p2=Powers.query.filter(Powers.id==x.p2)
-    #  powers.p3=Powers.query.filter(Powers.id==x.p3)
     return render_template("show.html", superherodata=results)
   return render_template("searchpublisher.html", search=search)
 @app.route('/search/name', methods=['GET','POST'])
