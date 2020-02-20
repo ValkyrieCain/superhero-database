@@ -48,6 +48,7 @@ def create():
 #</form>
 #if alterego.validate_on_submit():
   hero=Hero()
+  #alterego=Alteregocreate()
   if hero.validate_on_submit():
     plist=[]
     p1check=Powers.query.filter(Powers.power==hero.p1.data.upper()).first()
@@ -56,8 +57,8 @@ def create():
       plist.append(p1)
     p2check=Powers.query.filter(Powers.power==hero.p2.data.upper()).first()
     if not p2check:
-     p2=Powers(power=hero.p2.data.upper())
-     plist.append(p2)
+      p2=Powers(power=hero.p2.data.upper())
+      plist.append(p2)
     p3check=Powers.query.filter(Powers.power==hero.p3.data.upper()).first()
     if not p3check:
       p3=Powers(power=hero.p3.data.upper())
@@ -98,12 +99,30 @@ def update():
     result.__dict__['p2']=p2id.power
     result.__dict__['p3']=p3id.power
     if update.validate_on_submit():
+      plist=[]
+      p1check=Powers.query.filter(Powers.power==update.p1.data.upper()).first()
+      if not p1check:
+        p1=Powers(power=update.p1.data.upper())
+        plist.append(p1)
+      p2check=Powers.query.filter(Powers.power==update.p2.data.upper()).first()
+      if not p2check:
+        p2=Powers(power=update.p2.data.upper())
+        plist.append(p2)
+      p3check=Powers.query.filter(Powers.power==update.p3.data.upper()).first()
+      if not p3check:
+        p3=Powers(power=update.p3.data.upper())
+        plist.append(p3)
+      db.session.bulk_save_objects(plist)
+      db.session.commit()
+      p1enter=Powers.query.filter(Powers.power==update.p1.data.upper()).first()
+      p2enter=Powers.query.filter(Powers.power==update.p2.data.upper()).first()
+      p3enter=Powers.query.filter(Powers.power==update.p3.data.upper()).first()
       result.publisher=update.publisher.data.upper()
       result.name=update.name.data.upper()
       result.alterego=search.alterego.data.upper()
-      result.p1=update.p1.data.upper()
-      result.p2=update.p2.data.upper()
-      result.p3=update.p3.data.upper()
+      result.p1=p1enter.id
+      result.p2=p2enter.id
+      result.p3=p3enter.id
       result.team=update.team.data.upper()
       result.sidekick=update.sidekick.data.upper()
       result.nemesis=update.nemesis.data.upper()
@@ -163,7 +182,7 @@ def all():
     x.__dict__['p2']=p2id.power
     p3=int(x.__dict__['p3'])
     p3id=Powers.query.filter(Powers.id==p3).first()
-    x.__dict__['p3']=p3d.power
+    x.__dict__['p3']=p3id.power
   return render_template("show.html", superherodata=results)
 @app.route('/search/publisher', methods=['GET','POST'])
 def publisher():
