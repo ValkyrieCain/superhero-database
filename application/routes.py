@@ -150,9 +150,9 @@ def publisher():
     p3=0
     print(111111111111111)
     for x in results:
-      p1=x.__dict__['p1']
-      p2=x.__dict__['p2']
-      p3=x.__dict__['p3']
+      p1=int(x.__dict__['p1'])
+      p2=int(x.__dict__['p2'])
+      p3=int(x.__dict__['p3'])
     p1id=Powers.query.filter(Powers.id==p1).first()
     p2id=Powers.query.filter(Powers.id==p2).first()
     p3id=Powers.query.filter(Powers.id==p3).first()
