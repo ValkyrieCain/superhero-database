@@ -173,7 +173,7 @@ def publisher():
     #  powers.p1=Powers.query.filter(Powers.id==x.p1)
     #  powers.p2=Powers.query.filter(Powers.id==x.p2)
     #  powers.p3=Powers.query.filter(Powers.id==x.p3)
-    return render_template("show.html", superherodata=results, p1=p1, p2=p2, p3=p3)#, powerdata=powers)
+    return render_template("show.html", superherodata=results, p1id=p1id, p2id=p2id, p3id=p3id)#, powerdata=powers)
   return render_template("searchpublisher.html", search=search)
 @app.route('/search/name', methods=['GET','POST'])
 def name():
