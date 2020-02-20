@@ -242,7 +242,8 @@ def alterego():
 def power():
   search=Search()
   if search.validate_on_submit():
-    results=Superheroes.query.filter(Superheroes.p1==search.power.data.upper() or Superheroes.p2==search.power.data.upper() or Superheroes.p3==search.power.data.upper()).all()
+    pquery=Powers.query.filter(search.power.data.upper() in Powers.power)
+    results=Superheroes.query.filter(Superheroes.p1==pquery.id or Superheroes.p2==pquery.id or Superheroes.p3==pquery.id).all()
     p1=0
     p2=0
     p3=0
