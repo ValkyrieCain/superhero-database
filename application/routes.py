@@ -150,11 +150,14 @@ def publisher():
     p3={}
     print(111111111111111)
     for x in results:
-      p1[0]=print(x.__dict__['p1'])
-      p2[0]=print(x.__dict__['p2'])
-      p3[0]=print(x.__dict__['p3'])
+      p1[0]=x.__dict__['p1']
+      p2[0]=x.__dict__['p2']
+      p3[0]=x.__dict__['p3']
     print(111111111111111)
     print(p1)
+    print(p2)
+    print(p3)
+    print(111111111111111)
     #return redirect(url_for('saved'))
     powers=[]#{"p1":"","p2":"","p3":""}]
     #for x in results:
