@@ -48,8 +48,8 @@ def create():
 #</form>
 #if alterego.validate_on_submit():
   hero=Hero()
-  alterego=Alteregocreate()
-  if alterego.validate_on_submit() and hero.validate_on_submit():
+  #alterego=Alteregocreate()
+  if hero.validate_on_submit():
     plist=[]
     p1check=Powers.query.filter(Powers.power==hero.p1.data.upper()).first()
     if not p1check:
@@ -81,7 +81,7 @@ def create():
     db.session.add(data)
     db.session.commit()
     return redirect(url_for('saved'))
-  return render_template("create.html", hero=hero, alterego=alterego)
+  return render_template("create.html", hero=hero)#, alterego=alterego)
 @app.route('/update', methods=['GET','POST'])
 @login_required
 def update():
