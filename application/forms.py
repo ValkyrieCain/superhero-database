@@ -22,13 +22,20 @@ class Search(FlaskForm):
 	sidekick=StringField(validators=[Length(max=30)])
 	nemesis=StringField(validators=[Length(max=30)])
 	submit=SubmitField('Submit search')
+class Alteregocreate(FlaskForm):
+	alterego=StringField(validators=[Length(max=30)])
+	submit=SubmitField('Check if hero is already in the database')
+	def validate_alterego(self, alterego):
+		result = Superheroes.query.filter_by(alterego=alterego.data.upper()).first()
+		if result:
+			raise ValidationError('Hero is already in the database')
 class Alterego(FlaskForm):
 	alterego=StringField(validators=[Length(max=30)])
+	submit=SubmitField('Submit')
 	def validate_alterego(self, alterego):
 		result = Superheroes.query.filter_by(alterego=alterego.data.upper()).first()
 		if not result:
 			raise ValidationError('Hero does not exist')
-	submit=SubmitField('Submit search')
 class Delete(FlaskForm):
 	confirm=SubmitField('Yes',validators=[DataRequired()])
 class Register(FlaskForm):

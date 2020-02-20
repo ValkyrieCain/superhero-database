@@ -17,19 +17,17 @@
    	 </tr>
    	</thead>
    	<tbody>
-   	 {%for x in superherodata%}
-   	  <tr>
-   	   <td>{{x.publisher}}</td>
-	     <td>{{x.name}}</td>
-	     <td>{{x.alterego}}</td>
-	     <td>{{x.p1}}</td>
-	     <td>{{x.p2}}</td>
-	     <td>{{x.p3}}</td>
-	     <td>{{x.team}}</td>
-	     <td>{{x.sidekick}}</td>
-	     <td>{{x.nemesis}}</td>
-	    </tr>
-	   {%endfor%}
+   	 <tr>
+   	  <td>{{superherodata.publisher}}</td>
+	    <td>{{superherodata.name}}</td>
+	    <td>{{superherodata.alterego}}</td>
+	    <td>{{p1id.power}}</td>
+	    <td>{{p2id.power}}</td>
+	    <td>{{p3id.power}}</td>
+	    <td>{{superherodata.team}}</td>
+	    <td>{{superherodata.sidekick}}</td>
+	    <td>{{superherodata.nemesis}}</td>
+	   </tr>
 	  </tbody>
    </table>
   </form>
