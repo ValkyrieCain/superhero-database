@@ -97,6 +97,9 @@ def update():
     p1id=Powers.query.filter(Powers.id==p1).first()
     p2id=Powers.query.filter(Powers.id==p2).first()
     p3id=Powers.query.filter(Powers.id==p3).first()
+    result.__dict__['p1']=p1id.power
+    result.__dict__['p2']=p2id.power
+    result.__dict__['p3']=p3id.power
     if update.validate_on_submit():
       result.publisher=update.publisher.data.upper()
       result.name=update.name.data.upper()
@@ -109,7 +112,7 @@ def update():
       result.nemesis=update.nemesis.data.upper()
       db.session.commit()
       return redirect(url_for('saved'))
-    return render_template('update.html', data=result, hero=update, p1id=p1id, p2id=p2id, p3id=p3id)
+    return render_template('update.html', data=result, hero=update)
   return render_template("searchalterego.html", search=search)
 @app.route('/delete', methods=['GET','POST'])
 @login_required
@@ -123,6 +126,15 @@ def delete():
 def deleteconfirm(ae):
   delete=Delete()
   deletethis=Superheroes.query.filter(Superheroes.alterego==ae.upper()).first()
+  p1=int(deletethis.__dict__['p1'])
+  p2=int(deletethis.__dict__['p2'])
+  p3=int(deletethis.__dict__['p3'])
+  p1id=Powers.query.filter(Powers.id==p1).first()
+  p2id=Powers.query.filter(Powers.id==p2).first()
+  p3id=Powers.query.filter(Powers.id==p3).first()
+  deletethis.__dict__['p1']=p1id.power
+  deletethis.__dict__['p2']=p2id.power
+  deletethis.__dict__['p3']=p3id.power
   if delete.validate_on_submit():
     db.session.delete(deletethis)
     db.session.commit()
@@ -157,7 +169,6 @@ def publisher():
     p1id=""
     p2id=""
     p3id=""
-    print(111111111111111)
     for x in results:
       p1=int(x.__dict__['p1'])
       p1id=Powers.query.filter(Powers.id==p1).first()
@@ -180,19 +191,13 @@ def publisher():
     #powers=Powers.query.filter(Powers.id==8).first()
     #print(222)
     #print(powers)
-    print(111111111111111)
     #return redirect(url_for('saved'))
     #print(powers)#{"p1":"","p2":"","p3":""}]
     #for x in results:
     #  powers.p1=Powers.query.filter(Powers.id==x.p1)
     #  powers.p2=Powers.query.filter(Powers.id==x.p2)
     #  powers.p3=Powers.query.filter(Powers.id==x.p3)
-    return render_template("show.html", superherodata=results)#, p1id=p1id, p2id=p2id, p3id=p3id)#, powerdata=powers)
-    #{%for x in powerdata%}
-    #  <tr>
-    #   <td>{{x.power}}</td>
-    #  </tr>
-    # {%endfor%}
+    return render_template("show.html", superherodata=results)
   return render_template("searchpublisher.html", search=search)
 @app.route('/search/name', methods=['GET','POST'])
 def name():
@@ -206,20 +211,46 @@ def name():
 def alterego():
   search=Alterego()
   if search.validate_on_submit():
-    results=Superheroes.query.filter(Superheroes.alterego==search.alterego.data.upper()).first()
-    p1=int(results.__dict__['p1'])
-    p2=int(results.__dict__['p2'])
-    p3=int(results.__dict__['p3'])
-    p1id=Powers.query.filter(Powers.id==p1).first()
-    p2id=Powers.query.filter(Powers.id==p2).first()
-    p3id=Powers.query.filter(Powers.id==p3).first()
-    return render_template("showalterego.html", superherodata=results, p1id=p1id, p2id=p2id, p3id=p3id)
+    results=Superheroes.query.filter(Superheroes.alterego==search.alterego.data.upper()).all()
+    p1=0
+    p2=0
+    p3=0
+    p1id=""
+    p2id=""
+    p3id=""
+    for x in results:
+      p1=int(x.__dict__['p1'])
+      p1id=Powers.query.filter(Powers.id==p1).first()
+      x.__dict__['p1']=p1id.power
+      p2=int(x.__dict__['p2'])
+      p2id=Powers.query.filter(Powers.id==p2).first()
+      x.__dict__['p2']=p2id.power
+      p3=int(x.__dict__['p3'])
+      p3id=Powers.query.filter(Powers.id==p3).first()
+      x.__dict__['p3']=p1id.power
+    return render_template("show.html", superherodata=results)
   return render_template("searchalterego.html", search=search)
 @app.route('/search/power', methods=['GET','POST'])
 def power():
   search=Search()
   if search.validate_on_submit():
     results=Superheroes.query.filter(Superheroes.p1==search.power.data.upper() or Superheroes.p2==search.power.data.upper() or Superheroes.p3==search.power.data.upper()).all()
+    p1=0
+    p2=0
+    p3=0
+    p1id=""
+    p2id=""
+    p3id=""
+    for x in results:
+      p1=int(x.__dict__['p1'])
+      p1id=Powers.query.filter(Powers.id==p1).first()
+      x.__dict__['p1']=p1id.power
+      p2=int(x.__dict__['p2'])
+      p2id=Powers.query.filter(Powers.id==p2).first()
+      x.__dict__['p2']=p2id.power
+      p3=int(x.__dict__['p3'])
+      p3id=Powers.query.filter(Powers.id==p3).first()
+      x.__dict__['p3']=p1id.power
     return render_template("show.html", superherodata=results)
   return render_template("searchpower.html", search=search)
 @app.route('/search/team', methods=['GET','POST'])
@@ -227,6 +258,22 @@ def team():
   search=Search()
   if search.validate_on_submit():
     results=Superheroes.query.filter(Superheroes.team==search.team.data.upper()).all()
+    p1=0
+    p2=0
+    p3=0
+    p1id=""
+    p2id=""
+    p3id=""
+    for x in results:
+      p1=int(x.__dict__['p1'])
+      p1id=Powers.query.filter(Powers.id==p1).first()
+      x.__dict__['p1']=p1id.power
+      p2=int(x.__dict__['p2'])
+      p2id=Powers.query.filter(Powers.id==p2).first()
+      x.__dict__['p2']=p2id.power
+      p3=int(x.__dict__['p3'])
+      p3id=Powers.query.filter(Powers.id==p3).first()
+      x.__dict__['p3']=p1id.power
     return render_template("show.html", superherodata=results)
   return render_template("searchteam.html", search=search)
 @app.route('/search/sidekick', methods=['GET','POST'])
@@ -234,6 +281,22 @@ def sidekick():
   search=Search()
   if search.validate_on_submit():
     results=Superheroes.query.filter(Superheroes.sidekick==search.sidekick.data.upper()).all()
+    p1=0
+    p2=0
+    p3=0
+    p1id=""
+    p2id=""
+    p3id=""
+    for x in results:
+      p1=int(x.__dict__['p1'])
+      p1id=Powers.query.filter(Powers.id==p1).first()
+      x.__dict__['p1']=p1id.power
+      p2=int(x.__dict__['p2'])
+      p2id=Powers.query.filter(Powers.id==p2).first()
+      x.__dict__['p2']=p2id.power
+      p3=int(x.__dict__['p3'])
+      p3id=Powers.query.filter(Powers.id==p3).first()
+      x.__dict__['p3']=p1id.power
     return render_template("show.html", superherodata=results)
   return render_template("searchsidekick.html", search=search)
 @app.route('/search/nemesis', methods=['GET','POST'])
@@ -241,6 +304,22 @@ def nemesis():
   search=Search()
   if search.validate_on_submit():
     results=Superheroes.query.filter(Superheroes.nemesis==search.nemesis.data.upper()).all()
+    p1=0
+    p2=0
+    p3=0
+    p1id=""
+    p2id=""
+    p3id=""
+    for x in results:
+      p1=int(x.__dict__['p1'])
+      p1id=Powers.query.filter(Powers.id==p1).first()
+      x.__dict__['p1']=p1id.power
+      p2=int(x.__dict__['p2'])
+      p2id=Powers.query.filter(Powers.id==p2).first()
+      x.__dict__['p2']=p2id.power
+      p3=int(x.__dict__['p3'])
+      p3id=Powers.query.filter(Powers.id==p3).first()
+      x.__dict__['p3']=p1id.power
     return render_template("show.html", superherodata=results)
   return render_template("searchnemesis.html", search=search)
 
