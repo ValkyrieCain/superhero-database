@@ -146,7 +146,8 @@ def publisher():
     results=Superheroes.query.filter(Superheroes.publisher==search.publisher.data.upper()).all()
     #print(results.publisher.data)
     print(111111111111111)
-    print(str(results[0]))
+    for x in results:
+      print(x.data.__dict__)
     print(111111111111111)
     return redirect(url_for('saved'))
     #powers=[{"p1":"","p2":"","p3":""}]
