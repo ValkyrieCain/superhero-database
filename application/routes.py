@@ -153,7 +153,7 @@ def publisher():
       p1=int(x.__dict__['p1'])
       p2=int(x.__dict__['p2'])
       p3=int(x.__dict__['p3'])
-    print(p1)
+    print(p1+4)
     print(p2)
     print(111111111111111)
     p1id=Powers.query.filter(Powers.id==p1).first()
