@@ -91,6 +91,12 @@ def update():
   search=Alterego()
   if search.validate_on_submit():
     result=Superheroes.query.filter(Superheroes.alterego==search.alterego.data.upper()).first()
+    p1=int(result.__dict__['p1'])
+    p2=int(result.__dict__['p2'])
+    p3=int(result.__dict__['p3'])
+    p1id=Powers.query.filter(Powers.id==p1).first()
+    p2id=Powers.query.filter(Powers.id==p2).first()
+    p3id=Powers.query.filter(Powers.id==p3).first()
     if update.validate_on_submit():
       result.publisher=update.publisher.data.upper()
       result.name=update.name.data.upper()
@@ -103,7 +109,7 @@ def update():
       result.nemesis=update.nemesis.data.upper()
       db.session.commit()
       return redirect(url_for('saved'))
-    return render_template('update.html', data=result, hero=update)
+    return render_template('update.html', data=result, hero=update, p1id=p1id, p2id=p2id, p3id=p3id)
   return render_template("searchalterego.html", search=search)
 @app.route('/delete', methods=['GET','POST'])
 @login_required
@@ -196,7 +202,6 @@ def alterego():
     p1=int(results.__dict__['p1'])
     p2=int(results.__dict__['p2'])
     p3=int(results.__dict__['p3'])
-    print(p1)
     p1id=Powers.query.filter(Powers.id==p1).first()
     p2id=Powers.query.filter(Powers.id==p2).first()
     p3id=Powers.query.filter(Powers.id==p3).first()
