@@ -3,16 +3,9 @@
  <form method='POST' action=''>
   {{search.hidden_tag()}}
   <div>
-   <p>Search by sidekick</p>
+   <h5>Search by sidekick</h5>
    {{search.sidekick}}
    {{search.submit}}
-    {%if search.alterego.errors%}
-     <div class='error'>
-      {%for error in search.alterego.errors%}
-       <span>{{error}}</span>
-      {%endfor%}
-     </div>
-    {%endif%}
    </div>
  </form>
 {% endblock %}
