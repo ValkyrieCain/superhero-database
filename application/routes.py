@@ -3,7 +3,7 @@ from flask_login import login_user, current_user, logout_user, login_required
 from application import app, db, bcrypt, login_manager
 from application.models import Superheroes, Users, Powers
 import pandas
-from application.forms import Hero, Search, Register, Login, Delete, Alterego
+from application.forms import Hero, Search, Register, Login, Delete, Alterego, Alteregocreate
 import time
 #def show(x):
 #  final={}
