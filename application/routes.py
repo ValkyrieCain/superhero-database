@@ -44,39 +44,38 @@ def logout():
 def create():
   hero=Hero()
   alterego=Alteregocreate()
-  if alterego.validate_on_submit():
-    if hero.validate_on_submit():
-      plist=[]
-      p1check=Powers.query.filter(Powers.power==hero.p1.data.upper()).first()
-      if not p1check:
-        p1=Powers(power=hero.p1.data.upper())
-        plist.append(p1)
-      p2check=Powers.query.filter(Powers.power==hero.p2.data.upper()).first()
-      if not p2check:
-        p2=Powers(power=hero.p2.data.upper())
-        plist.append(p2)
-      p3check=Powers.query.filter(Powers.power==hero.p3.data.upper()).first()
-      if not p3check:
-        p3=Powers(power=hero.p3.data.upper())
-        plist.append(p3)
-      db.session.bulk_save_objects(plist)
-      db.session.commit()
-      p1id=Powers.query.filter(Powers.power==hero.p1.data.upper()).first()
-      p2id=Powers.query.filter(Powers.power==hero.p2.data.upper()).first()
-      p3id=Powers.query.filter(Powers.power==hero.p3.data.upper()).first()
-      data=Superheroes(
-        publisher=hero.publisher.data.upper(),
-        name=hero.name.data.upper(),
-        alterego=alterego.alterego.data.upper(),
-        p1=p1id.id,
-        p2=p2id.id,
-        p3=p3id.id,
-        team=hero.team.data.upper(),
-        sidekick=hero.sidekick.data.upper(),
-        nemesis=hero.nemesis.data.upper())
-      db.session.add(data)
-      db.session.commit()
-      return redirect(url_for('saved'))
+  if hero.validate_on_submit():
+    plist=[]
+    p1check=Powers.query.filter(Powers.power==hero.p1.data.upper()).first()
+    if not p1check:
+      p1=Powers(power=hero.p1.data.upper())
+      plist.append(p1)
+    p2check=Powers.query.filter(Powers.power==hero.p2.data.upper()).first()
+    if not p2check:
+     p2=Powers(power=hero.p2.data.upper())
+     plist.append(p2)
+    p3check=Powers.query.filter(Powers.power==hero.p3.data.upper()).first()
+    if not p3check:
+      p3=Powers(power=hero.p3.data.upper())
+      plist.append(p3)
+    db.session.bulk_save_objects(plist)
+    db.session.commit()
+    p1id=Powers.query.filter(Powers.power==hero.p1.data.upper()).first()
+    p2id=Powers.query.filter(Powers.power==hero.p2.data.upper()).first()
+    p3id=Powers.query.filter(Powers.power==hero.p3.data.upper()).first()
+    data=Superheroes(
+      publisher=hero.publisher.data.upper(),
+      name=hero.name.data.upper(),
+      alterego=alterego.alterego.data.upper(),
+      p1=p1id.id,
+      p2=p2id.id,
+      p3=p3id.id,
+      team=hero.team.data.upper(),
+      sidekick=hero.sidekick.data.upper(),
+      nemesis=hero.nemesis.data.upper())
+    db.session.add(data)
+    db.session.commit()
+    return redirect(url_for('saved'))
   return render_template("create.html", hero=hero, alterego=alterego)
 @app.route('/update', methods=['GET','POST'])
 @login_required
