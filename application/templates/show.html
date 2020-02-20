@@ -14,28 +14,30 @@
    	  <th>Team</th>
    	  <th>Sidekick</th>
    	  <th>Nemesis</th>
+      <th>X</th>
    	 </tr>
    	</thead>
    	<tbody>
    	 {%for x in superherodata%}
    	  <tr>
+       <td>{{x}}</td>
    	   <td>{{x.publisher}}</td>
-	   <td>{{x.name}}</td>
-	   <td>{{x.alterego}}</td>
-	   <td>{{x.p1}}</td>
-	   <td>{{x.p2}}</td>
-	   <td>{{x.p3}}</td>
-	   <td>{{x.team}}</td>
-	   <td>{{x.sidekick}}</td>
-	   <td>{{x.nemesis}}</td>
-	  </tr>
-	 {%endfor%}
-	 {%for x in powerdata%}
-	  <tr>
-	   <td>{{x.power}}</td>
-	  </tr>
-	 {%endfor%}
-	</tbody>
+	     <td>{{x.name}}</td>
+	     <td>{{x.alterego}}</td>
+	     <td>{{x.p1}}</td>
+	     <td>{{x.p2}}</td>
+	     <td>{{x.p3}}</td>
+	     <td>{{x.team}}</td>
+	     <td>{{x.sidekick}}</td>
+	     <td>{{x.nemesis}}</td>
+	    </tr>
+	   {%endfor%}
+	   {%for x in powerdata%}
+	    <tr>
+	     <td>{{x.power}}</td>
+	    </tr>
+	   {%endfor%}
+	  </tbody>
    </table>
   </form>
  </div>
