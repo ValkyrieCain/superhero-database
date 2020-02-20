@@ -145,16 +145,21 @@ def publisher():
   if search.validate_on_submit():
     results=Superheroes.query.filter(Superheroes.publisher==search.publisher.data.upper()).all()
     #print(results.publisher.data)
+    p1=0
+    p2=0
+    p3=0
     print(111111111111111)
     for x in results:
-    #  p1=Powers.query.filter(Powers.id==(print(x.__dict__['p1'])).first()
-    #  p2=Powers.query.filter(Powers.id==(x.__dict__['p2'])).first()
-    #  p3=Powers.query.filter(Powers.id==(x.__dict__['p3'])).first()
-      print(x.__dict__['p1'])
+      p1=x.__dict__['p1']
+      p2=x.__dict__['p2']
+      p3=x.__dict__['p3']
+    p1id=Powers.query.filter(Powers.id==p1).first()
+    p2id=Powers.query.filter(Powers.id==p2).first()
+    p3id=Powers.query.filter(Powers.id==p3).first()
     print(111111111111111)
-    #print(p1)
-    #print(p2)
-    #print(p3)
+    print(p1id)
+    print(p2)
+    print(p3id)
     #powers=Powers.query.filter(Powers.id==8).first()
     print(222)
     #print(powers)
