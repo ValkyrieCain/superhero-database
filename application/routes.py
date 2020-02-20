@@ -193,13 +193,10 @@ def alterego():
   search=Alterego()
   if search.validate_on_submit():
     results=Superheroes.query.filter(Superheroes.alterego==search.alterego.data.upper()).first()
-    p1=0
-    p2=0
-    p3=0
-    for x in results:
-      p1=int(x.__dict__['p1'])
-      p2=int(x.__dict__['p2'])
-      p3=int(x.__dict__['p3'])
+    p1=int(results.__dict__['p1'])
+    p2=int(results.__dict__['p2'])
+    p3=int(results.__dict__['p3'])
+    print(p1)
     p1id=Powers.query.filter(Powers.id==p1).first()
     p2id=Powers.query.filter(Powers.id==p2).first()
     p3id=Powers.query.filter(Powers.id==p3).first()
