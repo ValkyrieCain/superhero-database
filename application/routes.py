@@ -5,21 +5,6 @@ from application.models import Superheroes, Users, Powers
 import pandas
 from application.forms import Hero, Search, Register, Login, Delete, Alterego, Alteregocreate
 import time
-#def show(x):
-#  final={}
-#  final[Publisher]=x[Publisher]
-#  final["Name"]=x[Name]
-#  final["Alterego"]=x["Alterego"]
-#  p1id=Powers.query.filter(Powers.power==x["p1"].upper()).first()
-#  p2id=Powers.query.filter(Powers.power==x["p2"].upper()).first()
-#  p3id=Powers.query.filter(Powers.power==x["p3"].upper()).first()
-#  final["First Power"]=p1.id
-#  final["Second Power"]=p2.id
-#  final["Third Power"]=p3.id
-#  final["Team"]=x["Team"]
-#  final["Sidekick"]=x["Sidekick"]
-#  final["Nemesis"]=x["Nemesis"]
-#  return final
 @app.route('/')
 @app.route('/home')
 def home():
@@ -147,11 +132,6 @@ def saved():
 @app.route('/search', methods=['GET','POST'])
 def search():
   return render_template("search.html")
-#@app.route('/search/results/', methods=['GET','POST'])
-  #data=Search()
-  #for x in pub:
-  #  search.x=pub.x
-  #return render_template("saved.html")#, superherodata=data)
 @app.route('/search/all', methods=['GET','POST'])
 def all():
   results=Superheroes.query.all()
