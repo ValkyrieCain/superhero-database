@@ -147,7 +147,7 @@ def publisher():
     #print(results.publisher.data)
     print(111111111111111)
     for x in results:
-      print(x.__dict__.p1)
+      print(x.__dict__[p1])
     print(111111111111111)
     #return redirect(url_for('saved'))
     powers=[]#{"p1":"","p2":"","p3":""}]
