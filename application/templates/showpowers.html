@@ -1,0 +1,63 @@
+{%extends "template.html"%}
+{%block extra%}
+ <div class='forms'>
+  <form method='POST' action=''>
+   <table width="100%" border="3px solid black" border-spacing="5px">
+  	<thead>
+  	 <tr>
+  	  <th>Publisher</th>
+  	  <th>Name</th>
+  	  <th>Alter Ego</th>
+  	  <th>First Power</th>
+  	  <th>Second Power</th>
+   	  <th>Third Power</th>
+   	  <th>Team</th>
+   	  <th>Sidekick</th>
+   	  <th>Nemesis</th>
+   	 </tr>
+   	</thead>
+   	<tbody>
+   	 {%for x in p1%}
+   	  <tr>
+   	   <td>{{x.publisher}}</td>
+	     <td>{{x.name}}</td>
+	     <td>{{x.alterego}}</td>
+	     <td>{{x.p1}}</td>
+	     <td>{{x.p2}}</td>
+	     <td>{{x.p3}}</td>
+	     <td>{{x.team}}</td>
+	     <td>{{x.sidekick}}</td>
+	     <td>{{x.nemesis}}</td>
+	    </tr>
+	   {%endfor%}
+     {%for x in p2%}
+      <tr>
+       <td>{{x.publisher}}</td>
+       <td>{{x.name}}</td>
+       <td>{{x.alterego}}</td>
+       <td>{{x.p1}}</td>
+       <td>{{x.p2}}</td>
+       <td>{{x.p3}}</td>
+       <td>{{x.team}}</td>
+       <td>{{x.sidekick}}</td>
+       <td>{{x.nemesis}}</td>
+      </tr>
+     {%endfor%}
+     {%for x in p3%}
+      <tr>
+       <td>{{x.publisher}}</td>
+       <td>{{x.name}}</td>
+       <td>{{x.alterego}}</td>
+       <td>{{x.p1}}</td>
+       <td>{{x.p2}}</td>
+       <td>{{x.p3}}</td>
+       <td>{{x.team}}</td>
+       <td>{{x.sidekick}}</td>
+       <td>{{x.nemesis}}</td>
+      </tr>
+     {%endfor%}
+	  </tbody>
+   </table>
+  </form>
+ </div>
+{%endblock%}

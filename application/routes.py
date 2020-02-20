@@ -248,7 +248,7 @@ def power():
     p2q=Superheroes.query.filter(Superheroes.p2==pquery.id).all()
     p3q=Superheroes.query.filter(Superheroes.p3==pquery.id).all()
     #results=Superheroes.query.filter(Superheroes.p1==pquery.id, Superheroes.p2==pquery.id, Superheroes.p3==pquery.id).all()
-    results=[p1q,p2q,p3q]
+    #results=[p1q,p2q,p3q]
     p1=0
     p2=0
     p3=0
@@ -257,14 +257,34 @@ def power():
     print(1111111)
     print(pquery)
     print(2222222)
-    print(results)
+    #print(results)
     print(3333333)
     #print(xx)
     print(4000400)
     p1id=""
     p2id=""
     p3id=""
-    for x in results:
+    for x in p1q:
+      p1=int(x.__dict__['p1'])
+      p1id=Powers.query.filter(Powers.id==p1).first()
+      x.__dict__['p1']=p1id.power
+      p2=int(x.__dict__['p2'])
+      p2id=Powers.query.filter(Powers.id==p2).first()
+      x.__dict__['p2']=p2id.power
+      p3=int(x.__dict__['p3'])
+      p3id=Powers.query.filter(Powers.id==p3).first()
+      x.__dict__['p3']=p3id.power
+    for x in p2q:
+      p1=int(x.__dict__['p1'])
+      p1id=Powers.query.filter(Powers.id==p1).first()
+      x.__dict__['p1']=p1id.power
+      p2=int(x.__dict__['p2'])
+      p2id=Powers.query.filter(Powers.id==p2).first()
+      x.__dict__['p2']=p2id.power
+      p3=int(x.__dict__['p3'])
+      p3id=Powers.query.filter(Powers.id==p3).first()
+      x.__dict__['p3']=p3id.power
+    for x in p3q:
       p1=int(x.__dict__['p1'])
       p1id=Powers.query.filter(Powers.id==p1).first()
       x.__dict__['p1']=p1id.power
@@ -278,7 +298,7 @@ def power():
     print(4444444)
     print(p1id)
     print(5555555)
-    return render_template("show.html", superherodata=results)
+    return render_template("showpowers.html", p1=p1q, p2=p2q, p3=p3q)
   return render_template("searchpower.html", search=search)
 @app.route('/search/team', methods=['GET','POST'])
 def team():
