@@ -2,10 +2,13 @@
 {%block extra%}
  <div class='forms'>
   <form method='POST' action=''>
+   {{alterego.hidden_tag()}}
+   Alter Ego = {{alterego.alterego}} {{alterego.submit}}<br>
+  </form>
+  <form method='POST' action=''>
    <p>{{hero.hidden_tag()}}<br>
    	Publisher = {{hero.publisher}}<br>
  	Name = {{hero.name}}<br>
- 	Alter Ego = {{hero.alterego}}<br>
  	First Power = {{hero.p1}}<br>
  	Second Power = {{hero.p2}}<br>
  	Third Power = {{hero.p3}}<br>
