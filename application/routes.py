@@ -42,8 +42,11 @@ def logout():
 @app.route('/create', methods=['GET','POST'])
 @login_required
 def create():
+#<form method='POST' action=''>
+#  {{alterego.hidden_tag()}}
+#  {{alterego.submit}}<br>
+#</form>
   hero=Hero()
-  alterego=Alteregocreate()
   if hero.validate_on_submit():
     plist=[]
     p1check=Powers.query.filter(Powers.power==hero.p1.data.upper()).first()
@@ -66,7 +69,7 @@ def create():
     data=Superheroes(
       publisher=hero.publisher.data.upper(),
       name=hero.name.data.upper(),
-      alterego=alterego.alterego.data.upper(),
+      alterego=hero.alterego.data.upper(),
       p1=p1id.id,
       p2=p2id.id,
       p3=p3id.id,
