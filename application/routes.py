@@ -150,9 +150,9 @@ def publisher():
     p3={}
     print(111111111111111)
     for x in results:
-      p1[0]=x.__dict__['p1']
-      p2[0]=x.__dict__['p2']
-      p3[0]=x.__dict__['p3']
+      p1[0]=Powers.query.filter(Powers.id==(x.__dict__['p1'])).first()
+      p2[0]=Powers.query.filter(Powers.id==(x.__dict__['p2'])).first()
+      p3[0]=Powers.query.filter(Powers.id==(x.__dict__['p3'])).first()
     print(111111111111111)
     print(p1)
     print(p2)
@@ -164,7 +164,7 @@ def publisher():
     #  powers.p1=Powers.query.filter(Powers.id==x.p1)
     #  powers.p2=Powers.query.filter(Powers.id==x.p2)
     #  powers.p3=Powers.query.filter(Powers.id==x.p3)
-    return render_template("show.html", superherodata=results, powerdata=powers)
+    return render_template("show.html", superherodata=results, p1=p1, p2=p2, p3=p3, powerdata=powers)
   return render_template("searchpublisher.html", search=search)
 @app.route('/search/name', methods=['GET','POST'])
 def name():
