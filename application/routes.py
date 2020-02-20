@@ -155,7 +155,7 @@ def deleteconfirm(ae):
     db.session.delete(deletethis)
     db.session.commit()
     return redirect(url_for('saved'))
-  return render_template('delete.html', data=deletethis, delete=delete)
+  return render_template('delete.html', data=deletethis, delete=delete, title="Delete a hero")
 @app.route('/saved')
 def saved():
   return render_template("saved.html")
