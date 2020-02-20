@@ -15,7 +15,7 @@ class Hero(FlaskForm):
 	nemesis=StringField(validators=[DataRequired(),Length(max=30)])
 	submit=SubmitField('Submit hero')
 	def validate_powers(self, hero):
-		if hero.p1.data==hero.p2.data or hero.p1.data==hero.p3.data or hero.p2.data==hero.p3.data:
+		if hero.p1.data.upper()==hero.p2.data.upper() or hero.p1.data.upper()==hero.p3.data.upper() or hero.p2.data.upper()==hero.p3.data.upper():
 			raise ValidationError('Powers must be different')
 class Search(FlaskForm):
 	publisher=StringField(validators=[Length(max=30)])
