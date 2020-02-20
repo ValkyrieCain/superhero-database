@@ -163,7 +163,7 @@ def all():
     x.__dict__['p2']=p2id.power
     p3=int(x.__dict__['p3'])
     p3id=Powers.query.filter(Powers.id==p3).first()
-    x.__dict__['p3']=p1id.power
+    x.__dict__['p3']=p3id.power
   return render_template("show.html", superherodata=results)
 @app.route('/search/publisher', methods=['GET','POST'])
 def publisher():
@@ -185,7 +185,7 @@ def publisher():
       x.__dict__['p2']=p2id.power
       p3=int(x.__dict__['p3'])
       p3id=Powers.query.filter(Powers.id==p3).first()
-      x.__dict__['p3']=p1id.power
+      x.__dict__['p3']=p3id.power
     return render_template("show.html", superherodata=results)
   return render_template("searchpublisher.html", search=search)
 @app.route('/search/name', methods=['GET','POST'])
@@ -216,7 +216,7 @@ def alterego():
       x.__dict__['p2']=p2id.power
       p3=int(x.__dict__['p3'])
       p3id=Powers.query.filter(Powers.id==p3).first()
-      x.__dict__['p3']=p1id.power
+      x.__dict__['p3']=p3id.power
     return render_template("show.html", superherodata=results)
   return render_template("searchalterego.html", search=search)
 @app.route('/search/power', methods=['GET','POST'])
@@ -239,7 +239,7 @@ def power():
       x.__dict__['p2']=p2id.power
       p3=int(x.__dict__['p3'])
       p3id=Powers.query.filter(Powers.id==p3).first()
-      x.__dict__['p3']=p1id.power
+      x.__dict__['p3']=p3id.power
     return render_template("show.html", superherodata=results)
   return render_template("searchpower.html", search=search)
 @app.route('/search/team', methods=['GET','POST'])
@@ -262,7 +262,7 @@ def team():
       x.__dict__['p2']=p2id.power
       p3=int(x.__dict__['p3'])
       p3id=Powers.query.filter(Powers.id==p3).first()
-      x.__dict__['p3']=p1id.power
+      x.__dict__['p3']=p3id.power
     return render_template("show.html", superherodata=results)
   return render_template("searchteam.html", search=search)
 @app.route('/search/sidekick', methods=['GET','POST'])
@@ -285,7 +285,7 @@ def sidekick():
       x.__dict__['p2']=p2id.power
       p3=int(x.__dict__['p3'])
       p3id=Powers.query.filter(Powers.id==p3).first()
-      x.__dict__['p3']=p1id.power
+      x.__dict__['p3']=p3id.power
     return render_template("show.html", superherodata=results)
   return render_template("searchsidekick.html", search=search)
 @app.route('/search/nemesis', methods=['GET','POST'])
@@ -308,7 +308,7 @@ def nemesis():
       x.__dict__['p2']=p2id.power
       p3=int(x.__dict__['p3'])
       p3id=Powers.query.filter(Powers.id==p3).first()
-      x.__dict__['p3']=p1id.power
+      x.__dict__['p3']=p3id.power
     return render_template("show.html", superherodata=results)
   return render_template("searchnemesis.html", search=search)
 
