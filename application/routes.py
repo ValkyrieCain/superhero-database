@@ -192,7 +192,7 @@ def name():
 def alterego():
   search=Alterego()
   if search.validate_on_submit():
-    results=Superheroes.query.filter(Superheroes.alterego==search.alterego.data.upper()).all()
+    results=Superheroes.query.filter(Superheroes.alterego==search.alterego.data.upper()).first()
     p1=0
     p2=0
     p3=0
@@ -205,7 +205,6 @@ def alterego():
     p3id=Powers.query.filter(Powers.id==p3).first()
     return render_template("show.html", superherodata=results, p1id=p1id, p2id=p2id, p3id=p3id)
   return render_template("searchalterego.html", search=search)
-
 @app.route('/search/power', methods=['GET','POST'])
 def power():
   search=Search()
