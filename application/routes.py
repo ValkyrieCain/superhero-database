@@ -112,7 +112,7 @@ def update():
       if not p3check:
         p3=Powers(power=update.p3.data.upper())
         plist.append(p3)
-      db.session.bulk_save_objects(plist)
+      db.session.bulk_save_objects(plist)#s
       db.session.commit()
       p1enter=Powers.query.filter(Powers.power==update.p1.data.upper()).first()
       p2enter=Powers.query.filter(Powers.power==update.p2.data.upper()).first()
