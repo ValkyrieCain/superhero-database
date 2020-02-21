@@ -153,10 +153,10 @@ def deleteconfirm(ae):
   deletethis.__dict__['p1']=p1id.power
   deletethis.__dict__['p2']=p2id.power
   deletethis.__dict__['p3']=p3id.power
-  if multidelete.dontdelete.confirm.validate_on_submit():
+  if multidelete.dontdelete.validate_on_submit():
     print("no")
     return redirect("/home")
-  if multidelete.delete.confirm.validate_on_submit():
+  if multidelete.delete.validate_on_submit():
     print("yes")
     db.session.delete(deletethis)
     db.session.commit()
