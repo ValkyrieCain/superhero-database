@@ -143,8 +143,8 @@ def deleteconfirm(ae):
   delete=Delete()
   dontdelete=Dontdelete()
   deletethis=Superheroes.query.filter(Superheroes.alterego==ae.upper()).first()
-  p1=int(deletethis.__dict__['p1'])asdadfffff
-  p2=int(deletethis.__dict__['p2'])#dfsfd
+  p1=int(deletethis.__dict__['p1'])
+  p2=int(deletethis.__dict__['p2'])
   p3=int(deletethis.__dict__['p3'])
   p1id=Powers.query.filter(Powers.id==p1).first()
   p2id=Powers.query.filter(Powers.id==p2).first()
