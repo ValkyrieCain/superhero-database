@@ -41,6 +41,8 @@ class Alterego(FlaskForm):
 			raise ValidationError('Hero does not exist')
 class Delete(FlaskForm):
 	confirm=SubmitField('Yes',validators=[DataRequired()])
+class Dontdelete(FlaskForm):
+	confirm=SubmitField('No',validators=[DataRequired()])
 class Register(FlaskForm):
 	username = StringField('Username', validators=[DataRequired(),Length(max=30)])
 	password = PasswordField('Password', validators=[DataRequired(),Length(max=100)])

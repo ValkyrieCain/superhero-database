@@ -3,7 +3,7 @@ from flask_login import login_user, current_user, logout_user, login_required
 from application import app, db, bcrypt, login_manager
 from application.models import Superheroes, Users, Powers
 import pandas
-from application.forms import Hero, Search, Register, Login, Delete, Alterego, Alteregocreate
+from application.forms import Hero, Search, Register, Login, Delete, Alterego, Alteregocreate, Dontdelete
 import time
 @app.route('/')
 @app.route('/home')
@@ -141,6 +141,7 @@ def delete():
 @app.route('/delete/<ae>', methods=['GET','POST'])
 def deleteconfirm(ae):
   delete=Delete()
+  dontdelete=Dontdelete()
   deletethis=Superheroes.query.filter(Superheroes.alterego==ae.upper()).first()
   p1=int(deletethis.__dict__['p1'])
   p2=int(deletethis.__dict__['p2'])
@@ -155,7 +156,9 @@ def deleteconfirm(ae):
     db.session.delete(deletethis)
     db.session.commit()
     return redirect(url_for('saved'))
-  return render_template('delete.html', data=deletethis, delete=delete)
+  if dontdelete.validate_on_submit():
+    return redirect("/home")
+  return render_template('delete.html', data=deletethis, delete=delete, dontdelete=dontdelete)
 @app.route('/saved')
 def saved():
   return render_template("saved.html")
