@@ -3,7 +3,11 @@
 <h3>Add a hero</h3>
  <div class='forms'>
   <form method='POST' action=''>
-   <p>{{hero.hidden_tag()}}
+   {{alterego.hidden_tag()}}
+   {{alterego.submit}}<br>
+  </form>
+  <form method='POST' action=''>
+   <p>{{hero.hidden_tag()}}	
    	Publisher = {{hero.publisher}}<br>
  	Name = {{hero.name}}<br>
  	Alterego = {{hero.alterego}}<br>
