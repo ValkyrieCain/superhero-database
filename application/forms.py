@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import IntegerField,StringField,SubmitField,PasswordField,BooleanField
+from wtforms import IntegerField,StringField,SubmitField,PasswordField,BooleanField,FormField
 from wtforms.validators import DataRequired,Length,EqualTo,ValidationError
 from application.models import Users, Superheroes
 
@@ -43,6 +43,9 @@ class Delete(FlaskForm):
 	confirm=SubmitField('Yes',validators=[DataRequired()])
 class Dontdelete(FlaskForm):
 	confirm=SubmitField('No',validators=[DataRequired()])
+class Multidelete(FlaskForm):
+	delete=FormField(Delete)
+	dontdelete=FormField(Dontdelete)
 class Register(FlaskForm):
 	username = StringField('Username', validators=[DataRequired(),Length(max=30)])
 	password = PasswordField('Password', validators=[DataRequired(),Length(max=100)])

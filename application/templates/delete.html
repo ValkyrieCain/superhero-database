@@ -14,21 +14,7 @@
  	Sidekick = {{data.sidekick}}<br>
  	Nemesis = {{data.nemesis}}<br>
    	Are you sure you want to delete this hero?<br>
-   	{{delete.confirm}} {{dontdelete.confirm}}
-   	{%if delete.confirm.errors%}
-     <div class='error'>
-      {%for error in delete.confirm.errors%}
-       <span>{{error}}</span>
-      {%endfor%}
-     </div>
-    {%endif%}
-    {%if dontdelete.confirm.errors%}
-     <div class='error'>
-      {%for error in dontdelete.confirm.errors%}
-       <span>{{error}}</span>
-      {%endfor%}
-     </div>
-    {%endif%}
+   	{{multidelete.delete}} {{multidelete.dontdelete}}
    </p>
   </form>
  </div>

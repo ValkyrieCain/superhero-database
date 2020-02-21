@@ -3,7 +3,7 @@ from flask_login import login_user, current_user, logout_user, login_required
 from application import app, db, bcrypt, login_manager
 from application.models import Superheroes, Users, Powers
 import pandas
-from application.forms import Hero, Search, Register, Login, Delete, Alterego, Alteregocreate, Dontdelete
+from application.forms import Hero, Search, Register, Login, Delete, Alterego, Alteregocreate, Dontdelete, Multidelete
 import time
 @app.route('/')
 @app.route('/home')
@@ -142,6 +142,7 @@ def delete():
 def deleteconfirm(ae):
   delete=Delete()
   dontdelete=Dontdelete()
+  multidelete=Multidelete()
   deletethis=Superheroes.query.filter(Superheroes.alterego==ae.upper()).first()
   p1=int(deletethis.__dict__['p1'])
   p2=int(deletethis.__dict__['p2'])
@@ -152,15 +153,15 @@ def deleteconfirm(ae):
   deletethis.__dict__['p1']=p1id.power
   deletethis.__dict__['p2']=p2id.power
   deletethis.__dict__['p3']=p3id.power
-  if dontdelete.validate_on_submit():
+  if multidelete.dontdelete.validate_on_submit():
     print("no")
     return redirect("/home")
-  if delete.validate_on_submit():
+  if multidelete.delete.validate_on_submit():
     print("yes")
     db.session.delete(deletethis)
     db.session.commit()
     return redirect(url_for('saved'))
-  return render_template('delete.html', data=deletethis, delete=delete, dontdelete=dontdelete)
+  return render_template('delete.html', data=deletethis, multidelete=multidelete)#, delete=delete, dontdelete=dontdelete)
 @app.route('/saved')
 def saved():
   return render_template("saved.html")
