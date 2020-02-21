@@ -15,16 +15,16 @@
  	Nemesis = {{data.nemesis}}<br>
    	Are you sure you want to delete this hero?<br>
    	{{delete.confirm}} {{dontdelete.confirm}}
-   	{%if search.delete.errors%}
+   	{%if delete.confirm.errors%}
      <div class='error'>
-      {%for error in search.delete.errors%}
+      {%for error in delete.confirm.errors%}
        <span>{{error}}</span>
       {%endfor%}
      </div>
     {%endif%}
-    {%if search.dontdelete.errors%}
+    {%if dontdelete.confirm.errors%}
      <div class='error'>
-      {%for error in search.dontdelete.errors%}
+      {%for error in dontdelete.confirm.errors%}
        <span>{{error}}</span>
       {%endfor%}
      </div>
