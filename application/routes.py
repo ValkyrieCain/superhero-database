@@ -154,9 +154,9 @@ def deleteconfirm(ae):
   deletethis.__dict__['p3']=p3id.power
   if delete.validate_on_submit():
     db.session.delete(deletethis)
-    db.session.commit()
+    db.session.commit()#sdfkjshldkfdsaj
     return redirect(url_for('saved'))
-  elif dontdelete.validate_on_submit():
+  if dontdelete.validate_on_submit():
     return redirect("/home")
   return render_template('delete.html', data=deletethis, delete=delete, dontdelete=dontdelete)
 @app.route('/saved')
