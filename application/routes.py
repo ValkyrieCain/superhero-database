@@ -154,7 +154,7 @@ def deleteconfirm(ae):
   deletethis.__dict__['p3']=p3id.power
   if delete.validate_on_submit():
     db.session.delete(deletethis)
-    db.session.commit()#sdfkjshldkfdsajsdfasfdsa
+    db.session.commit()
     return redirect(url_for('saved'))
   if dontdelete.validate_on_submit():
     return redirect("/home")
