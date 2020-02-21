@@ -49,7 +49,7 @@ def create():
   hero=Hero()
   alterego=Alteregocreate()
   if alterego.alterego.data and alterego.validate_on_submit():
-    if hero.validate_on_submit():
+    if hero.validate_on_submit() and hero.alterego.data:
       plist=[]
       p1check=Powers.query.filter(Powers.power==hero.p1.data.upper()).first()
       if not p1check:
