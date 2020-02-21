@@ -135,6 +135,7 @@ def update():
 def delete():
   search=Alterego()
   if search.validate_on_submit():
+    print(search.alterego.data)
     ae=search.alterego.data
     return redirect("/delete/"+ae)
   return render_template("searchalterego.html", search=search)
