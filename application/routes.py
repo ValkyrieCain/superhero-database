@@ -46,8 +46,8 @@ def create():
 #  {{alterego.hidden_tag()}}
 #  {{alterego.submit}}<br>
 #</form>
-hero=Hero()
-alterego=Alteregocreate()
+  hero=Hero()
+  alterego=Alteregocreate()
   if alterego.alterego.data and alterego.validate_on_submit():
     if hero.validate_on_submit():
       plist=[]
