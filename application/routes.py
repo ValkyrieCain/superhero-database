@@ -149,7 +149,7 @@ def deleteconfirm(ae):
   p1id=Powers.query.filter(Powers.id==p1).first()
   p2id=Powers.query.filter(Powers.id==p2).first()
   p3id=Powers.query.filter(Powers.id==p3).first()
-  deletethis.__dict__['p1']=p1id.power
+  deletethis.__dict__['p1']=p1id.power#asdad
   deletethis.__dict__['p2']=p2id.power
   deletethis.__dict__['p3']=p3id.power
   if dontdelete.validate_on_submit():
