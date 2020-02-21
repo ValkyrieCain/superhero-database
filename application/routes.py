@@ -156,6 +156,7 @@ def deleteconfirm(ae):
   #  db.session.delete(deletethis)
   #  db.session.commit()
   #  return redirect(url_for('saved'))
+  #sdfsdfas
   if dontdelete.validate_on_submit():
     return redirect("/home")
   return render_template('delete.html', data=deletethis, delete=delete, dontdelete=dontdelete)
