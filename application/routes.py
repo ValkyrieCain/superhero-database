@@ -44,7 +44,7 @@ def logout():
 def create():
 #<form method='POST' action=''>
 #  {{alterego.hidden_tag()}}
-#  {{alterego.submit}}<br>ddsdadfsdasdsadasdsadadssadasddsd
+#  {{alterego.submit}}<br>ddsdadfsdasdsadasdsadadssadasdasdsaddsd
 #</form>
 #if alterego.validate_on_submit():
   hero=Hero()
