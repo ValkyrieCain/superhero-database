@@ -19,6 +19,6 @@ pyasn1==0.1.9
 pycparser==2.19
 pycrypto==2.6.1
 pygobject==3.34.0
-python-apt==1.4.1
+python-apt==0.7.8
 WTForms==2.2.1
 PyMySQL==0.9.3
