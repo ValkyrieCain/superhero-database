@@ -42,7 +42,7 @@ class Alterego(FlaskForm):
 class Delete(FlaskForm):
 	confirm=SubmitField('Yes',validators=[DataRequired()])
 class Dontdelete(FlaskForm):
-	confirm=SubmitField('No',validators=[DataRequired()])
+	confirm=SubmitField('x',validators=[DataRequired()])
 class Multidelete(FlaskForm):
 	delete=FormField(Delete)
 	dontdelete=FormField(Dontdelete)
