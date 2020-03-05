@@ -19,14 +19,10 @@ def delete():
   if multidelete.delete.validate_on_submit():
     print("yes")
     return redirect(url_for('saved'))
-  if dontdelete.submit.validate_on_submit():
-    print("no")
-    return redirect("/home")
-  if delete.submit.validate_on_submit():
+  if delete.validate_on_submit():
     print("yes")
     return redirect(url_for('saved'))
-  return render_template('delete.html', multidelete=multidelete, delete=delete, dontdelete=dontdelete)
-
+  return render_template('delete.html', multidelete=multidelete, delete=delete)
 
 
 
