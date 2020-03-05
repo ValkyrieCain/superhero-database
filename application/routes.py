@@ -2,7 +2,6 @@ from flask import render_template, redirect, url_for, request, flash
 from flask_login import login_user, current_user, logout_user, login_required
 from application import app, db, bcrypt, login_manager
 from application.models import Superheroes, Users, Powers
-import pandas
 from application.forms import Hero, Search, Register, Login, Delete, Alterego, Alteregocreate, Dontdelete, Multidelete
 import time
 @app.route('/')
@@ -44,7 +43,7 @@ def logout():
 def create():
 #<form method='POST' action=''>
 #  {{alterego.hidden_tag()}}
-#  {{alterego.submit}}<br>ddsdadfdsd
+#  {{alterego.submit}}<br>
 #</form>
 #if alterego.validate_on_submit():
   hero=Hero()
