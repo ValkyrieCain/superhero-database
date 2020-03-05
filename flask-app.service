@@ -3,6 +3,12 @@ Description=Flask Application
 [Service]
 User=jenkins
 WorkingDirectory=/opt/flask-app
-ExecStart=/bin/bash -c 'cd /opt/flask-app && source ./venv/bin/activate && python ./app.py'
+ExecStart=/bin/bash \
+	-c 'cd /opt/flask-app && \
+	source ./venv/bin/activate && \
+	python ./app.py'
+Environment=SECRET_KEY={{SECRET_KEY}}
+Environment=DATABASE_URI=mysql+pymysql://{{MYSQL_USER}}:{{MYSQL_PASSWORD}}@{{MYSQL_HOST}}/{{MYSQL_DATABASE}}
 [Install]
 WantedBy=multi-user.target
+
