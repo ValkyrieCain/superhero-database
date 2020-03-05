@@ -6,14 +6,9 @@
  <h2>Superhero Database</h2>
   <p>
    <a href="{{url_for ('home')}}"><button>Home</button></a>
-   <a href="{{url_for ('search')}}"><button>Search heroes</button></a>
-   <a href="{{url_for ('create')}}"><button>Add a hero</button></a>
-   <a href="{{url_for ('update')}}"><button>Update a hero</button></a>
+
    <a href="{{url_for ('delete')}}"><button>Delete a hero</button></a>
-   <a href="{{url_for ('register')}}"><button>Register</button></a>
-   <a href="{{url_for ('login')}}"><button>Login</button></a>
-   {%if current_user.is_authenticated%}
-   <a href="{{url_for ('logout')}}"><button>Logout</button></a>
+
    {%endif%}
   </p>
  {%block extra%}{% endblock%}
